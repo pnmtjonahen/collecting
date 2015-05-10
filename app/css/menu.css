@@ -1,0 +1,116 @@
+/************
+ * MENU Styles
+ ************/
+
+md-toolbar.ptj-menu-sidenav-toolbar {
+    background-color: white; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+}
+md-toolbar.ptj-menu-sidenav-toolbar img {
+    display: block;
+    width: auto;
+    height: 64px;
+}
+
+.ptj-menu,
+.ptj-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.ptj-menu li {
+  margin: 0;
+}
+.ptj-menu > li:nth-child(1) {
+  border-top: none;
+}
+.ptj-whiteframe-glow-z2 {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+.ptj-menu > li {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.ptj-menu .md-button {
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  line-height: 40px;
+  margin: 0;
+  max-height: 40px;
+  overflow: hidden;
+  padding: 0px 16px;
+  text-align: left;
+  text-decoration: none;
+  white-space: normal;
+  width: 100%;
+  font-size: 11px;
+}
+.ptj-menu button.md-button::-moz-focus-inner {
+  padding: 0;
+}
+.ptj-menu .md-button.active {
+   color: #03a9f4; 
+   font-weight: bold;
+}
+.ptj-menu-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px; }
+
+.ptj-menu-heading {
+  display: block;
+  line-height: 40px;
+  margin: 0;
+  padding: 0px 16px;
+  text-align: left;
+  width: 100%;
+}
+.ptj-menu li.ptj-menu-parentActive,
+.ptj-menu li.ptj-menu-parentActive .ptj-menu-toggle-list {
+  background-color: #f6f6f6;
+}
+.ptj-menu-toggle-list {
+  background: #fff;
+  max-height: 2000px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: 1s cubic-bezier(0.35, 0, 0.25, 1);
+  -webkit-transition-property: max-height;
+  -moz-transition: 1s cubic-bezier(0.35, 0, 0.25, 1);
+  -moz-transition-property: max-height;
+  transition: 1s cubic-bezier(0.35, 0, 0.25, 1);
+  transition-property: max-height;
+}
+.ptj-menu-toggle-list.ng-hide {
+  max-height: 0;
+}
+.ptj-menu .ptj-menu-toggle-list a.md-button {
+  display: block;
+  font-weight: normal;
+  padding: 0 16px 0 32px;
+  text-transform: none;
+}
+
+.ptj-menu-avatar {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+    zoom:0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform:scale(0.70);
+}

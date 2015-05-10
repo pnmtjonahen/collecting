@@ -1,0 +1,26 @@
+{
+  "name": "Collecting Stuff",
+  "description": "A Project for Collectors",
+  "version": "0.0.1",
+  "homepage": "http://www.tjonahen.nl",
+  "license": "GPL",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.4.x",
+    "angular-animate": "v1.4.x",
+    "angular-aria": "^1.4.x",
+    "angular-material": "^0.9.0",
+    "angular-sanitize": "~1.4.x",
+    "showdown": "~0.5.0",
+    "highlightjs": "~8.5.0",
+    "angular-resource": "~1.4.x",
+    "angular-flexslider": "~1.3.2",
+    "angular-highlightjs": "~0.4.1",
+    "angular-material-icons": "~0.4.0",
+    "svg-morpheus": "~0.1.8",
+    "angular-ivonet-markdown": "IvoNet/angular-ivonet-markdown"
+  },
+  "devDependencies": {
+    "angular-material": "~0.9.0"
+  }
+}

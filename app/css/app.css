@@ -1,0 +1,67 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    height:100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+md-toolbar h1 {
+    margin: auto;
+    font-size: 1.250em;
+    font-weight: normal;
+}
+
+
+/* Primary content area */
+
+.card-content {
+    overflow: hidden;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    margin-bottom: 40px;
+}
+
+/* Making the markdown tables behave nice */
+
+div.card-content td p {
+    margin: 0px;
+}
+
+/* override some flexslider styles to anable full screen width images when in small screen mode */
+
+.flexslider .slides img {
+    display: block;
+    height: auto;
+    width: 50%;
+}
+.card-image {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 8px;
+}
+
+@media(max-width: 600px) {
+    .flexslider {
+        border : 0px;
+    }
+    .flexslider .slides img {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+    figure {
+        margin: 0px;
+    }
+    .card-image {
+        margin: 0px 0px 0px 0px;
+        box-shadow: none;
+    }
+}

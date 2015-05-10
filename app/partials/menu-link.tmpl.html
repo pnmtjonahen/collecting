@@ -1,0 +1,8 @@
+<md-button ng-class="{'active' : isSelected()}" ng-href="#{{section.url}}" ng-click="setSelected()">
+    <img ng-show="section.avatar !== undefined" 
+            src="./data/images/xs/{{section.avatar}}" class="ptj-menu-avatar" alt="{{section.avatar}}"/>
+    {{section | humanize}}
+    <span class="ptj-menu-visually-hidden" ng-if="isSelected()">
+        current card
+    </span>
+</md-button>

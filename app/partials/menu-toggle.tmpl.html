@@ -1,0 +1,17 @@
+<md-button class="ptj-menu-md-button-toggle" ng-click="toggle()" aria-controls="ptj-menu-{{section.name | nospace}}" aria-expanded="{{isOpen()}}">
+    <div flex layout="row">
+        {{section.name}}
+        <span flex=""></span>
+        <span aria-hidden="true" class="ptj-menu-md-toggle-icon" >
+            <ng-md-icon icon="{{isOpen()? 'expand_less' : 'expand_more'}}" options='{"duration": 750}'></ng-md-icon>
+        </span>
+    </div>
+    <span class="ptj-menu-visually-hidden">
+        Toggle {{isOpen()? 'expanded' : 'collapsed'}}
+    </span>
+</md-button>
+<ul ng-show="isOpen()" id="docs-menu-{{section.name | nospace}}" class="ptj-menu-toggle-list">
+    <li ng-repeat="page in section.pages">
+        <menu-link section="page"></menu-link>
+    </li>
+</ul>
