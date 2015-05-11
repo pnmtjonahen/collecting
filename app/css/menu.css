@@ -3,7 +3,7 @@
  ************/
 
 md-toolbar.ptj-menu-sidenav-toolbar {
-    background-color: white; 
+    background-color: #ffffff; 
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: none;
 }
@@ -49,9 +49,10 @@ md-toolbar.ptj-menu-sidenav-toolbar img {
 .ptj-menu button.md-button::-moz-focus-inner {
   padding: 0;
 }
+
+.ptj-menu .ptj-menu-toggle-list a.md-button.active,
 .ptj-menu .md-button.active {
-   color: #03a9f4; 
-   font-weight: bold;
+   font-weight: 700;
 }
 .ptj-menu-visually-hidden {
   border: 0;
@@ -94,7 +95,7 @@ md-toolbar.ptj-menu-sidenav-toolbar img {
 }
 .ptj-menu .ptj-menu-toggle-list a.md-button {
   display: block;
-  font-weight: normal;
+  font-weight: 700;
   padding: 0 16px 0 32px;
   text-transform: none;
 }
