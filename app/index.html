@@ -56,7 +56,7 @@
             </md-toolbar>
 
             <md-content flex md-scroll-y>
-                <md-card ng-repeat="object in cl.selected.objects" class="card-image">
+                <md-card hide-md hide-sm ng-repeat="object in cl.selected.objects" class="card-image">
                     <center>
                         <flex-slider slide="image in object.images track by $index">
                             <li>
@@ -69,8 +69,33 @@
                         <h4>{{object.name}}</h4>
                     </center>
                     <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
-                </md-card>            
-                <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+                </md-card>
+                <md-card ng-show="cl.selectedObject" class="card-image">
+                    <center>
+                        <flex-slider slide="image in cl.selectedObject.images track by $index">
+                            <li>
+                                <figure>
+                                    <img ng-src="./data/images/l/{{image.name}}">
+                                    <figcaption>{{image.caption}}</figcaption>
+                                </figure>
+                            </li>
+                        </flex-slider>            
+                        <h4>{{cl.selectedObject.name}}</h4>
+                    </center>
+                    <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
+                    <md-button class="md-primary md-hue-1" ng-click="cl.selectObject(null)">close</md-button>
+                </md-card>
+                
+                <md-list ng-show="cl.showObjectList()" class="md-1-line">
+                    <md-list-item  ng-repeat="object in cl.selected.objects">
+                        <md-button ng-click="cl.selectObject(object)">
+                            <img src="./data/images/xs/{{object.images[0].name}}" class="ptj-menu-avatar" alt="{{object.images[0].name}}"/>                    
+                            {{object.name}}
+                        </md-button>
+                    </md-list-item>
+                    
+                </md-list>
+                <div class="card-content" ng-show="cl.selected.content && cl.showObjectList()" ivo-markdown="cl.selected.content"></div>
             </md-content>
         </div>
         <script src="./bower_components/showdown/compressed/showdown.min.js"></script>

@@ -3,7 +3,7 @@
     angular
             .module('cards')
             .controller('CardController', [
-                'cardService', '$mdSidenav', '$timeout', 'menu',
+                'cardService', '$mdSidenav', '$mdMedia', '$timeout', 'menu',
                 CardController
             ]);
     /**
@@ -12,12 +12,14 @@
      * @param cardService
      * @param $timeout
      * @param menu
+     * @param $mdMedia
      * @constructor
      */
-    function CardController(cardService, $mdSidenav, $timeout, menu) {
+    function CardController(cardService, $mdSidenav, $mdMedia, $timeout, menu) {
         var self = this;
 
         self.selected = null;
+        self.selectedObject = null;
         self.cards = [];
         self.collection = null;
         self.selectCard = selectCard;
@@ -74,6 +76,18 @@
                 });
             }
             return selected;
+        };
+        
+        self.showObjectCard = function() {
+            return self.selectedObject !== null;
+        };
+        
+        self.showObjectList = function() {
+            return !$mdMedia("gt-md") && self.selectedObject === null;
+        };
+        
+        self.selectObject = function(o) {
+            self.selectedObject = o;
         };
         function matchPage(section, page) {
             if (self.selected === page.card) {
