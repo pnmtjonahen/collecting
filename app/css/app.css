@@ -18,6 +18,10 @@ md-toolbar h1 {
     font-weight: normal;
 }
 
+md-list-item.objectimage {
+    padding: 0px;
+}
+
 md-list .md-button {
     color: inherit;
     font-weight: 500;
@@ -25,6 +29,45 @@ md-list .md-button {
     width: 100%;
     margin: 0px;
     padding: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+md-list-item a:hover {
+    background-color: black;
+}
+
+.card-image-trans {
+  background: #fff;
+  max-height: 2000px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+  -webkit-transition-property: max-height;
+  -moz-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+  -moz-transition-property: max-height;
+  transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+  transition-property: max-height;
+}
+
+.card-image-trans.ng-hide {
+  max-height: 0;
+}
+
+.card-avatar {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+    zoom:0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform:scale(0.70);
 }
 
 /* Primary content area */
