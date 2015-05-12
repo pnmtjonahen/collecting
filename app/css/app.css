@@ -36,7 +36,7 @@ md-list-item a:hover {
     background-color: black;
 }
 
-.card-image-trans.ng-show,
+
 .card-image-trans {
   background: #fff;
   max-height: 2000px;
