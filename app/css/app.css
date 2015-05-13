@@ -110,6 +110,7 @@ div.card-content td p {
 
 md-card.card-grid-list {
     margin:0px;
+    box-shadow: none;
 }
 .list-item-img {
     width: 52px;
@@ -135,6 +136,11 @@ md-card.card-grid-list {
     .card-image {
         margin: 0px 0px 0px 0px;
         box-shadow: none;
+    }
+    
+    a.md-button {
+        /*border-bottom: 1px solid rgba(0, 0, 0, 0.12);*/
+        border-radius: 1px;
     }
 
 }
