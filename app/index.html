@@ -16,116 +16,116 @@
     </head>
 
     <body ng-cloak layout="row" >
-        <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="ptj-whiteframe-glow-z2" md-component-id="left">
-            <md-toolbar class="ptj-menu-sidenav-toolbar">
-                <div>
-                    <img src="./data/images/{{cl.collection.logo}}"/>
-                </div>
-            </md-toolbar>
-            <md-content flex role="navigation">
-                <ul class="ptj-menu">
-                    <li ng-repeat="section in cl.menu.sections" class="parent-list-item" ng-class="{'ptj-menu-parentActive' : cl.isSectionSelected(section)}">
-                        <h2 class="ptj-menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
-                            {{section.name}}
-                        </h2>
-                    <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+    <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="ptj-whiteframe-glow-z2" md-component-id="left">
+        <md-toolbar class="ptj-menu-sidenav-toolbar">
+            <div>
+                <img src="./data/images/{{cl.collection.logo}}"/>
+            </div>
+        </md-toolbar>
+        <md-content flex role="navigation">
+            <ul class="ptj-menu">
+                <li ng-repeat="section in cl.menu.sections" class="parent-list-item" ng-class="{'ptj-menu-parentActive' : cl.isSectionSelected(section)}">
+                    <h2 class="ptj-menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
+                        {{section.name}}
+                    </h2>
+                <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
 
-                    <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+                <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
 
-                    <ul ng-if="section.children" class="ptj-menu-nested-list">
-                        <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
-                        <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
+                <ul ng-if="section.children" class="ptj-menu-nested-list">
+                    <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
+                    <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
 
-                        <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
-                        </li>
-                    </ul>
+                    <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
                     </li>
                 </ul>
-            </md-content>
-            <md-content layout-align="start end">
-                &copy; 2015 Tjon-A-Hen
-            </md-content>
-        </md-sidenav>
-        <div flex layout="column"  tabIndex="-1" role="main" >
-            <md-toolbar layout="row" >
-                <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
-                    <ng-md-icon icon="{{cl.showObjectList() ? 'menu' : 'arrow_back' }}" style="fill:white" ></ng-md-icon>
-                </md-button>
-                <h1 hide-gt-md>{{cl.selected.name}}</h1>
-                <h1 hide-md hide-sm>{{cl.collection.name}} - {{cl.selected.name}}</h1>
-            </md-toolbar>
+                </li>
+            </ul>
+        </md-content>
+        <md-content layout-align="start end">
+            &copy; 2015 Tjon-A-Hen
+        </md-content>
+    </md-sidenav>
+    <div flex layout="column"  tabIndex="-1" role="main" >
+        <md-toolbar layout="row" >
+            <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
+                <ng-md-icon icon="{{cl.showObjectList() ? 'menu' : 'arrow_back'}}" style="fill:white" ></ng-md-icon>
+            </md-button>
+            <h1 hide-gt-md>{{cl.selectedObject ? cl.selectedObject.name : cl.selected.name}}</h1>
+            <h1 hide-md hide-sm>{{cl.collection.name}} - {{cl.selected.name}}</h1>
+        </md-toolbar>
 
-            <md-content hide-md hide-sm flex md-scroll-y>
-                <md-card ng-repeat="object in cl.selected.objects" class="card-image">
-                    <center>
-                        <flex-slider slide="image in object.images track by $index">
-                            <li>
-                                <figure>
-                                    <img ng-src="./data/images/l/{{image.name}}">
-                                    <figcaption>{{image.caption}}</figcaption>
-                                </figure>
-                            </li>
-                        </flex-slider>            
-                        <h4>{{object.name}}</h4>
-                    </center>
-                    <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
-                </md-card>
-                <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
-            </md-content>
-            
-            <md-content hide-lg hide-gt-lg flex md-scroll-y>
-                <md-card ng-show="!cl.showObjectList()" class="card-image-trans card-image">
-                    <center>
-                        <flex-slider slide="image in cl.selectedObject.images track by $index">
-                            <li>
-                                <figure>
-                                    <img ng-src="./data/images/l/{{image.name}}">
-                                    <figcaption>{{image.caption}}</figcaption>
-                                </figure>
-                            </li>
-                        </flex-slider>            
-                        <h4>{{cl.selectedObject.name}}</h4>
-                    </center>
-                    <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
-                </md-card>
-                <md-list ng-show="cl.showObjectList()" class="md-1-line card-image-trans">
-                    <md-list-item  ng-repeat="object in cl.selected.objects" class="objectimage">
-                        <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
-                            <img src="./data/images/xs/{{object.images[0].name}}" class="card-avatar" alt="{{object.images[0].name}}"/>
-                            {{object.name}}
-                        </md-button>
-                    </md-list-item>
-                </md-list>
-                
-                <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
-            </md-content>
-        </div>
-        <script src="./bower_components/showdown/compressed/showdown.min.js"></script>
-        <script src="./bower_components/showdown/compressed/extensions/table.min.js"></script>
-        
-        <script src="./bower_components/highlightjs/highlight.pack.js"></script>
-        <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="./bower_components/flexslider/jquery.flexslider-min.js"></script>
-        <script src="./bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>         
-        
-        <script src="./bower_components/angular/angular.js"></script>
-        <script src="./bower_components/angular-flexslider/angular-flexslider.js"></script>
-        <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
-        <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
-        <script src="./bower_components/angular-resource/angular-resource.min.js"></script>
-        <script src="./bower_components/angular-material/angular-material.min.js"></script>
-        <script src="./bower_components/angular-material-icons/angular-material-icons.min.js"></script>
-        <script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <script src="./bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+        <md-content hide-md hide-sm flex md-scroll-y>
+            <md-card ng-repeat="object in cl.selected.objects" class="card-image">
+                <center>
+                    <flex-slider slide="image in object.images track by $index">
+                        <li>
+                            <figure>
+                                <img ng-src="./data/images/l/{{image.name}}">
+                                <figcaption>{{image.caption}}</figcaption>
+                            </figure>
+                        </li>
+                    </flex-slider>            
+                    <h4>{{object.name}}</h4>
+                </center>
+                <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
+            </md-card>
+            <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+        </md-content>
 
-        <script src="./bower_components/angular-ivonet-markdown/markdown.directive.js"></script>
+        <md-content hide-lg hide-gt-lg flex md-scroll-y>
+            <md-card ng-show="!cl.showObjectList()" class="card-grid-list card-image-trans">
+                <md-grid-list md-cols-sm="2" md-cols-md="4" md-row-height="1:1">
+                    <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
+                        <img ng-src="./data/images/l/{{image.name}}">
+                    </md-grid-tile>
+                </md-grid-list>    
+                <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
+            </md-card>
+            <md-list ng-show="cl.showObjectList()" class="md-1-line card-image-trans">
+                <md-list-item  ng-repeat="object in cl.selected.objects" class="objectimage">
+                    <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
+                        <div  layout="row">
+                            <div class="list-item-img">
+                                <img src="./data/images/xs/{{object.images[0].name}}" class="card-avatar" alt="{{object.images[0].name}}"/>
+                            </div>
+                            <div class="list-item-name">
+                                {{object.name}}
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+            </md-list>
 
-        <script src="./js/cards/Cards.js"></script>
-        <script src="./js/cards/CardController.js"></script>
-        <script src="./js/cards/CardService.js"></script>
-        <script src="./js/menu/menu.js"></script>
-        <script src="./js/app.js"></script>
+            <div ng-show="cl.showObjectList()" class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+        </md-content>
+    </div>
+    <script src="./bower_components/showdown/compressed/showdown.min.js"></script>
+    <script src="./bower_components/showdown/compressed/extensions/table.min.js"></script>
+
+    <script src="./bower_components/highlightjs/highlight.pack.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/flexslider/jquery.flexslider-min.js"></script>
+    <script src="./bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>         
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-flexslider/angular-flexslider.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="./bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="./bower_components/angular-material/angular-material.min.js"></script>
+    <script src="./bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="./bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+
+    <script src="./bower_components/angular-ivonet-markdown/markdown.directive.js"></script>
+
+    <script src="./js/cards/Cards.js"></script>
+    <script src="./js/cards/CardController.js"></script>
+    <script src="./js/cards/CardService.js"></script>
+    <script src="./js/menu/menu.js"></script>
+    <script src="./js/app.js"></script>
 
 
-    </body>
+</body>
 </html>

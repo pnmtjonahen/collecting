@@ -12,8 +12,12 @@ a {
     text-decoration: none;
 }
 
+button.menu.md-button {
+    line-height: 0px;
+    min-width: 0px;
+}
 md-toolbar h1 {
-    margin: auto;
+    margin-left: 52px; 
     font-size: 1.250em;
     font-weight: normal;
 }
@@ -38,27 +42,27 @@ md-list-item a:hover {
 
 
 .card-image-trans {
-  background: #fff;
-  max-height: 2000px;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-  -webkit-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
-  -webkit-transition-property: max-height;
-  -moz-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
-  -moz-transition-property: max-height;
-  transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
-  transition-property: max-height;
+    background: #fff;
+    max-height: 4000px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+    -webkit-transition-property: max-height;
+    -moz-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+    -moz-transition-property: max-height;
+    transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+    transition-property: max-height;
 }
 
 .card-image-trans.ng-hide {
-  max-height: 0;
+    max-height: 0;
 }
 
 .card-avatar {
     position: relative;
-    width: 128px;
-    height: 128px;
+    width: 64px;
+    height: 64px;
     border: 1px solid #ddd;
     border-radius: 50%;
     display: inline-block;
@@ -75,7 +79,7 @@ md-list-item a:hover {
 
 .card-content {
     overflow: hidden;
-    padding-left: 40px;
+    padding-left: 52px;
     padding-right: 40px;
     padding-top: 5px;
     margin-bottom: 40px;
@@ -95,16 +99,28 @@ div.card-content td p {
     width: 50%;
 }
 .card-image {
-    margin-left: 40px;
+    margin-left: 52px;
     margin-right: 40px;
     margin-top: 8px;
 }
 
+md-card.card-grid-list {
+    margin:0px;
+}
+.list-item-img {
+    width: 52px;
+}
+.list-item-name {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 @media(max-width: 600px) {
-    .flexslider {
-        border : 0px;
+    md-toolbar h1 {
+        margin-left: 0px; 
     }
-    .flexslider .slides img {
+
+    .card-figure img {
         display: block;
         height: auto;
         width: 100%;
@@ -116,4 +132,5 @@ div.card-content td p {
         margin: 0px 0px 0px 0px;
         box-shadow: none;
     }
+
 }
