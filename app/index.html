@@ -82,7 +82,7 @@
                 <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
             </md-card>
             <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
-            <div ng-show="cl.selected.htmlContent" html="{{cl.selected.htmlContent}}"></div>
+            <div ng-show="cl.selected.htmlContent" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
         </md-content>
 
         <!--

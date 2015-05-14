@@ -13,13 +13,10 @@
             .config(['ivoMarkdownConfigProvider', function (ivoMarkdownConfigProvider) {
                     ivoMarkdownConfigProvider.config({extensions: ['table']});
                 }])
-            .directive('html', [function () {
-                    return {
-                        restrict: 'A',
-                        link: function (scope, element, attrs) {
-                            element.html(attrs.html);
-                        }
-                    }
+            .filter('safeHtml', ['$sce', function ($sce) {
+                    return function (text) {
+                        return $sce.trustAsHtml(text);
+                    };
                 }])
             ;
 })();
