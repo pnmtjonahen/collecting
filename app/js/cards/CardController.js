@@ -135,6 +135,13 @@
                 });
                 card.content = content;
             }
+            if (angular.isArray(card.htmlContent)) {
+                var htmlContent = "";
+                card.htmlContent.forEach(function (c) {
+                    htmlContent = htmlContent + c;
+                });
+                card.htmlContent = htmlContent;
+            }
             if (card.cards) {
                 card.cards.forEach(makeContent);
             }
@@ -146,6 +153,13 @@
                           content = content + c + "\n"; 
                        });
                        o.content = content;
+                   } 
+                   if (angular.isArray(o.htmlContent)) {
+                       var htmlContent = "";
+                       o.htmlContent.forEach(function(c) {
+                          htmlContent = htmlContent + c; 
+                       });
+                       o.htmlContent = htmlContent;
                    } 
                 });
             }
@@ -168,24 +182,24 @@
 
         function buildMenu(cards) {
 
-            cards.forEach(function (section) {
-                var menuItem = {
-                    name: section.name,
+            cards.forEach(function (card) {
+                var section = {
+                    name: card.name,
                     type: 'toggle'
                 };
+                self.menu.sections.push(section);
 
-                if (section.content !== undefined) {
-                    menuItem.type = 'link';
-                    menuItem.card = section;
-                }
-                self.menu.sections.push(menuItem);
-                if (section.cards !== undefined) {
-                    menuItem.pages = [];
-                    section.cards.forEach(function (c) {
+                if (card.cards === undefined) {
+                    section.type = 'link';
+                    section.card = card;
+                    section.url  = card.url;
+                    section.avatar = card.avatar;
+                } else {
+                    section.pages = [];
+                    card.cards.forEach(function (c) {
 
-                        menuItem.pages.push({
+                        section.pages.push({
                             name: c.name,
-                            url: '',
                             card: c,
                             avatar: c.avatar,
                             type: 'link'

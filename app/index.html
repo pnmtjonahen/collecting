@@ -33,17 +33,14 @@
                     <h2 class="ptj-menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
                         {{section.name}}
                     </h2>
-                <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
-
-                <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
-
-                <ul ng-if="section.children" class="ptj-menu-nested-list">
-                    <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
-                    <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
-
-                    <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
-                    </li>
-                </ul>
+                    <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+                    <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+                    <ul ng-if="section.children" class="ptj-menu-nested-list">
+                        <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
+                            <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
+                            <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </md-content>
@@ -85,6 +82,7 @@
                 <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
             </md-card>
             <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+            <div ng-show="cl.selected.htmlContent" html="{{cl.selected.htmlContent}}"></div>
         </md-content>
 
         <!--
@@ -95,7 +93,7 @@
                 either show a card with selected object images, or show the main content with possible object list.
             -->
             <md-card ng-show="!cl.showObjectList()" class="card-grid-list card-image-trans">
-                <md-grid-list md-cols-sm="2" md-cols-md="4" md-row-height="1:1">
+                <md-grid-list md-cols-sm="2" md-cols="4" md-row-height="1:1">
                     <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
                         <img ng-src="./data/images/l/{{image.name}}">
                     </md-grid-tile>

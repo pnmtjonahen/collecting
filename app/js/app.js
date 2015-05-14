@@ -1,16 +1,25 @@
-(function(){
-  'use strict';
+(function () {
+    'use strict';
 
-angular
-    .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
-    .config(function($mdThemingProvider){
+    angular
+            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
+            .config(function ($mdThemingProvider) {
 
-        $mdThemingProvider.theme('default')
-                .primaryPalette('brown')
-                .accentPalette('red');
+                $mdThemingProvider.theme('default')
+                        .primaryPalette('brown')
+                        .accentPalette('red');
 
-    })
-    .config(['ivoMarkdownConfigProvider', function(ivoMarkdownConfigProvider) {
-        ivoMarkdownConfigProvider.config({extensions : ['table']});
-    }]);
+            })
+            .config(['ivoMarkdownConfigProvider', function (ivoMarkdownConfigProvider) {
+                    ivoMarkdownConfigProvider.config({extensions: ['table']});
+                }])
+            .directive('html', [function () {
+                    return {
+                        restrict: 'A',
+                        link: function (scope, element, attrs) {
+                            element.html(attrs.html);
+                        }
+                    }
+                }])
+            ;
 })();

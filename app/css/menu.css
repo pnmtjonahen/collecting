@@ -11,6 +11,8 @@ md-toolbar.ptj-menu-sidenav-toolbar img {
     display: block;
     width: auto;
     height: 64px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .ptj-menu,
