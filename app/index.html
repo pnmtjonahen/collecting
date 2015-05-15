@@ -72,7 +72,7 @@
                     <flex-slider slide="image in object.images track by $index">
                         <li>
                             <figure>
-                                <img ng-src="./data/images/l/{{image.name}}">
+                                <img ng-src="./data/images/l/{{(image.name === undefined) ? image : image.name}}">
                                 <figcaption>{{image.caption}}</figcaption>
                             </figure>
                         </li>
