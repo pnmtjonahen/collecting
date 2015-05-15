@@ -96,7 +96,7 @@
                 <md-card class="card-grid-list">
                     <md-grid-list md-cols-sm="2" md-cols="4" md-row-height="1:1">
                         <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
-                            <img ng-src="./data/images/l/{{image.name}}">
+                            <img ng-src="./data/images/l/{{image.name === undefined ? image : image.name}}">
                         </md-grid-tile>
                     </md-grid-list>    
                     <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
@@ -108,7 +108,8 @@
                         <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
                             <div  layout="row">
                                 <div class="list-item-img">
-                                    <img src="./data/images/xs/{{object.images[0].name}}" class="card-avatar" alt="{{object.images[0].name}}"/>
+                                    <img src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
+                                                class="card-avatar" alt="{{object.images[0].name}}"/>
                                 </div>
                                 <div class="list-item-name">
                                     {{object.name}}
