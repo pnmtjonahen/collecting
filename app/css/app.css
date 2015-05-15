@@ -49,8 +49,9 @@ md-list-item a:hover {
 .card-image-trans {
     background: #fff;
     max-height: 4000px;
+    width: 100%;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     z-index: 1;
     -webkit-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
     -webkit-transition-property: max-height;
@@ -121,7 +122,7 @@ md-card.card-grid-list {
     margin-bottom: auto;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 960px) {
     md-toolbar h1 {
         margin-left: 0px; 
     }

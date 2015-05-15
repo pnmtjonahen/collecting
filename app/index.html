@@ -18,9 +18,9 @@
     </head>
 
     <body ng-cloak layout="row" >
-    <!--
-        sidenav the menu either opened or triggered from the toolbar
-    -->
+        <!--
+            sidenav the menu either opened or triggered from the toolbar
+        -->
     <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="ptj-whiteframe-glow-z2" md-component-id="left">
         <md-toolbar class="ptj-menu-sidenav-toolbar">
             <div>
@@ -33,14 +33,14 @@
                     <h2 class="ptj-menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
                         {{section.name}}
                     </h2>
-                    <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
-                    <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
-                    <ul ng-if="section.children" class="ptj-menu-nested-list">
-                        <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
-                            <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
-                            <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
-                        </li>
-                    </ul>
+                <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+                <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+                <ul ng-if="section.children" class="ptj-menu-nested-list">
+                    <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.isSectionSelected(child)}">
+                    <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
+                    <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
+                    </li>
+                </ul>
                 </li>
             </ul>
         </md-content>
@@ -62,7 +62,7 @@
             <h1 hide-gt-md>{{cl.selectedObject ? cl.selectedObject.name : cl.selected.name}}</h1>
             <h1 hide-md hide-sm>{{cl.collection.name}} - {{cl.selected.name}}</h1>
         </md-toolbar>
-        
+
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
@@ -92,34 +92,37 @@
             <!--
                 either show a card with selected object images, or show the main content with possible object list.
             -->
-            <md-card ng-show="!cl.showObjectList()" class="card-grid-list card-image-trans">
-                <md-grid-list md-cols-sm="2" md-cols="4" md-row-height="1:1">
-                    <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
-                        <img ng-src="./data/images/l/{{image.name}}">
-                    </md-grid-tile>
-                </md-grid-list>    
-                <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
-            </md-card>
-            
-            <md-list ng-show="cl.showObjectList()" class="md-1-line card-image-trans">
-                <md-list-item  ng-repeat="object in cl.selected.objects" class="objectimage">
-                    <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
-                        <div  layout="row">
-                            <div class="list-item-img">
-                                <img src="./data/images/xs/{{object.images[0].name}}" class="card-avatar" alt="{{object.images[0].name}}"/>
+            <div ng-show="!cl.showObjectList()" class="card-image-trans">
+                <md-card class="card-grid-list">
+                    <md-grid-list md-cols-sm="2" md-cols="4" md-row-height="1:1">
+                        <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
+                            <img ng-src="./data/images/l/{{image.name}}">
+                        </md-grid-tile>
+                    </md-grid-list>    
+                    <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
+                </md-card>
+            </div>
+            <div ng-show="cl.showObjectList()" class="card-image-trans">
+                <md-list  class="md-1-line">
+                    <md-list-item  ng-repeat="object in cl.selected.objects" class="objectimage">
+                        <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
+                            <div  layout="row">
+                                <div class="list-item-img">
+                                    <img src="./data/images/xs/{{object.images[0].name}}" class="card-avatar" alt="{{object.images[0].name}}"/>
+                                </div>
+                                <div class="list-item-name">
+                                    {{object.name}}
+                                </div>
                             </div>
-                            <div class="list-item-name">
-                                {{object.name}}
-                            </div>
-                        </div>
-                    </md-button>
-                </md-list-item>
-            </md-list>
+                        </md-button>
+                    </md-list-item>
+                </md-list>
 
-            <div ng-show="cl.showObjectList()" class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+                <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+            </div>
         </md-content>
     </div>
-    
+
     <!--
         Script loading and application initialization.
     -->
