@@ -98,7 +98,7 @@ md-toolbar.ptj-menu-sidenav-toolbar img {
 .ptj-menu .ptj-menu-toggle-list a.md-button {
   display: block;
   font-weight: 700;
-  padding: 0 16px 0 32px;
+  padding: 0 16px 0 16px;
   text-transform: none;
 }
 
