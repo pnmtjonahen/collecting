@@ -47,9 +47,6 @@ md-list .md-button {
 md-list-item a:hover {
     background-color: black;
 }
-.breadcrum {
-    
-}
 
 .md-whiteframe-glow-z2 {
   box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2), 0px 0 4px 3px rgba(0, 0, 0, 0.14), 0px 0px 8px 1px rgba(0, 0, 0, 0.12);
@@ -72,6 +69,9 @@ md-list-item a:hover {
 }
 
 .card-image-trans.ng-hide {
+    max-height: 0;
+}
+.card-image-trans.ng-show {
     max-height: 0;
 }
 

@@ -24,7 +24,7 @@
     <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="ptj-whiteframe-glow-z2" md-component-id="left">
         <md-toolbar class="ptj-menu-sidenav-toolbar">
             <div>
-                <img src="./data/images/{{cl.collection.logo}}"/>
+                <img ng-src="./data/images/{{cl.collection.logo}}"/>
             </div>
         </md-toolbar>
         <md-content flex role="navigation">
@@ -59,14 +59,14 @@
             <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
                 <ng-md-icon icon="{{cl.showObjectList() ? 'menu' : 'arrow_back'}}" style="fill:white" ></ng-md-icon>
             </md-button>
-            <h1 hide-gt-md>
-                <div ng-repeat="crum in cl.breadcrum()">
-                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" class="breadcrum" style="fill:white"></ng-md-icon>
+            <h1 hide-gt-md layout="row">
+                <div ng-repeat-start="crum in cl.breadcrum()" ng-repeat-end>
+                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" style="fill:white"></ng-md-icon>
                 </div>
             </h1>
-            <h1 hide-md hide-sm>
+            <h1 hide-md hide-sm layout="row">
                 <div ng-repeat="crum in cl.breadcrum()">
-                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" class="breadcrum" style="fill:white"></ng-md-icon>
+                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" style="fill:white"></ng-md-icon>
                 </div>
             </h1>
         </md-toolbar>
@@ -116,7 +116,7 @@
                         <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">
                             <div  layout="row">
                                 <div class="list-item-img">
-                                    <img src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
+                                    <img ng-src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
                                                 class="card-avatar" alt="{{object.images[0].name}}"/>
                                 </div>
                                 <div class="list-item-name">
