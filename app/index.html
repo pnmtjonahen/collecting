@@ -59,14 +59,22 @@
             <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
                 <ng-md-icon icon="{{cl.showObjectList() ? 'menu' : 'arrow_back'}}" style="fill:white" ></ng-md-icon>
             </md-button>
-            <h1 hide-gt-md>{{cl.selectedObject ? cl.selectedObject.name : cl.selected.name}}</h1>
-            <h1 hide-md hide-sm>{{cl.collection.name}} - {{cl.selected.name}}</h1>
+            <h1 hide-gt-md>
+                <div ng-repeat="crum in cl.breadcrum()">
+                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" class="breadcrum" style="fill:white"></ng-md-icon>
+                </div>
+            </h1>
+            <h1 hide-md hide-sm>
+                <div ng-repeat="crum in cl.breadcrum()">
+                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" class="breadcrum" style="fill:white"></ng-md-icon>
+                </div>
+            </h1>
         </md-toolbar>
 
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
-        <md-content hide-md hide-sm flex md-scroll-y>
+        <md-content hide-md hide-sm flex md-scroll-y  ptjResize="cl.resetSelectedObject">
             <md-card ng-repeat="object in cl.selected.objects" class="card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">
@@ -102,7 +110,7 @@
                     <div class="card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
                 </md-card>
             </div>
-            <div ng-show="cl.showObjectList()" class="card-image-trans">
+            <div ng-show="cl.showObjectList()" class="card-image-trans" >
                 <md-list  class="md-1-line">
                     <md-list-item  ng-repeat="object in cl.selected.objects" class="objectimage">
                         <md-button class="md-primary" href="#" ng-click="cl.selectObject(object)">

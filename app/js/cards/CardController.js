@@ -3,7 +3,7 @@
     angular
             .module('cards')
             .controller('CardController', [
-                'cardService', '$mdSidenav', '$mdMedia', '$timeout', 'menu',
+                'cardService', '$mdSidenav', '$mdMedia', '$timeout', 'menu', '$scope',
                 CardController
             ]);
     /**
@@ -13,15 +13,17 @@
      * @param $timeout
      * @param menu
      * @param $mdMedia
+     * @param $scope
      * @constructor
      */
-    function CardController(cardService, $mdSidenav, $mdMedia, $timeout, menu) {
+    function CardController(cardService, $mdSidenav, $mdMedia, $timeout, menu, $scope) {
         var self = this;
 
         self.selected = null;
         self.selectedObject = null;
         self.cards = [];
         self.collection = null;
+
         self.selectCard = selectCard;
         self.openMenu = openMenu;
         self.menu = menu;
@@ -46,6 +48,12 @@
 // This enables the directive to call methods defined on the current menu instance.   
 // *****************************************************************
 
+        $scope.$watch(function () {
+            return $mdMedia('gt-md');
+        }, function (big) {
+            if (big) self.selectedObject = null;
+        });
+        
         self.isSelected = function (page) {
             return menu.isPageSelected(page);
         };
@@ -77,18 +85,30 @@
             }
             return selected;
         };
-        
-        self.showObjectCard = function() {
+
+        self.showObjectCard = function () {
             return self.selectedObject !== null;
         };
-        
-        self.showObjectList = function() {
+
+        self.showObjectList = function () {
             return !$mdMedia("gt-md") && self.selectedObject === null;
         };
-        
-        self.selectObject = function(o) {
+
+        self.selectObject = function (o) {
             self.selectedObject = o;
         };
+
+        self.breadcrum = function () {
+            var crums = [];
+            if (self.selected) {
+                crums.push(self.selected.name);
+            }
+            if (!$mdMedia("gt-md") && self.selectedObject) {
+                crums.push(self.selectedObject.name);
+            }
+            return crums;
+        };
+
         function matchPage(section, page) {
             if (self.selected === page.card) {
                 self.menu.selectSection(section);
@@ -147,20 +167,20 @@
             }
             if (card.objects) {
                 card.objects.forEach(function (o) {
-                   if (angular.isArray(o.content)) {
-                       var content = "";
-                       o.content.forEach(function(c) {
-                          content = content + c + "\n"; 
-                       });
-                       o.content = content;
-                   } 
-                   if (angular.isArray(o.htmlContent)) {
-                       var htmlContent = "";
-                       o.htmlContent.forEach(function(c) {
-                          htmlContent = htmlContent + c; 
-                       });
-                       o.htmlContent = htmlContent;
-                   } 
+                    if (angular.isArray(o.content)) {
+                        var content = "";
+                        o.content.forEach(function (c) {
+                            content = content + c + "\n";
+                        });
+                        o.content = content;
+                    }
+                    if (angular.isArray(o.htmlContent)) {
+                        var htmlContent = "";
+                        o.htmlContent.forEach(function (c) {
+                            htmlContent = htmlContent + c;
+                        });
+                        o.htmlContent = htmlContent;
+                    }
                 });
             }
         }
@@ -192,7 +212,7 @@
                 if (card.cards === undefined) {
                     section.type = 'link';
                     section.card = card;
-                    section.url  = card.url;
+                    section.url = card.url;
                     section.avatar = card.avatar;
                 } else {
                     section.pages = [];
@@ -213,6 +233,7 @@
 
         function selectCard(card) {
             self.selected = angular.isNumber(card) ? self.cards[card] : card;
+            self.selectedObject = null;
             onSelectionChange();
         }
         ;

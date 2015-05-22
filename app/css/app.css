@@ -33,6 +33,7 @@ md-list-item.objectimage {
     padding: 0px;
 }
 
+
 md-list .md-button {
     color: inherit;
     font-weight: 500;
@@ -45,6 +46,9 @@ md-list .md-button {
 
 md-list-item a:hover {
     background-color: black;
+}
+.breadcrum {
+    
 }
 
 .md-whiteframe-glow-z2 {
