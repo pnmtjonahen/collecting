@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
+            .module('collectingApp', ['ngMaterial', 'angular-flexslider', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
             .config(function ($mdThemingProvider) {
 
                 $mdThemingProvider.theme('default')

@@ -57,16 +57,16 @@
         -->
         <md-toolbar layout="row" class="md-whiteframe-glow-z2">
             <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
-                <ng-md-icon icon="{{cl.showObjectList() ? 'menu' : 'arrow_back'}}" style="fill:white" ></ng-md-icon>
+                <md-icon md-svg-src="{{cl.showObjectList() ? './svg/menu.svg' : './svg/arrow_back.svg'}}" style="fill:white" ></md-icon>
             </md-button>
             <h1 hide-gt-md layout="row">
                 <div ng-repeat-start="crum in cl.breadcrum()" ng-repeat-end>
-                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" style="fill:white"></ng-md-icon>
+                    {{crum}}<md-icon ng-if="!$last" md-svg-src="./svg/chevron_right.svg" style="fill:white"></md-icon>
                 </div>
             </h1>
             <h1 hide-md hide-sm layout="row">
                 <div ng-repeat="crum in cl.breadcrum()">
-                    {{crum}}<ng-md-icon ng-if="!$last" icon="chevron_right" style="fill:white"></ng-md-icon>
+                    {{crum}}<md-icon ng-if="!$last" md-svg-src="./svg/chevron_right.svg" style="fill:white"></md-icon>
                 </div>
             </h1>
         </md-toolbar>
@@ -141,15 +141,13 @@
     <script src="./bower_components/highlightjs/highlight.pack.js"></script>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/flexslider/jquery.flexslider-min.js"></script>
-    <script src="./bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>         
 
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-flexslider/angular-flexslider.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="./bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="./bower_components/angular-material/angular-material.min.js"></script>
-    <script src="./bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
     <script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="./bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
 
