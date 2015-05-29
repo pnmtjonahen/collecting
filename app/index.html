@@ -21,7 +21,7 @@
         <!--
             sidenav the menu either opened or triggered from the toolbar
         -->
-    <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="ptj-whiteframe-glow-z2" md-component-id="left">
+    <md-sidenav md-is-locked-open="$mdMedia('gt-md') && cl.selectedImage === null" class="ptj-whiteframe-glow-z2" md-component-id="left">
         <md-toolbar class="ptj-menu-sidenav-toolbar">
             <div>
                 <img ng-src="./data/images/{{cl.collection.logo}}"/>
@@ -51,13 +51,16 @@
     <!--
         main content
     -->
-    <div flex layout="column"  tabIndex="-1" role="main" >
+    <div flex layout="column"  md-scroll-y tabIndex="-1" role="main" >
         <!--
             define the main content toolbar, the sidenav has its onw toolbar
         -->
         <md-toolbar layout="row" class="md-whiteframe-glow-z2">
-            <md-button class="menu" hide-gt-md ng-click="cl.showObjectList() ? cl.openMenu() : cl.selectObject(null)" aria-label="Show Card List">
-                <md-icon md-svg-src="{{cl.showObjectList() ? './svg/menu.svg' : './svg/arrow_back.svg'}}" style="fill:white" ></md-icon>
+            <md-button class="menu" hide-gt-md ng-click="cl.onMenuClick()" aria-label="Show Card List">
+                <ng-md-icon icon="{{cl.determineMenuIcon()}}" style="fill:white" ></ng-md-icon>
+            </md-button>
+            <md-button hide-md hide-sm ng-if="cl.selectedImage !== null" class="menu" ng-click="cl.selectedImage = null;" aria-label="Exit full screen">
+                <ng-md-icon icon="close" style="fill:white" ></ng-md-icon>
             </md-button>
             <h1 hide-gt-md layout="row">
                 <div ng-repeat-start="crum in cl.breadcrum()" ng-repeat-end>
@@ -74,13 +77,13 @@
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
-        <md-content hide-md hide-sm flex md-scroll-y  ptjResize="cl.resetSelectedObject">
+        <md-content hide-md hide-sm flex ptjResize="cl.resetSelectedObject">
             <md-card ng-repeat="object in cl.selected.objects" class="card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">
                         <li>
                             <figure>
-                                <img ng-src="./data/images/l/{{(image.name === undefined) ? image : image.name}}">
+                                <img ng-click="cl.showImage(image)" ng-src="./data/images/l/{{(image.name === undefined) ? image : image.name}}" >
                                 <figcaption>{{image.caption}}</figcaption>
                             </figure>
                         </li>
@@ -93,16 +96,19 @@
             <div ng-show="cl.selected.htmlContent" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
         </md-content>
 
+        <md-content hide-md hide-sm ng-if="cl.selectedImage !== null" class="big">
+            <img class="big" ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}" >
+        </md-content>
         <!--
             card content for devices with screen size small (sm) or medium (md)
         -->
-        <md-content hide-lg hide-gt-lg flex md-scroll-y>
+        <md-content hide-lg hide-gt-lg flex>
             <!--
                 either show a card with selected object images, or show the main content with possible object list.
             -->
             <div ng-show="!cl.showObjectList()" class="card-image-trans">
                 <md-card class="card-grid-list">
-                    <md-grid-list md-cols-sm="2" md-cols="4" md-row-height="1:1">
+                    <md-grid-list md-cols-sm="1" md-cols="2" md-row-height="1:1">
                         <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
                             <img ng-src="./data/images/l/{{image.name === undefined ? image : image.name}}">
                         </md-grid-tile>
@@ -117,7 +123,7 @@
                             <div  layout="row">
                                 <div class="list-item-img">
                                     <img ng-src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
-                                                class="card-avatar" alt="{{object.images[0].name}}"/>
+                                         class="card-avatar" alt="{{object.images[0].name}}"/>
                                 </div>
                                 <div class="list-item-name">
                                     {{object.name}}
@@ -143,6 +149,7 @@
     <script src="./bower_components/flexslider/jquery.flexslider-min.js"></script>
 
     <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-material-icons/angular-material-icons.js"></script>
     <script src="./bower_components/angular-flexslider/angular-flexslider.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
@@ -150,6 +157,7 @@
     <script src="./bower_components/angular-material/angular-material.js"></script>
     <script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="./bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+    <script src="./bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
 
     <script src="./bower_components/angular-ivonet-markdown/markdown.directive.js"></script>
 

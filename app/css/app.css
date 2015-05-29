@@ -131,6 +131,15 @@ md-card.card-grid-list {
     margin-top: auto;
     margin-bottom: auto;
 }
+.big md-content {
+    overflow: hidden;
+}
+
+.big img {
+    height: auto;
+    width: 100%;
+    z-index : 99;
+}
 
 @media(max-width: 960px) {
     md-toolbar h1 {
@@ -155,4 +164,5 @@ md-card.card-grid-list {
         border-radius: 1px;
     }
 
+    
 }

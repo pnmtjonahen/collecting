@@ -2,8 +2,8 @@
     <div flex layout="row">
         {{section.name}}
         <span flex=""></span>
-        <span aria-hidden="true" class="ptj-menu-md-toggle-icon" >
-            <md-icon md-svg-src="./svg/{{isOpen()? 'expand_less' : 'expand_more'}}.svg"></md-icon>
+        <span aria-hidden="true" class="ptj-menu-md-toggle-icon" ng-class="{toggled : isOpen()}" >
+            <md-icon md-svg-src="./svg/expand_less.svg"></md-icon>
         </span>
     </div>
     <span class="ptj-menu-visually-hidden">

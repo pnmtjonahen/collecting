@@ -23,6 +23,7 @@
         self.selectedObject = null;
         self.cards = [];
         self.collection = null;
+        self.selectedImage = null;
 
         self.selectCard = selectCard;
         self.openMenu = openMenu;
@@ -51,9 +52,10 @@
         $scope.$watch(function () {
             return $mdMedia('gt-md');
         }, function (big) {
-            if (big) self.selectedObject = null;
+            if (big)
+                self.selectedObject = null;
         });
-        
+
         self.isSelected = function (page) {
             return menu.isPageSelected(page);
         };
@@ -107,6 +109,24 @@
                 crums.push(self.selectedObject.name);
             }
             return crums;
+        };
+
+        self.showImage = function (image) {
+            self.selectedImage = image;
+        };
+
+        self.determineMenuIcon = function () {
+            if (self.showObjectList()) {
+                return 'menu';
+            }
+            return 'arrow_back';
+        };
+        self.onMenuClick = function () {
+            if (self.showObjectList()) {
+                self.openMenu();
+            } else {
+                self.selectObject(null);
+            }
         };
 
         function matchPage(section, page) {
