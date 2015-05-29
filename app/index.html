@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="./css/menu.css"/>
     </head>
 
-    <body ng-cloak layout="row" >
+    <body layout="row" >
         <!--
             sidenav the menu either opened or triggered from the toolbar
         -->
@@ -51,7 +51,7 @@
     <!--
         main content
     -->
-    <div flex layout="column"  md-scroll-y tabIndex="-1" role="main" >
+    <div flex layout="column" tabIndex="-1" role="main" >
         <!--
             define the main content toolbar, the sidenav has its onw toolbar
         -->
@@ -77,7 +77,7 @@
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
-        <md-content hide-md hide-sm flex ptjResize="cl.resetSelectedObject">
+        <md-content hide-md hide-sm flex ng-if="cl.selectedImage === null" ptjResize="cl.resetSelectedObject">
             <md-card ng-repeat="object in cl.selected.objects" class="card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">

@@ -94,7 +94,6 @@ md-list-item a:hover {
 /* Primary content area */
 
 .card-content {
-    overflow: hidden;
     padding-left: 52px;
     padding-right: 40px;
     padding-top: 5px;
@@ -131,13 +130,15 @@ md-card.card-grid-list {
     margin-top: auto;
     margin-bottom: auto;
 }
-.big md-content {
-    overflow: hidden;
+md-content.big  {
+    overflow-y: scroll;
 }
 
-.big img {
+ img.big {
+    max-height: 100%;
+    max-width: 100%;
     height: auto;
-    width: 100%;
+    width: auto;
     z-index : 99;
 }
 
@@ -151,18 +152,18 @@ md-card.card-grid-list {
         height: auto;
         width: 100%;
     }
+
     figure {
         margin: 0px;
     }
+
     .card-image {
         margin: 0px 0px 0px 0px;
         box-shadow: none;
     }
     
     a.md-button {
-        /*border-bottom: 1px solid rgba(0, 0, 0, 0.12);*/
         border-radius: 1px;
     }
-
-    
+   
 }
