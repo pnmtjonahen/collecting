@@ -77,7 +77,7 @@
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
-        <md-content hide-md hide-sm flex ng-if="cl.selectedImage === null" ptjResize="cl.resetSelectedObject">
+        <md-content hide-md hide-sm flex md-scroll-y ng-if="cl.selectedImage === null" ptjResize="cl.resetSelectedObject">
             <md-card ng-repeat="object in cl.selected.objects" class="card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">
@@ -90,14 +90,16 @@
                     </flex-slider>            
                     <h4>{{object.name}}</h4>
                 </center>
-                <div class="card-content" ng-show="object.content" ivo-markdown="object.content"></div>
+                <div class="card-content" ng-if="object.content" ivo-markdown="object.content"></div>
             </md-card>
-            <div class="card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
-            <div ng-show="cl.selected.htmlContent" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
+            <div class="card-content" ng-if="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+            <div ng-if="cl.selected.htmlContent" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
         </md-content>
 
-        <md-content hide-md hide-sm ng-if="cl.selectedImage !== null" class="big">
-            <img class="big" ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}" >
+        <md-content hide-md hide-sm ng-if="cl.selectedImage !== null">
+            <div class="big">
+                <img ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}" >
+            </div>
         </md-content>
         <!--
             card content for devices with screen size small (sm) or medium (md)

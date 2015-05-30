@@ -49,8 +49,8 @@ md-list-item a:hover {
 }
 
 .md-whiteframe-glow-z2 {
-  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2), 0px 0 4px 3px rgba(0, 0, 0, 0.14), 0px 0px 8px 1px rgba(0, 0, 0, 0.12);
-  z-index: 10;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2), 0px 0 4px 3px rgba(0, 0, 0, 0.14), 0px 0px 8px 1px rgba(0, 0, 0, 0.12);
+    z-index: 10;
 }
 
 .card-image-trans {
@@ -130,16 +130,26 @@ md-card.card-grid-list {
     margin-top: auto;
     margin-bottom: auto;
 }
-md-content.big  {
-    overflow-y: scroll;
+div.big  {
+
+    /* display:inline-block; */
+
+    overflow:hidden;    
+    height: 88vh;
+    /* width: 100%; */
+
 }
 
- img.big {
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    z-index : 99;
+div.big img  {
+   
+    /*position:absolute;*/
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width:100%; */
+    /* vertical-align: middle; */
+    /* align-self: center; */
 }
 
 @media(max-width: 960px) {
@@ -161,9 +171,9 @@ md-content.big  {
         margin: 0px 0px 0px 0px;
         box-shadow: none;
     }
-    
+
     a.md-button {
         border-radius: 1px;
     }
-   
+
 }
