@@ -1,10 +1,10 @@
 {
-  "name": "material-start",
+  "name": "Collecting Stuff",
   "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS Material",
-  "repository": "https://github.com/angular/material-start",
-  "license": "MIT",
+  "version": "0.0.1",
+  "description": "A Project for Collectors",
+  "repository": "http://www.tjonahen.nl",
+  "license": "GPL",
   "devDependencies": {
     "karma": "~0.10",
     "protractor": "^1.1.1",
