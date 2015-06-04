@@ -58,7 +58,7 @@ md-list-item a:hover {
     max-height: 4000px;
     width: 100%;
     overflow: hidden;
-    position: absolute;
+    /*position: absolute;*/
     z-index: 1;
     -webkit-transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
     -webkit-transition-property: max-height;
