@@ -11,7 +11,7 @@
 
             })
             .config(['ivoMarkdownConfigProvider', function (ivoMarkdownConfigProvider) {
-                    ivoMarkdownConfigProvider.config({extensions: ['table']});
+                    ivoMarkdownConfigProvider.config({extensions: ['table', 'targetblank']});
                 }])
             .filter('safeHtml', ['$sce', function ($sce) {
                     return function (text) {
