@@ -26,16 +26,7 @@ md-toolbar.ptj-menu-sidenav-toolbar img {
 .ptj-menu > li:nth-child(1) {
     border-top: none;
 }
-.ptj-whiteframe-glow-z2 {
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-}
 
-@media(max-width: 960px) {
-
-    .ptj-whiteframe-glow-z2 {
-        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2), 0px 0 4px 3px rgba(0, 0, 0, 0.14), 0px 0px 8px 1px rgba(0, 0, 0, 0.12);
-    }
-}
 
 .ptj-menu > li {
     border-top: 1px solid rgba(0, 0, 0, 0.12);

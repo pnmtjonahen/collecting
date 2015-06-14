@@ -3,20 +3,19 @@
     angular
             .module('cards')
             .controller('CardController', [
-                'cardService', '$mdSidenav', '$mdMedia', '$timeout', 'menu', '$scope',
+                'cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope',
                 CardController
             ]);
     /**
      * Main Controller for the Cards Collection App
      * @param $mdSidenav
      * @param cardService
-     * @param $timeout
      * @param menu
      * @param $mdMedia
      * @param $scope
      * @constructor
      */
-    function CardController(cardService, $mdSidenav, $mdMedia, $timeout, menu, $scope) {
+    function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope) {
         var self = this;
 
         self.selected = null;
@@ -207,16 +206,16 @@
         ;
 
         function openMenu() {
-            $timeout(function () {
+//            $timeout(function () {
                 $mdSidenav('left').open();
-            });
+//            });
         }
         ;
 
         function closeMenu() {
-            $timeout(function () {
+//            $timeout(function () {
                 $mdSidenav('left').close();
-            });
+//            });
         }
         ;
 
