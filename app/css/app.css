@@ -17,20 +17,22 @@ html, body {
 }
 
 /* Full screen (almost) images */
-div.big  {
+div.collecting-big  {
     overflow:hidden;    
     height: 88vh;
 
 }
-div.big img  {
-    position:absolute;
+div.collecting-big img  {
     max-height:100%;
     display: block;
     margin: auto;
-    margin-right: auto;
 }
 
-
+.collecting-card-image {
+    margin-left: 52px;
+    margin-right: 40px;
+    margin-top: 8px;
+}
 /*
 html, body {
     font-family: 'Roboto', sans-serif;

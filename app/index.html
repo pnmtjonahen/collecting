@@ -80,7 +80,7 @@
             card content for devices with screen size other than small (sm) and medium (md)
         -->
         <md-content layout-margin layout-padding hide-md hide-sm flex ng-if="cl.selectedImage === null">
-            <div ng-repeat="object in cl.selected.objects" class="card-image">
+            <div ng-repeat="object in cl.selected.objects" class="collecting-card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">
                         <li>
@@ -99,7 +99,7 @@
         </md-content>
 
         <md-content hide-md hide-sm flex ng-if="cl.selectedImage !== null">
-            <div class="big">
+            <div class="collecting-big">
                 <img ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}" >
             </div>
         </md-content>
