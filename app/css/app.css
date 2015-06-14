@@ -5,7 +5,7 @@ html, body {
 }
 
 /* Making the markdown tables behave nice */
-.collecting-card-content td p {
+.collecting-markdown-content td p {
     margin: 0px;
 }
 

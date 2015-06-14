@@ -92,10 +92,10 @@
                     </flex-slider>            
                     <h4>{{object.name}}</h4>
                 </center>
-                <div ng-if="object.content" class="collecting-card-content" ivo-markdown="object.content"></div>
+                <div ng-if="object.content" class="collecting-markdown-content" ivo-markdown="object.content"></div>
             </div>
-            <div ng-if="cl.selected.content" class="collecting-card-content" ivo-markdown="cl.selected.content"></div>
-            <div ng-if="cl.selected.htmlContent" class="collecting-card-content" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
+            <div ng-if="cl.selected.content" class="collecting-markdown-content" ivo-markdown="cl.selected.content"></div>
+            <div ng-if="cl.selected.htmlContent" class="collecting-markdown-content" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
         </md-content>
 
         <md-content hide-md hide-sm flex ng-if="cl.selectedImage !== null">
@@ -116,7 +116,7 @@
                         <img ng-src="./data/images/l/{{image.name === undefined ? image : image.name}}">
                     </md-grid-tile>
                 </md-grid-list>    
-                <div class="collecting-card-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
+                <div class="collecting-markdown-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
             </md-card>
         </md-content>
 
@@ -129,7 +129,7 @@
                 </md-list-item>
             </md-list>
             <md-divider ng-if="cl.selected.objects"></md-divider>
-            <div class="collecting-card-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
+            <div class="collecting-markdown-content" ng-show="cl.selected.content" ivo-markdown="cl.selected.content"></div>
         </md-content>
     </div>
 
