@@ -121,8 +121,8 @@
         </md-content>
 
         <md-content layout-margin layout-padding hide-lg hide-gt-lg flex ng-if="cl.showObjectList()">
-            <md-list  class="md-1-line">
-                <md-list-item  ng-repeat="object in cl.selected.objects" ng-click="cl.selectObject(object)">
+            <md-list>
+                <md-list-item  class="md-1-line" ng-repeat="object in cl.selected.objects" ng-click="cl.selectObject(object)">
                     <img ng-src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
                          class="md-avatar" alt="{{object.images[0].name}}"/>
                     <div class="md-list-item-text">
