@@ -26,7 +26,7 @@
             <div class="md-toolbar-tools">
                 <img ng-src="./data/images/{{cl.collection.logo}}"/>
             </div>
-        </md-toolbar>
+        </md-toolbar>       
         <md-content flex role="navigation">
             <ul class="ptj-menu">
                 <li ng-repeat="section in cl.menu.sections" class="parent-list-item" ng-class="{'ptj-menu-parentActive' : cl.isSectionSelected(section)}">
@@ -125,7 +125,10 @@
                 <md-list-item  ng-repeat="object in cl.selected.objects" ng-click="cl.selectObject(object)">
                     <img ng-src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
                          class="md-avatar" alt="{{object.images[0].name}}"/>
-                    <p>{{object.name}}</p>
+                    <div class="md-list-item-text">
+                        <p>{{object.name}}</p>
+                    </div>
+                    <md-divider></md-divider>
                 </md-list-item>
             </md-list>
             <md-divider ng-if="cl.selected.objects"></md-divider>
