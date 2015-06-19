@@ -24,7 +24,7 @@
     <md-sidenav md-is-locked-open="$mdMedia('gt-md') && cl.selectedImage === null" md-component-id="left" class="md-whiteframe-z1">
         <md-toolbar class="ptj-menu-sidenav-toolbar">
             <div class="md-toolbar-tools">
-                <img ng-src="./data/images/{{cl.collection.logo}}"/>
+                <img ng-src="./data/images/{{cl.collection.logo}}" alt="Site logo"/>
             </div>
         </md-toolbar>       
         <md-content flex role="navigation">
@@ -85,7 +85,9 @@
                     <flex-slider slide="image in object.images track by $index">
                         <li>
                             <figure>
-                                <img ng-click="cl.showImage(image)" ng-src="./data/images/l/{{(image.name === undefined) ? image : image.name}}" >
+                                <img ng-click="cl.showImage(image)" 
+                                     ng-src="./data/images/l/{{(image.name === undefined) ? image : image.name}}"
+                                     alt="{{(image.name === undefined) ? image : image.name}}">
                                 <figcaption>{{image.caption}}</figcaption>
                             </figure>
                         </li>
@@ -100,7 +102,8 @@
 
         <md-content hide-md hide-sm flex ng-if="cl.selectedImage !== null">
             <div class="collecting-big">
-                <img ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}" >
+                <img ng-src="./data/images/{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}"
+                     alt="{{(cl.selectedImage.name === undefined) ? cl.selectedImage : cl.selectedImage.name}}">
             </div>
         </md-content>
         <!--
@@ -113,7 +116,8 @@
             <md-card class="card-grid-list">
                 <md-grid-list md-cols-sm="1" md-cols="2" md-row-height="1:1">
                     <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
-                        <img ng-src="./data/images/l/{{image.name === undefined ? image : image.name}}">
+                        <img ng-src="./data/images/l/{{image.name === undefined ? image : image.name}}"
+                             alt="{{image.name === undefined ? image : image.name}}">
                     </md-grid-tile>
                 </md-grid-list>    
                 <div class="collecting-markdown-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
@@ -124,7 +128,8 @@
             <md-list>
                 <md-list-item  class="md-1-line" ng-repeat="object in cl.selected.objects" ng-click="cl.selectObject(object)">
                     <img ng-src="./data/images/xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
-                         class="md-avatar" alt="{{object.images[0].name}}"/>
+                         class="md-avatar" 
+                         alt="{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}"/>
                     <div class="md-list-item-text">
                         <p>{{object.name}}</p>
                     </div>
