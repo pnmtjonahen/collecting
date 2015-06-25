@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="./css/menu.css"/>
     </head>
 
-    <body layout="row">
+    <body layout="row" class="ng-cloak">
         <!--
             sidenav the menu either opened or triggered from the toolbar
         -->
@@ -48,14 +48,14 @@
                             &copy; 2015 Tjon-A-Hen
                         </md-content>-->
     </md-sidenav>
-    <div layout="column" tabIndex="-1" role="main" layout-fill>
+    <div layout="column" flex>
         <!--
             main content
         -->
         <!--
             define the main content toolbar, the sidenav has its onw toolbar
         -->
-        <md-toolbar class="md-whiteframe-z2" md-scroll-shrink >
+        <md-toolbar class="md-whiteframe-z2" >
             <div class="md-toolbar-tools">
                 <md-button class="menu" hide-gt-md ng-click="cl.onMenuClick()" aria-label="Show Card List">
                     <ng-md-icon icon="{{cl.determineMenuIcon()}}" style="fill:white" ></ng-md-icon>
