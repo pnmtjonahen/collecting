@@ -2,8 +2,9 @@
     'use strict';
 
     angular
-            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
+            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown', 'ptjMenuModule', 'cards', 'updateTitleModule'])
             .config(configTheming)
+            .config(configRouting)
             .config(['ivoMarkdownConfigProvider', configIvoMarktdown])
             .filter('safeHtml', ['$sce', safeHtmlFilter])
             ;
@@ -26,4 +27,22 @@
         };
 
     }
+    ;
+
+    function configRouting($stateProvider, $urlRouterProvider) {
+        //
+        // For any unmatched url, redirect to /
+        $urlRouterProvider.otherwise("/");
+        //
+        // Now set up the states
+        $stateProvider
+                .state('main', {
+                    url: "/:id",
+                    templateUrl: "cards.html",
+                    controller:"CardController",
+                    controllerAs:"cl"
+                });
+    }
+    ;
+
 })();

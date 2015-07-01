@@ -1,4 +1,4 @@
-<md-button class="md-primary" ng-class="{'active' : isSelected()}" ng-click="setSelected()" ng-attr-href="{{section.url}}">
+<md-button class="md-primary" ng-class="{'active' : isSelected()}"  ui-sref="main({id:section.id})" ng-attr-href="{{section.url}}">
     <img ng-show="section.avatar !== undefined" 
             ng-src="./data/images/xs/{{section.avatar}}" class="ptj-menu-avatar" alt="avatar"/>
     {{section | humanize}}

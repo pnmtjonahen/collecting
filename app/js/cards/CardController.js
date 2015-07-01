@@ -4,7 +4,7 @@
     angular
             .module('cards')
             .controller('CardController', [
-                'cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope',
+                'cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope',
                 CardController
             ]);
     /**
@@ -14,22 +14,24 @@
      * @param menu
      * @param $mdMedia
      * @param $scope
+     * @param $stateParams
+     * @param $rootScope
      * @constructor
      */
-    function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope) {
+    function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope, $stateParams, $rootScope) {
         var self = this;
 
         self.breadcrum = breadcrum;
         self.cards = [];
         self.collection = null;
         self.determineMenuIcon = determineMenuIcon;
-        
+
         self.isOpen = menu.isOpen;
         self.isSectionSelected = isSectionSelected;
         self.isSelected = menu.isPageSelected;
 
         self.menu = menu;
-        
+
         self.onMenuClick = onMenuClick;
         self.openMenu = openMenu;
 
@@ -43,9 +45,8 @@
         self.showImage = showImage;
         self.showObjectCard = showObjectCard;
         self.showObjectList = showObjectList;
-
         self.toggleOpen = menu.toggleSelectSection;
-        
+
 
 // *****************************************************************
 // Load all registered cards
@@ -57,7 +58,12 @@
                     self.collection = data;
                     self.cards = [].concat(data.cards);
                     self.cards.forEach(makeContent);
-                    self.selected = self.cards[0];
+                    if ($stateParams === undefined) {
+                        self.selected = self.cards[0];
+                    } else {
+                        self.selected = findCardByName($stateParams.id);
+                    }
+                    $rootScope.updateTitle = self.collection.name + " - " + self.selected.name;
                     buildMenu(self.cards);
                 });
 
@@ -75,7 +81,8 @@
         function setSelected(page) {
             closeMenu();
             return selectCard(page.card);
-        };
+        }
+        ;
 
         function isSectionSelected(section) {
             var selected = false;
@@ -91,20 +98,24 @@
                 });
             }
             return selected;
-        };
+        }
+        ;
 
 
         function showObjectCard() {
             return self.selectedObject !== null;
-        };
+        }
+        ;
 
         function showObjectList() {
             return !$mdMedia("gt-md") && self.selectedObject === null;
-        };
+        }
+        ;
 
         function selectObject(o) {
             self.selectedObject = o;
-        };
+        }
+        ;
 
         function breadcrum() {
             var crums = [];
@@ -115,25 +126,29 @@
                 crums.push(self.selectedObject.name);
             }
             return crums;
-        };
+        }
+        ;
 
         function showImage(image) {
             self.selectedImage = image;
-        };
+        }
+        ;
 
         function determineMenuIcon() {
             if (self.showObjectList()) {
                 return 'menu';
             }
             return 'arrow_back';
-        };
+        }
+        ;
         function onMenuClick() {
             if (self.showObjectList()) {
                 self.openMenu();
             } else {
                 self.selectObject(null);
             }
-        };
+        }
+        ;
 
         function matchPage(section, page) {
             if (self.selected === page.card) {
@@ -223,7 +238,7 @@
         ;
 
         function buildMenu(cards) {
-
+            self.menu.sections = [];
             cards.forEach(function (card) {
                 var section = {
                     name: card.name,
@@ -236,6 +251,7 @@
                     section.card = card;
                     section.url = card.url;
                     section.avatar = card.avatar;
+                    section.id = card.id;
                 } else {
                     section.pages = [];
                     card.cards.forEach(function (c) {
@@ -244,7 +260,8 @@
                             name: c.name,
                             card: c,
                             avatar: c.avatar,
-                            type: 'link'
+                            type: 'link',
+                            id: c.id
                         });
 
                     });
@@ -257,6 +274,28 @@
             self.selected = angular.isNumber(card) ? self.cards[card] : card;
             self.selectedObject = null;
             onSelectionChange();
+
+        }
+        ;
+
+        function findCardByName(id) {
+            if (id === undefined) {
+                return self.cards[0];
+            }
+            var card = self.cards[0];
+            self.cards.forEach(function (c) {
+                if (c.id === id) {
+                    card = c;
+                }
+                if (c.cards !== undefined) {
+                    c.cards.forEach(function (sc) {
+                        if (sc.id === id) {
+                            card = sc;
+                        }
+                    });
+                }
+            });
+            return card;
         }
         ;
     }
