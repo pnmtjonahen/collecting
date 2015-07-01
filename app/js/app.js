@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown', 'ptjMenuModule', 'cards', 'updateTitleModule'])
+            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
             .config(configTheming)
             .config(configRouting)
             .config(['ivoMarkdownConfigProvider', configIvoMarktdown])
