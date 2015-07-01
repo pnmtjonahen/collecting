@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
 
     angular
             .module('cards')
@@ -18,15 +19,33 @@
     function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope) {
         var self = this;
 
-        self.selected = null;
-        self.selectedObject = null;
+        self.breadcrum = breadcrum;
         self.cards = [];
         self.collection = null;
-        self.selectedImage = null;
+        self.determineMenuIcon = determineMenuIcon;
+        
+        self.isOpen = menu.isOpen;
+        self.isSectionSelected = isSectionSelected;
+        self.isSelected = menu.isPageSelected;
 
-        self.selectCard = selectCard;
-        self.openMenu = openMenu;
         self.menu = menu;
+        
+        self.onMenuClick = onMenuClick;
+        self.openMenu = openMenu;
+
+        self.selected = null;
+        self.selectedImage = null;
+        self.selectedObject = null;
+        self.selectCard = selectCard;
+        self.selectObject = selectObject;
+        self.setSelected = setSelected;
+
+        self.showImage = showImage;
+        self.showObjectCard = showObjectCard;
+        self.showObjectList = showObjectList;
+
+        self.toggleOpen = menu.toggleSelectSection;
+        
 
 // *****************************************************************
 // Load all registered cards
@@ -42,12 +61,6 @@
                     buildMenu(self.cards);
                 });
 
-
-// *****************************************************************
-// Menu functions. These are called from the menu directive.
-// This enables the directive to call methods defined on the current menu instance.   
-// *****************************************************************
-
         $scope.$watch(function () {
             return $mdMedia('gt-md');
         }, function (big) {
@@ -55,23 +68,16 @@
                 self.selectedObject = null;
         });
 
-        self.isSelected = function (page) {
-            return menu.isPageSelected(page);
-        };
-        self.setSelected = function (page) {
+// *****************************************************************
+// Menu functions. These are called from the menu directive.
+// This enables the directive to call methods defined on the current menu instance.   
+// *****************************************************************
+        function setSelected(page) {
             closeMenu();
             return selectCard(page.card);
         };
 
-        self.isOpen = function (section) {
-            return menu.isOpen(section);
-        };
-
-        self.toggleOpen = function (section) {
-            menu.toggleSelectSection(section);
-        };
-
-        self.isSectionSelected = function (section) {
+        function isSectionSelected(section) {
             var selected = false;
             var openedSection = menu.openedSection;
             if (openedSection === section) {
@@ -87,19 +93,20 @@
             return selected;
         };
 
-        self.showObjectCard = function () {
+
+        function showObjectCard() {
             return self.selectedObject !== null;
         };
 
-        self.showObjectList = function () {
+        function showObjectList() {
             return !$mdMedia("gt-md") && self.selectedObject === null;
         };
 
-        self.selectObject = function (o) {
+        function selectObject(o) {
             self.selectedObject = o;
         };
 
-        self.breadcrum = function () {
+        function breadcrum() {
             var crums = [];
             if (self.selected) {
                 crums.push(self.selected.name);
@@ -110,17 +117,17 @@
             return crums;
         };
 
-        self.showImage = function (image) {
+        function showImage(image) {
             self.selectedImage = image;
         };
 
-        self.determineMenuIcon = function () {
+        function determineMenuIcon() {
             if (self.showObjectList()) {
                 return 'menu';
             }
             return 'arrow_back';
         };
-        self.onMenuClick = function () {
+        function onMenuClick() {
             if (self.showObjectList()) {
                 self.openMenu();
             } else {
@@ -206,16 +213,12 @@
         ;
 
         function openMenu() {
-//            $timeout(function () {
-                $mdSidenav('left').open();
-//            });
+            $mdSidenav('left').open();
         }
         ;
 
         function closeMenu() {
-//            $timeout(function () {
-                $mdSidenav('left').close();
-//            });
+            $mdSidenav('left').close();
         }
         ;
 
