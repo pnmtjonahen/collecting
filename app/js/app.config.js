@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-            .module('collectingApp', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown', 'ptjMenuModule', 'cards'])
+            .module('collectingApp')
             .config(configTheming)
             .config(configRouting)
-            .config(['ivoMarkdownConfigProvider', configIvoMarktdown])
-            .filter('safeHtml', ['$sce', safeHtmlFilter])
+            .config(configIvoMarktdown)
             ;
 
+    configTheming.$inject = ['$mdThemingProvider'];
     function configTheming($mdThemingProvider) {
 
         $mdThemingProvider.theme('default')
@@ -16,19 +16,13 @@
                 .accentPalette('red');
 
     }
-
+    
+    configIvoMarktdown.$inject = ['ivoMarkdownConfigProvider'];
     function configIvoMarktdown(ivoMarkdownConfigProvider) {
         ivoMarkdownConfigProvider.config({extensions: ['table', 'targetblank']});
     }
 
-    function safeHtmlFilter($sce) {
-        return function (text) {
-            return $sce.trustAsHtml(text);
-        };
-
-    }
-    ;
-
+    configRouting.$inject = ['$stateProvider', '$urlRouterProvider'];
     function configRouting($stateProvider, $urlRouterProvider) {
         //
         // For any unmatched url, redirect to /

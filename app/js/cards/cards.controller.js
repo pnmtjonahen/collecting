@@ -3,10 +3,10 @@
 
     angular
             .module('cards')
-            .controller('CardController', [
-                'cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope',
-                CardController
-            ]);
+            .controller('CardController', CardController);
+    
+    CardController.$inject = ['cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope'];
+    
     /**
      * Main Controller for the Cards Collection App
      * @param $mdSidenav
