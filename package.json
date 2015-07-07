@@ -6,20 +6,22 @@
   "repository": "http://www.tjonahen.nl",
   "license": "GPL",
   "devDependencies": {
-    "karma": "~0.10",
-    "protractor": "^1.1.1",
-    "http-server": "^0.6.1",
     "bower": "^1.3.1",
-    "shelljs": "^0.2.6",
-    "karma-junit-reporter": "^0.2.2",
+    "http-server": "^0.6.1",
+    "istanbul": "^0.3.17",
     "jshint": "latest",
-    "uglify-js":"latest"
+    "karma": "~0.10",
+    "karma-coverage": "^0.4.2",
+    "karma-junit-reporter": "^0.2.2",
+    "protractor": "^1.1.1",
+    "shelljs": "^0.2.6",
+    "uglify-js": "latest"
   },
   "scripts": {
     "postinstall": "bower update",
     "prestart": "npm update",
     "lint": "jshint app/js/**.js",
     "lint:checkstyle": "npm run lint -- --reporter checkstyle > checkstyle.xml",
-    "build":"uglifyjs app/js/app.js > app/js/app.min.js"
-  }  
+    "build": "uglifyjs app/js/app.js > app/js/app.min.js"
+  }
 }
