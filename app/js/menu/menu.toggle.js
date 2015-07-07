@@ -13,10 +13,15 @@
             link: function ($scope, $element) {
                 var controller = $element.parent().controller();
                 $scope.isOpen = function () {
-                    return controller.isOpen($scope.section);
+                    if (controller.menu) {
+                        return controller.menu.isOpen($scope.section);
+                    }
+                    return false;
                 };
                 $scope.toggle = function () {
-                    controller.toggleOpen($scope.section);
+                    if (controller.menu) {
+                        controller.menu.toggleSelectSection($scope.section);
+                    }
                 };
 
                 var parentNode = $element[0].parentNode.parentNode.parentNode;

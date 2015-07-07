@@ -14,13 +14,8 @@
                 var controller = $element.parent().controller();
 
                 $scope.isSelected = function () {
-                    return controller.isSelected($scope.section);
+                    return controller.menu.isPageSelected($scope.section);
                 };
-
-                $scope.setSelected = function () {
-                    return controller.setSelected($scope.section);
-                };
-
             }
         };
     }

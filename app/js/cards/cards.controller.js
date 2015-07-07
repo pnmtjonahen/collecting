@@ -26,9 +26,7 @@
         self.collection = null;
         self.determineMenuIcon = determineMenuIcon;
 
-        self.isOpen = menu.isOpen;
         self.isSectionSelected = isSectionSelected;
-        self.isSelected = menu.isPageSelected;
 
         self.menu = menu;
 
@@ -38,14 +36,11 @@
         self.selected = null;
         self.selectedImage = null;
         self.selectedObject = null;
-        self.selectCard = selectCard;
         self.selectObject = selectObject;
-        self.setSelected = setSelected;
 
         self.showImage = showImage;
         self.showObjectCard = showObjectCard;
         self.showObjectList = showObjectList;
-        self.toggleOpen = menu.toggleSelectSection;
 
 
 // *****************************************************************
@@ -64,7 +59,8 @@
                         self.selected = findCardByName($stateParams.id);
                     }
                     $rootScope.updateTitle = self.collection.name + " - " + self.selected.name;
-                    buildMenu(self.cards);
+                    self.menu = buildMenuSections(self.menu, self.cards, self.selected);
+
                 });
 
         $scope.$watch(function () {
@@ -78,11 +74,11 @@
 // Menu functions. These are called from the menu directive.
 // This enables the directive to call methods defined on the current menu instance.   
 // *****************************************************************
-        function setSelected(page) {
-            closeMenu();
-            return selectCard(page.card);
-        }
-        ;
+//        function setSelected(page) {
+//            closeMenu();
+//            return selectCard(page.card);
+//        }
+//        ;
 
         function isSectionSelected(section) {
             var selected = false;
@@ -150,40 +146,6 @@
         }
         ;
 
-        function matchPage(section, page) {
-            if (self.selected === page.card) {
-                self.menu.selectSection(section);
-                self.menu.selectPage(section, page);
-            }
-        }
-        ;
-
-        function onSelectionChange() {
-
-            self.menu.sections.forEach(function (section) {
-                if (section.children) {
-                    // matches nested section toggles, such as API or Customization
-                    section.children.forEach(function (childSection) {
-                        if (childSection.pages) {
-                            childSection.pages.forEach(function (page) {
-                                matchPage(childSection, page);
-                            });
-                        }
-                    });
-                }
-                else if (section.pages) {
-                    // matches top-level section toggles, such as Demos
-                    section.pages.forEach(function (page) {
-                        matchPage(section, page);
-                    });
-                }
-                else if (section.type === 'link') {
-                    // matches top-level links, such as "Getting Started"
-                    matchPage(section, section);
-                }
-            });
-        }
-        ;
         // *********************************
         // Internal methods
         // *********************************
@@ -232,19 +194,14 @@
         }
         ;
 
-        function closeMenu() {
-            $mdSidenav('left').close();
-        }
-        ;
-
-        function buildMenu(cards) {
-            self.menu.sections = [];
+        function buildMenuSections(menu, cards, current) {
+            menu.sections = [];
             cards.forEach(function (card) {
                 var section = {
                     name: card.name,
                     type: 'toggle'
                 };
-                self.menu.sections.push(section);
+                menu.sections.push(section);
 
                 if (card.cards === undefined) {
                     section.type = 'link';
@@ -252,29 +209,30 @@
                     section.url = card.url;
                     section.avatar = card.avatar;
                     section.id = card.id;
+                    if (card.id === current.id) {
+                        self.menu.selectSection(section);
+                        self.menu.selectPage(section, section);
+                    }
                 } else {
                     section.pages = [];
                     card.cards.forEach(function (c) {
-
-                        section.pages.push({
+                        var page = {
                             name: c.name,
                             card: c,
                             avatar: c.avatar,
                             type: 'link',
                             id: c.id
-                        });
+                        };
+                        section.pages.push(page);
+                        if (c.id === current.id) {
+                            self.menu.selectSection(section);
+                            self.menu.selectPage(section, page);
+                        }
 
                     });
                 }
             });
-        }
-        ;
-
-        function selectCard(card) {
-            self.selected = angular.isNumber(card) ? self.cards[card] : card;
-            self.selectedObject = null;
-            onSelectionChange();
-
+            return menu;
         }
         ;
 
