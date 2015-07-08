@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/cards/cards.controller.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">js/cards/cards.controller.js</span></h1>
+    <h2>
+        Statements: <span class="metric">12.6% <small>(16 / 127)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 48)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">3.7% <small>(1 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">12.6% <small>(16 / 127)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">js/cards/</a> &#187; cards.controller.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* global angular */
+&nbsp;
+(function () {
+    'use strict';
+&nbsp;
+    angular
+            .module('cards')
+            .controller('CardController', CardController);
+    
+    CardController.$inject = ['cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope'];
+    
+    /**
+     * Main Controller for the Cards Collection App
+     * @param $mdSidenav
+     * @param cardService
+     * @param menu
+     * @param $mdMedia
+     * @param $scope
+     * @param $stateParams
+     * @param $rootScope
+     * @constructor
+     */
+<span class="fstat-no" title="function not covered" >    function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope, $stateParams, $rootScope) {</span>
+<span class="cstat-no" title="statement not covered" >        var self = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.breadcrum = breadcrum;</span>
+<span class="cstat-no" title="statement not covered" >        self.cards = [];</span>
+<span class="cstat-no" title="statement not covered" >        self.collection = null;</span>
+<span class="cstat-no" title="statement not covered" >        self.determineMenuIcon = determineMenuIcon;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.isSectionSelected = isSectionSelected;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.menu = menu;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.onMenuClick = onMenuClick;</span>
+<span class="cstat-no" title="statement not covered" >        self.openMenu = openMenu;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.selected = null;</span>
+<span class="cstat-no" title="statement not covered" >        self.selectedImage = null;</span>
+<span class="cstat-no" title="statement not covered" >        self.selectedObject = null;</span>
+<span class="cstat-no" title="statement not covered" >        self.selectObject = selectObject;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        self.showImage = showImage;</span>
+<span class="cstat-no" title="statement not covered" >        self.showObjectCard = showObjectCard;</span>
+<span class="cstat-no" title="statement not covered" >        self.showObjectList = showObjectList;</span>
+&nbsp;
+&nbsp;
+// *****************************************************************
+// Load all registered cards
+// *****************************************************************
+<span class="cstat-no" title="statement not covered" >        cardService</span>
+                .loadAllCards()
+                .$promise
+                .then(<span class="fstat-no" title="function not covered" >function (data) {</span>
+<span class="cstat-no" title="statement not covered" >                    self.collection = data;</span>
+<span class="cstat-no" title="statement not covered" >                    self.cards = [].concat(data.cards);</span>
+<span class="cstat-no" title="statement not covered" >                    self.cards.forEach(makeContent);</span>
+<span class="cstat-no" title="statement not covered" >                    if ($stateParams === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        self.selected = self.cards[0];</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        self.selected = findCardByName($stateParams.id);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    $rootScope.updateTitle = self.collection.name + " - " + self.selected.name;</span>
+<span class="cstat-no" title="statement not covered" >                    self.menu = buildMenuSections(self.menu, self.cards, self.selected);</span>
+&nbsp;
+                });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$watch(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            return $mdMedia('gt-md');</span>
+        }, <span class="fstat-no" title="function not covered" >function (big) {</span>
+<span class="cstat-no" title="statement not covered" >            if (big)</span>
+<span class="cstat-no" title="statement not covered" >                self.selectedObject = null;</span>
+        });
+&nbsp;
+// *****************************************************************
+// Menu functions. These are called from the menu directive.
+// This enables the directive to call methods defined on the current menu instance.   
+// *****************************************************************
+//        function setSelected(page) {
+//            closeMenu();
+//            return selectCard(page.card);
+//        }
+//        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function isSectionSelected(section) {</span>
+<span class="cstat-no" title="statement not covered" >            var selected = false;</span>
+<span class="cstat-no" title="statement not covered" >            var openedSection = menu.openedSection;</span>
+<span class="cstat-no" title="statement not covered" >            if (openedSection === section) {</span>
+<span class="cstat-no" title="statement not covered" >                selected = true;</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (section.children) {</span>
+<span class="cstat-no" title="statement not covered" >                section.children.forEach(<span class="fstat-no" title="function not covered" >function (childSection) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (childSection === openedSection) {</span>
+<span class="cstat-no" title="statement not covered" >                        selected = true;</span>
+                    }
+                });
+            }
+<span class="cstat-no" title="statement not covered" >            return selected;</span>
+        }
+        ;
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function showObjectCard() {</span>
+<span class="cstat-no" title="statement not covered" >            return self.selectedObject !== null;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function showObjectList() {</span>
+<span class="cstat-no" title="statement not covered" >            return !$mdMedia("gt-md") &amp;&amp; self.selectedObject === null;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function selectObject(o) {</span>
+<span class="cstat-no" title="statement not covered" >            self.selectedObject = o;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function breadcrum() {</span>
+<span class="cstat-no" title="statement not covered" >            var crums = [];</span>
+<span class="cstat-no" title="statement not covered" >            if (self.selected) {</span>
+<span class="cstat-no" title="statement not covered" >                crums.push(self.selected.name);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!$mdMedia("gt-md") &amp;&amp; self.selectedObject) {</span>
+<span class="cstat-no" title="statement not covered" >                crums.push(self.selectedObject.name);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return crums;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function showImage(image) {</span>
+<span class="cstat-no" title="statement not covered" >            self.selectedImage = image;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function determineMenuIcon() {</span>
+<span class="cstat-no" title="statement not covered" >            if (self.showObjectList()) {</span>
+<span class="cstat-no" title="statement not covered" >                return 'menu';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return 'arrow_back';</span>
+        }
+        ;
+<span class="fstat-no" title="function not covered" >        function onMenuClick() {</span>
+<span class="cstat-no" title="statement not covered" >            if (self.showObjectList()) {</span>
+<span class="cstat-no" title="statement not covered" >                self.openMenu();</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                self.selectObject(null);</span>
+            }
+        }
+        ;
+&nbsp;
+        // *********************************
+        // Internal methods
+        // *********************************
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function makeContent(card) {</span>
+<span class="cstat-no" title="statement not covered" >            if (angular.isArray(card.content)) {</span>
+<span class="cstat-no" title="statement not covered" >                var content = "";</span>
+<span class="cstat-no" title="statement not covered" >                card.content.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    content = content + c + "\n";</span>
+                });
+<span class="cstat-no" title="statement not covered" >                card.content = content;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (angular.isArray(card.htmlContent)) {</span>
+<span class="cstat-no" title="statement not covered" >                var htmlContent = "";</span>
+<span class="cstat-no" title="statement not covered" >                card.htmlContent.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    htmlContent = htmlContent + c;</span>
+                });
+<span class="cstat-no" title="statement not covered" >                card.htmlContent = htmlContent;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (card.cards) {</span>
+<span class="cstat-no" title="statement not covered" >                card.cards.forEach(makeContent);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (card.objects) {</span>
+<span class="cstat-no" title="statement not covered" >                card.objects.forEach(<span class="fstat-no" title="function not covered" >function (o) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (angular.isArray(o.content)) {</span>
+<span class="cstat-no" title="statement not covered" >                        var content = "";</span>
+<span class="cstat-no" title="statement not covered" >                        o.content.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            content = content + c + "\n";</span>
+                        });
+<span class="cstat-no" title="statement not covered" >                        o.content = content;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (angular.isArray(o.htmlContent)) {</span>
+<span class="cstat-no" title="statement not covered" >                        var htmlContent = "";</span>
+<span class="cstat-no" title="statement not covered" >                        o.htmlContent.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            htmlContent = htmlContent + c;</span>
+                        });
+<span class="cstat-no" title="statement not covered" >                        o.htmlContent = htmlContent;</span>
+                    }
+                });
+            }
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function openMenu() {</span>
+<span class="cstat-no" title="statement not covered" >            $mdSidenav('left').open();</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function buildMenuSections(menu, cards, current) {</span>
+<span class="cstat-no" title="statement not covered" >            menu.sections = [];</span>
+<span class="cstat-no" title="statement not covered" >            cards.forEach(<span class="fstat-no" title="function not covered" >function (card) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var section = {</span>
+                    name: card.name,
+                    type: 'toggle'
+                };
+<span class="cstat-no" title="statement not covered" >                menu.sections.push(section);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (card.cards === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    section.type = 'link';</span>
+<span class="cstat-no" title="statement not covered" >                    section.card = card;</span>
+<span class="cstat-no" title="statement not covered" >                    section.url = card.url;</span>
+<span class="cstat-no" title="statement not covered" >                    section.avatar = card.avatar;</span>
+<span class="cstat-no" title="statement not covered" >                    section.id = card.id;</span>
+<span class="cstat-no" title="statement not covered" >                    if (card.id === current.id) {</span>
+<span class="cstat-no" title="statement not covered" >                        self.menu.selectSection(section);</span>
+<span class="cstat-no" title="statement not covered" >                        self.menu.selectPage(section, section);</span>
+                    }
+                } else {
+<span class="cstat-no" title="statement not covered" >                    section.pages = [];</span>
+<span class="cstat-no" title="statement not covered" >                    card.cards.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        var page = {</span>
+                            name: c.name,
+                            card: c,
+                            avatar: c.avatar,
+                            type: 'link',
+                            id: c.id
+                        };
+<span class="cstat-no" title="statement not covered" >                        section.pages.push(page);</span>
+<span class="cstat-no" title="statement not covered" >                        if (c.id === current.id) {</span>
+<span class="cstat-no" title="statement not covered" >                            self.menu.selectSection(section);</span>
+<span class="cstat-no" title="statement not covered" >                            self.menu.selectPage(section, page);</span>
+                        }
+&nbsp;
+                    });
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            return menu;</span>
+        }
+        ;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function findCardByName(id) {</span>
+<span class="cstat-no" title="statement not covered" >            if (id === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                return self.cards[0];</span>
+            }
+<span class="cstat-no" title="statement not covered" >            var card = self.cards[0];</span>
+<span class="cstat-no" title="statement not covered" >            self.cards.forEach(<span class="fstat-no" title="function not covered" >function (c) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (c.id === id) {</span>
+<span class="cstat-no" title="statement not covered" >                    card = c;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (c.cards !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    c.cards.forEach(<span class="fstat-no" title="function not covered" >function (sc) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        if (sc.id === id) {</span>
+<span class="cstat-no" title="statement not covered" >                            card = sc;</span>
+                        }
+                    });
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            return card;</span>
+        }
+        ;
+    }
+})();
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 08 2015 10:10:23 GMT+0200 (CEST)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

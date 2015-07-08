@@ -11,20 +11,27 @@ describe('Filter: menu.humanizeFilter', function () {
         expect($filter('humanize')).not.toBeNull();
     }));
 
-    it("should return some text ", inject(function (humanizeFilter) {
-        expect(humanizeFilter("some text")).toBe("some text");
+    it("should return nothing ", inject(function (humanizeFilter) {
+        expect(humanizeFilter("some text")).toBeUndefined();
     }));
     
     it("should return nothing ", inject(function (humanizeFilter) {
-        expect(humanizeFilter()).toBeTruthy();
+        expect(humanizeFilter()).toBeUndefined();
     }));
     
-    it("should return some text ", inject(function (humanizeFilter) {
+    it("should return some doc text ", inject(function (humanizeFilter) {
         var doc = {
           name:'some doc text',
           type:'directive'
         };
-        expect(humanizeFilter(doc)).toBe("some text");
+        expect(humanizeFilter(doc)).toBe("some doc text");
+    }));
+    it("should return some doc text ", inject(function (humanizeFilter) {
+        var doc = {
+          name:'someDocText',
+          type:'directive'
+        };
+        expect(humanizeFilter(doc)).toBe("some-doc-text");
     }));
 
 });

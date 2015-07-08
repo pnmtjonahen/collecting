@@ -6,45 +6,47 @@ module.exports = function (config) {
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
         // base path, that will be used to resolve files and exclude
-        basePath: '../',
+        basePath: '../app',
         // testing framework to use (jasmine/mocha/qunit/...)
         frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
         files: [
-            'app/bower_components/showdown/dist/showdown.min.js',
-            'app/bower_components/showdown-table/dist/showdown-table.min.js',
-            'app/bower_components/highlightjs/highlight.pack.js',
-            'app/bower_components/jquery/dist/jquery.min.js',
-            'app/bower_components/flexslider/jquery.flexslider-min.js',
-            'app/bower_components/angular/angular.js',
-            'app/bower_components/angular-material-icons/angular-material-icons.js',
-            'app/bower_components/angular-flexslider/angular-flexslider.js',
-            'app/bower_components/angular-animate/angular-animate.min.js',
-            'app/bower_components/angular-aria/angular-aria.min.js',
-            'app/bower_components/angular-resource/angular-resource.min.js',
-            'app/bower_components/angular-material/angular-material.js',
-            'app/bower_components/angular-sanitize/angular-sanitize.min.js',
-            'app/bower_components/angular-highlightjs/angular-highlightjs.min.js',
-            'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-            'app/bower_components/angular-ivonet-markdown/dist/angular-ivonet-markdown.min.js',
-            'app/bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/showdown/dist/showdown.min.js',
+            'bower_components/showdown-table/dist/showdown-table.min.js',
+            'bower_components/highlightjs/highlight.pack.js',
+            'bower_components/jquery/dist/jquery.min.js',
+            'bower_components/flexslider/jquery.flexslider-min.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-material-icons/angular-material-icons.js',
+            'bower_components/angular-flexslider/angular-flexslider.js',
+            'bower_components/angular-animate/angular-animate.min.js',
+            'bower_components/angular-aria/angular-aria.min.js',
+            'bower_components/angular-resource/angular-resource.min.js',
+            'bower_components/angular-material/angular-material.js',
+            'bower_components/angular-sanitize/angular-sanitize.min.js',
+            'bower_components/angular-highlightjs/angular-highlightjs.min.js',
+            'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+            'bower_components/angular-ivonet-markdown/dist/angular-ivonet-markdown.min.js',
+            'bower_components/angular-mocks/angular-mocks.js',
 
-            'app/js/cards/cards.module.js',
-            'app/js/cards/cards.controller.js',
-            'app/js/cards/cards.service.js',
+            'js/cards/cards.module.js',
+            'js/cards/cards.controller.js',
+            'js/cards/cards.service.js',
 
-            'app/js/menu/menu.module.js',
-            'app/js/menu/menu.factory.js',
-            'app/js/menu/menu.link.js',
-            'app/js/menu/menu.toggle.js',
-            'app/js/menu/menu.nospace.filter.js',
-            'app/js/menu/menu.humanize.filter.js',
+            'js/menu/menu.module.js',
+            'js/menu/menu.factory.js',
+            'js/menu/menu.link.js',
+            'js/menu/menu.toggle.js',
+            'js/menu/menu.nospace.filter.js',
+            'js/menu/menu.humanize.filter.js',
 
-            'app/js/components/components.module.js',
-            'app/js/app.module.js',
-            'app/js/app.config.js',
-            'app/js/app.safehtml.filter.js',
-            'test/spec/app.safehtml.filter.js'
+            'js/components/components.module.js',
+            'js/app.module.js',
+            'js/app.config.js',
+            'js/app.safehtml.filter.js',
+            'partials/**/*.html',
+            '../test/spec/**/*.js'
+            
         ],
         // list of files / patterns to exclude
         exclude: [],
@@ -65,7 +67,8 @@ module.exports = function (config) {
         plugins: [
             'karma-phantomjs-launcher',
             'karma-jasmine',
-            'karma-coverage'
+            'karma-coverage',
+            'karma-ng-html2js-preprocessor'
         ],
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
@@ -87,7 +90,8 @@ module.exports = function (config) {
             // source files, that you wanna generate coverage for
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
-            'app/js/**/*.js': ['coverage']
+            'js/**/*.js': ['coverage'],
+            'partials/**/*.html': 'html2js'
         },
         // optionally, configure the reporter
         coverageReporter: {
