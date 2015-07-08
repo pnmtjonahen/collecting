@@ -43,6 +43,7 @@ module.exports = function (config) {
             'js/components/components.module.js',
             'js/app.module.js',
             'js/app.config.js',
+            'js/app.routing.js',
             'js/app.safehtml.filter.js',
             'partials/**/*.html',
             '../test/spec/**/*.js'
