@@ -18,6 +18,7 @@ describe('Directive: menu.toggle', function () {
         avatar: card.avatar,
         id: card.id
     };
+    var menuTest;
 
 
     beforeEach(module('partials/menu-link.tmpl.html'));
@@ -28,7 +29,7 @@ describe('Directive: menu.toggle', function () {
             self.menu = menu;
             self.menu.selectSection(section);
             self.menu.selectPage(section, section);
-
+            menuTest = menu;
 
         });
     }));
@@ -45,9 +46,14 @@ describe('Directive: menu.toggle', function () {
         scope.$digest();
     }));
 
-    it("should have a button", function () {
+    it("should close the defauld opened section", function () {
         var list = element.find('md-button');
         expect(list.length).toBe(1);
+        
+        expect(menuTest.isOpen(section)).toBeTruthy();
+        list.click();
+        expect(menuTest.isOpen(section)).toBeFalsy();
+        
     });
 
 });
