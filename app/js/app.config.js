@@ -1,3 +1,5 @@
+/* global angular */
+
 (function () {
     'use strict';
 
@@ -32,7 +34,7 @@
         $stateProvider
                 .state('main', {
                     url: "/:id",
-                    templateUrl: "cards.html",
+                    templateUrl: "partials/cards.html",
                     controller:"CardController",
                     controllerAs:"cl"
                 });

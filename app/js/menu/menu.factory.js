@@ -1,8 +1,10 @@
+/* global angular */
+
 (function () {
     'use strict';
 
     angular.module('ptjMenuModule')
-            .factory('menu', menu)
+            .factory('menu', menu);
 
     function menu() {
 

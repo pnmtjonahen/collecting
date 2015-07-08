@@ -1,3 +1,5 @@
+/* global expect */
+
 'use strict';
 describe('Filter: safeHtmlFilter', function () {
 
@@ -5,7 +7,7 @@ describe('Filter: safeHtmlFilter', function () {
         module('collectingApp');
     });
 
-    it('has a safeHtmlFIlter filter', inject(function ($filter) {
+    it('has a safeHtml filter', inject(function ($filter) {
         expect($filter('safeHtml')).not.toBeNull();
     }));
 
