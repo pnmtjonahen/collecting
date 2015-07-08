@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('Directive: menu.link', function () {
+describe('Directive: menu.toggle', function () {
     beforeEach(module('ptjMenuModule'));
 
     var element;
@@ -21,6 +21,7 @@ describe('Directive: menu.link', function () {
 
 
     beforeEach(module('partials/menu-link.tmpl.html'));
+    beforeEach(module('partials/menu-toggle.tmpl.html'));
     beforeEach(module('ptjMenuModule', function ($controllerProvider) {
         $controllerProvider.register('Controller', function (menu) {
             var self = this;
@@ -34,7 +35,7 @@ describe('Directive: menu.link', function () {
 
     beforeEach(inject(function ($rootScope, $compile) {
 
-        element = angular.element('<div ng-controller="Controller"><menu-link section="section"></menu-link></div>');
+        element = angular.element('<div ng-controller="Controller"><menu-toggle section="section"></menu-link></div>');
 
         var scope = $rootScope;
 
