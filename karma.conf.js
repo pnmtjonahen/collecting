@@ -6,7 +6,7 @@ module.exports = function (config) {
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
         // base path, that will be used to resolve files and exclude
-        basePath: '../app',
+        basePath: 'app',
         // testing framework to use (jasmine/mocha/qunit/...)
         frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
@@ -46,7 +46,7 @@ module.exports = function (config) {
             'js/app.routing.js',
             'js/app.safehtml.filter.js',
             'partials/**/*.html',
-            '../test/spec/**/*.js'
+            'js/**/*.spec.js'
             
         ],
         // list of files / patterns to exclude
