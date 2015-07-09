@@ -28,8 +28,6 @@
         self.collection = null;
         self.determineMenuIcon = determineMenuIcon;
 
-        self.isSectionSelected = isSectionSelected;
-
         self.menu = menu;
 
         self.onMenuClick = onMenuClick;
@@ -72,33 +70,6 @@
                 self.selectedObject = null;
         });
 
-// *****************************************************************
-// Menu functions. These are called from the menu directive.
-// This enables the directive to call methods defined on the current menu instance.   
-// *****************************************************************
-//        function setSelected(page) {
-//            closeMenu();
-//            return selectCard(page.card);
-//        }
-//        ;
-
-        function isSectionSelected(section) {
-            var selected = false;
-            var openedSection = menu.openedSection;
-            if (openedSection === section) {
-                selected = true;
-            }
-            else if (section.children) {
-                section.children.forEach(function (childSection) {
-                    if (childSection === openedSection) {
-                        selected = true;
-                    }
-                });
-            }
-            return selected;
-        }
-        ;
-
 
         function showObjectCard() {
             return self.selectedObject !== null;
@@ -117,9 +88,7 @@
 
         function breadcrum() {
             var crums = [];
-            if (self.selected) {
-                crums.push(self.selected.name);
-            }
+            crums.push(self.selected.name);
             if (!$mdMedia("gt-md") && self.selectedObject) {
                 crums.push(self.selectedObject.name);
             }

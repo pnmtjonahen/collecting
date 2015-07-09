@@ -14,7 +14,8 @@
             toggleSelectSection: toggleSelectSection,
             isOpen: isOpen,
             selectPage: selectPage,
-            isPageSelected: isPageSelected
+            isPageSelected: isPageSelected,
+            isSectionSelected: isSectionSelected
         };
 
         return self;
@@ -42,7 +43,21 @@
         }
         ;
 
-
+        function isSectionSelected(section) {
+            var selected = false;
+            if (self.openedSection === section) {
+                selected = true;
+            }
+            else if (section.children) {
+                section.children.forEach(function (childSection) {
+                    if (childSection === self.openedSection) {
+                        selected = true;
+                    }
+                });
+            }
+            return selected;
+        }
+        ;
     }
     ;
 })();

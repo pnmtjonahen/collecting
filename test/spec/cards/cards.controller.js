@@ -28,6 +28,12 @@
             }
         ]
     };
+    var object1 = {
+        "images": [],
+        "name": "dummbyobj",
+        "content": "content",
+        "htmlContent": "content"
+    };
     var dummy3 = {
         "id": "dummy3",
         "name": "dummy3",
@@ -39,12 +45,7 @@
             "<html></html>"
         ],
         "objects": [
-            {
-                "images": [],
-                "name": "dummbyobj",
-                "content": "content",
-                "htmlContent": "content"
-            },
+            object1,
             {
                 "images": [],
                 "name": "dummbyobj2",
@@ -75,23 +76,28 @@
         var cardsCtrl,
                 $httpBackend,
                 createController,
-                createLinkToController;
+                createLinkToController,
+                mdMediaSize;
 
         beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
             $httpBackend = _$httpBackend_;
             $httpBackend.when('GET', 'data/cards.json').respond(cards_json);
             createController = function () {
                 $httpBackend.expectGET('data/cards.json');
-                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams:undefined});
+                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams: undefined, $mdMedia: mdMediaMock});
                 $httpBackend.flush();
             };
-            createLinkToController = function () {
+            createLinkToController = function (id) {
                 $httpBackend.expectGET('data/cards.json');
-                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams: {id: 'dummy3'}});
+                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams: {id: id}, $mdMedia: mdMediaMock});
                 $httpBackend.flush();
             };
+            mdMediaSize  = "large";
         }));
 
+        var mdMediaMock = function(media) {
+            return mdMediaSize === media;
+        }
         afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
@@ -104,14 +110,21 @@
             expect(cardsCtrl.collection).not.toBeUndefined();
 
         });
-        it('should have a menu icon of menu', function () {
+        it('should have a correct menu icon', function () {
             createController();
             expect(cardsCtrl.determineMenuIcon()).toBe("menu");
+            mdMediaSize = "gt-md";
+            expect(cardsCtrl.determineMenuIcon()).toBe("arrow_back");
 
         });
-        it('should have a second card selected', function () {
-            createLinkToController();
+        it('should have a correct card pre selected', function () {
+            createLinkToController("dummy3");
             expect(cardsCtrl.selected.id).toBe(dummy3.id);
+            createLinkToController(undefined);
+            expect(cardsCtrl.selected.id).toBe(dummy1.id);
+            createLinkToController("dummy2");
+            expect(cardsCtrl.selected.id).toBe(dummy2.id);
+
         });
         it('should have a first card selected', function () {
             createController();
@@ -125,12 +138,43 @@
         });
         it('should have a objectList to show', function () {
             createController();
-
             expect(cardsCtrl.showObjectList()).toBeTruthy();
+            mdMediaSize = "gt-md";
+            expect(cardsCtrl.showObjectList()).toBeFalsy();
+
         });
         it('should have a breadcrum', function () {
             createController();
             expect(cardsCtrl.breadcrum().length).toBe(1);
+            cardsCtrl.selectObject(object1);
+            mdMediaSize = "md";
+            expect(cardsCtrl.breadcrum().length).toBe(2);
+            
+        });
+        it('should have a selected object', function () {
+            createController();
+            expect(cardsCtrl.selectObject(object1)).toBeUndefined();
+            expect(cardsCtrl.showObjectCard()).toBeTruthy();
+        });
+        it('should have a handle for openMenu', function () {
+            createController();
+            expect(cardsCtrl.openMenu()).toBeUndefined();
+        });
+        it('should have a handle for onMenuClick', function () {
+            createController();
+            expect(cardsCtrl.onMenuClick()).toBeUndefined();
+            mdMediaSize = "gt-md";
+            cardsCtrl.selectObject(object1);
+
+            expect(cardsCtrl.showObjectCard()).toBeTruthy();
+            expect(cardsCtrl.onMenuClick()).toBeUndefined();
+            expect(cardsCtrl.showObjectCard()).toBeFalsy();
+        });
+        it('should have a selectImage', function () {
+            createController();
+            expect(cardsCtrl.selectedImage).toBe(null);
+            expect(cardsCtrl.showImage(object1)).toBeUndefined();
+            expect(cardsCtrl.selectedImage).not.toBeUndefined();
         });
 
     });
