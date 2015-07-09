@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('Directive: menu.link', function () {
+describe('Directive: ptj-menu-link', function () {
     beforeEach(module('ptjMenuModule'));
 
     var element;
@@ -34,7 +34,7 @@ describe('Directive: menu.link', function () {
 
     beforeEach(inject(function ($rootScope, $compile) {
 
-        element = angular.element('<div ng-controller="Controller"><menu-link section="section"></menu-link></div>');
+        element = angular.element('<div ng-controller="Controller"><ptj-menu-link section="section"></ptj-menu-link></div>');
 
         var scope = $rootScope;
 

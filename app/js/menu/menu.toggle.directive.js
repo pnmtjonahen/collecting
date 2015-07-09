@@ -4,9 +4,9 @@
     'use strict';
 
     angular.module('ptjMenuModule')
-            .directive('menuToggle', menuToggle)
+            .directive('ptjMenuToggle', ptjMenuToggle)
             ;
-    function menuToggle() {
+    function ptjMenuToggle() {
         return {
             scope: {
                 section: '='

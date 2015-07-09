@@ -14,12 +14,12 @@
                     <h2 class="ptj-menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
                         {{section.name}}
                     </h2>
-                <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
-                <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+                <ptj-menu-link section="section" ng-if="section.type === 'link'"></ptj-menu-link>
+                <ptj-menu-toggle section="section" ng-if="section.type === 'toggle'"></ptj-menu-toggle>
                 <ul ng-if="section.children" class="ptj-menu-nested-list">
                     <li ng-repeat="child in section.children" ng-class="{'childActive' : cl.menu.isSectionSelected(child)}">
-                    <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
-                    <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
+                    <ptj-menu-link section="child" ng-if="child.type === 'link'"></ptj-menu-link>
+                    <ptj-menu-toggle section="child" ng-if="child.type === 'toggle'"></ptj-menu-toggle>
                     </li>
                 </ul>
                 </li>
