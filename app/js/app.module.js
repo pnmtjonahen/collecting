@@ -1,11 +1,10 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
     angular
-            .module('collectingApp', ['components', 'ptjMenuModule', 'cards'])
+            .module( 'collectingApp', [ 'components', 'ptjMenuModule', 'cards' ] )
             ;
 
-
-})();
+} )();

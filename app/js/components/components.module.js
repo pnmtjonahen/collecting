@@ -1,11 +1,10 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
     angular
-            .module('components', ['ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown'])
+            .module( 'components', [ 'ngMaterial', 'ngMdIcons', 'angular-flexslider', 'ui.router', 'ivoMarkdown' ] )
             ;
 
-
-})();
+} )();

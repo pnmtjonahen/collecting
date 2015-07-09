@@ -1,17 +1,17 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
-    angular.module('ptjMenuModule')
-            .filter('nospace', nospace)
+    angular.module( 'ptjMenuModule' )
+            .filter( 'nospace', nospace )
             ;
 
     function nospace() {
-        return function (value) {
-            return (!value) ? '' : value.replace(/ /g, '');
+        return function( value ) {
+            return ( !value ) ? '' : value.replace( / /g, '' );
         };
     }
     ;
-})();
+} )();
 

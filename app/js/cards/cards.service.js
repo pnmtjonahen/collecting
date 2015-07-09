@@ -1,12 +1,12 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
-    angular.module('cards')
-            .factory('cardsService', CardsService);
+    angular.module( 'cards' )
+            .factory( 'cardsService', CardsService );
 
-    CardsService.$inject = ['$resource'];        
+    CardsService.$inject = [ '$resource' ];        
     /**
      * Cards DataService
      * Uses embedded, hard-coded data model; acts asynchronously to simulate
@@ -16,11 +16,11 @@
      * @returns {{loadAll: Function}}
      * @constructor
      */
-    function CardsService($resource) {
-        return $resource('data/cards.json', {}, {
-            loadAllCards: {method: 'GET', params: {}, isArray: false}
-        });
+    function CardsService( $resource ) {
+        return $resource( 'data/cards.json', {}, {
+            loadAllCards: { method: 'GET', params: {}, isArray: false }
+        } );
     }
     ;
 
-})();
+} )();

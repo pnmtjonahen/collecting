@@ -1,8 +1,8 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
-    angular.module('ptjMenuModule', []);
-})();
+    angular.module( 'ptjMenuModule', [] );
+} )();
 

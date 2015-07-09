@@ -1,10 +1,10 @@
 /* global angular */
 
-(function () {
+( function() {
     'use strict';
 
-    angular.module('ptjMenuModule')
-            .factory('menu', menu);
+    angular.module( 'ptjMenuModule' )
+            .factory( 'menu', menu );
 
     function menu() {
 
@@ -20,45 +20,44 @@
 
         return self;
 
-        function selectSection(section) {
+        function selectSection( section ) {
             self.openedSection = section;
         }
         ;
 
-        function toggleSelectSection(section) {
-            self.openedSection = (self.openedSection === section ? null : section);
+        function toggleSelectSection( section ) {
+            self.openedSection = ( self.openedSection === section ? null : section );
         }
 
-        function isOpen(section) {
+        function isOpen( section ) {
             return self.openedSection === section;
         }
 
-        function selectPage(section, page) {
+        function selectPage( section, page ) {
             self.currentSection = section;
             self.currentPage = page;
         }
         ;
-        function isPageSelected(page) {
+        function isPageSelected( page ) {
             return self.currentPage === page;
         }
         ;
 
-        function isSectionSelected(section) {
+        function isSectionSelected( section ) {
             var selected = false;
-            if (self.openedSection === section) {
+            if ( self.openedSection === section ) {
                 selected = true;
-            }
-            else if (section.children) {
-                section.children.forEach(function (childSection) {
-                    if (childSection === self.openedSection) {
+            } else if ( section.children ) {
+                section.children.forEach( function( childSection ) {
+                    if ( childSection === self.openedSection ) {
                         selected = true;
                     }
-                });
+                } );
             }
             return selected;
         }
         ;
     }
     ;
-})();
+} )();
 
