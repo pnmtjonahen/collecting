@@ -80,6 +80,7 @@
                 mdMediaSize;
 
         beforeEach( inject( function( _$httpBackend_, $controller, $rootScope ) {
+            mdMediaSize = "large";
             $httpBackend = _$httpBackend_;
             $httpBackend.when( "GET", "data/cards.json" ).respond( cardsJson );
             createController = function() {
@@ -95,12 +96,12 @@
                     $stateParams: { id: id }, $mdMedia: mdMediaMock } );
                 $httpBackend.flush();
             };
-            mdMediaSize = "large";
         } ) );
 
         var mdMediaMock = function( media ) {
             return mdMediaSize === media;
-        }
+        };
+
         afterEach( function() {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
