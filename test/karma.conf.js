@@ -35,8 +35,8 @@ module.exports = function (config) {
 
             'js/menu/menu.module.js',
             'js/menu/menu.factory.js',
-            'js/menu/menu.link.js',
-            'js/menu/menu.toggle.js',
+            'js/menu/menu.link.directive.js',
+            'js/menu/menu.toggle.directive.js',
             'js/menu/menu.nospace.filter.js',
             'js/menu/menu.humanize.filter.js',
 

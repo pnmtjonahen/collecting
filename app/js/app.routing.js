@@ -19,7 +19,7 @@
                 .state('main', {
                     url: "/:id",
                     templateUrl: "partials/cards.html",
-                    controller:"CardController",
+                    controller:"CardsController",
                     controllerAs:"cl"
                 });
     }

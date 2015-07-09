@@ -84,12 +84,12 @@
             $httpBackend.when('GET', 'data/cards.json').respond(cards_json);
             createController = function () {
                 $httpBackend.expectGET('data/cards.json');
-                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams: undefined, $mdMedia: mdMediaMock});
+                cardsCtrl = $controller('CardsController', {$scope: $rootScope.$new(), $stateParams: undefined, $mdMedia: mdMediaMock});
                 $httpBackend.flush();
             };
             createLinkToController = function (id) {
                 $httpBackend.expectGET('data/cards.json');
-                cardsCtrl = $controller('CardController', {$scope: $rootScope.$new(), $stateParams: {id: id}, $mdMedia: mdMediaMock});
+                cardsCtrl = $controller('CardsController', {$scope: $rootScope.$new(), $stateParams: {id: id}, $mdMedia: mdMediaMock});
                 $httpBackend.flush();
             };
             mdMediaSize  = "large";

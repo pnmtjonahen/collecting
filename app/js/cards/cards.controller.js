@@ -5,9 +5,9 @@
 
     angular
             .module('cards')
-            .controller('CardController', CardController);
+            .controller('CardsController', CardsController);
     
-    CardController.$inject = ['cardService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope'];
+    CardsController.$inject = ['cardsService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope'];
     
     /**
      * Main Controller for the Cards Collection App
@@ -20,7 +20,7 @@
      * @param $rootScope
      * @constructor
      */
-    function CardController(cardService, $mdSidenav, $mdMedia, menu, $scope, $stateParams, $rootScope) {
+    function CardsController(cardService, $mdSidenav, $mdMedia, menu, $scope, $stateParams, $rootScope) {
         var self = this;
 
         self.breadcrum = breadcrum;

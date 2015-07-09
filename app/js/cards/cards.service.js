@@ -4,9 +4,9 @@
     'use strict';
 
     angular.module('cards')
-            .factory('cardService', CardService);
+            .factory('cardsService', CardsService);
 
-    CardService.$inject = ['$resource'];        
+    CardsService.$inject = ['$resource'];        
     /**
      * Cards DataService
      * Uses embedded, hard-coded data model; acts asynchronously to simulate
@@ -16,7 +16,7 @@
      * @returns {{loadAll: Function}}
      * @constructor
      */
-    function CardService($resource) {
+    function CardsService($resource) {
         return $resource('data/cards.json', {}, {
             loadAllCards: {method: 'GET', params: {}, isArray: false}
         });
