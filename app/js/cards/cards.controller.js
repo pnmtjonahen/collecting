@@ -6,9 +6,9 @@
     angular
             .module('cards')
             .controller('CardsController', CardsController);
-    
-    CardsController.$inject = ['cardsService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams','$rootScope'];
-    
+
+    CardsController.$inject = ['cardsService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams', '$rootScope'];
+
     /**
      * Main Controller for the Cards Collection App
      * @param $mdSidenav
@@ -42,26 +42,7 @@
         self.showObjectCard = showObjectCard;
         self.showObjectList = showObjectList;
 
-
-// *****************************************************************
-// Load all registered cards
-// *****************************************************************
-        cardService
-                .loadAllCards()
-                .$promise
-                .then(function (data) {
-                    self.collection = data;
-                    self.cards = [].concat(data.cards);
-                    self.cards.forEach(makeContent);
-                    if ($stateParams === undefined) {
-                        self.selected = self.cards[0];
-                    } else {
-                        self.selected = findCardByName($stateParams.id);
-                    }
-                    $rootScope.updateTitle = self.collection.name + " - " + self.selected.name;
-                    self.menu = buildMenuSections(self.menu, self.cards, self.selected);
-
-                });
+        activate();
 
         $scope.$watch(function () {
             return $mdMedia('gt-md');
@@ -69,6 +50,30 @@
             if (big)
                 self.selectedObject = null;
         });
+
+
+        function activate() {
+// *****************************************************************
+// Load all registered cards
+// *****************************************************************
+            return cardService
+                    .loadAllCards()
+                    .$promise
+                    .then(function (data) {
+                        self.collection = data;
+                        self.cards = [].concat(data.cards);
+                        self.cards.forEach(makeContent);
+                        if ($stateParams === undefined) {
+                            self.selected = self.cards[0];
+                        } else {
+                            self.selected = findCardByName($stateParams.id);
+                        }
+                        $rootScope.updateTitle = self.collection.name + " - " + self.selected.name;
+                        self.menu = buildMenuSections(self.menu, self.cards, self.selected);
+
+                    });
+        }
+        ;
 
 
         function showObjectCard() {
