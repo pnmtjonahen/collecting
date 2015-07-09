@@ -1,14 +1,14 @@
 /* global expect */
 
-'use strict';
-describe( 'Filter: safeHtmlFilter', function() {
+"use strict";
+describe( "Filter: safeHtmlFilter", function() {
 
     beforeEach( function() {
-        module( 'collectingApp' );
+        module( "collectingApp" );
     } );
 
-    it( 'has a safeHtml filter', inject( function( $filter ) {
-        expect( $filter( 'safeHtml' ) ).not.toBeNull();
+    it( "has a safeHtml filter", inject( function( $filter ) {
+        expect( $filter( "safeHtml" ) ).not.toBeNull();
     } ) );
 
     it( "should return true empty array ", inject( function( safeHtmlFilter ) {

@@ -1,18 +1,18 @@
 /* global angular, expect */
 
-'use strict';
+"use strict";
 
-describe( 'Directive: ptj-menu-toggle', function() {
-    beforeEach( module( 'ptjMenuModule' ) );
+describe( "Directive: ptj-menu-toggle", function() {
+    beforeEach( module( "ptjMenuModule" ) );
 
     var element;
     var card = {
-        url: 'dummy',
-        avatar: 'dummy',
+        url: "dummy",
+        avatar: "dummy",
         id: 1
     };
     var section = {
-        type: 'link',
+        type: "link",
         card: card,
         url: card.url,
         avatar: card.avatar,
@@ -20,10 +20,10 @@ describe( 'Directive: ptj-menu-toggle', function() {
     };
     var menuTest;
 
-    beforeEach( module( 'partials/menu-link.tmpl.html' ) );
-    beforeEach( module( 'partials/menu-toggle.tmpl.html' ) );
-    beforeEach( module( 'ptjMenuModule', function( $controllerProvider ) {
-        $controllerProvider.register( 'Controller', function( menu ) {
+    beforeEach( module( "partials/menu-link.tmpl.html" ) );
+    beforeEach( module( "partials/menu-toggle.tmpl.html" ) );
+    beforeEach( module( "ptjMenuModule", function( $controllerProvider ) {
+        $controllerProvider.register( "Controller", function( menu ) {
             var self = this;
             self.menu = menu;
             self.menu.selectSection( section );
@@ -35,7 +35,8 @@ describe( 'Directive: ptj-menu-toggle', function() {
 
     beforeEach( inject( function( $rootScope, $compile ) {
 
-        element = angular.element( '<div ng-controller="Controller"><ptj-menu-toggle section="section"></ptj-menu-link></div>' );
+        element = angular.element(
+   "<div ng-controller='Controller'><ptj-menu-toggle section='section'></ptj-menu-link></div>" );
 
         var scope = $rootScope;
 
@@ -46,13 +47,13 @@ describe( 'Directive: ptj-menu-toggle', function() {
     } ) );
 
     it( "should close the defauld opened section", function() {
-        var list = element.find( 'md-button' );
+        var list = element.find( "md-button" );
         expect( list.length ).toBe( 1 );
-        
+
         expect( menuTest.isOpen( section ) ).toBeTruthy();
         list.click();
         expect( menuTest.isOpen( section ) ).toBeFalsy();
-        
+
     } );
 
 } );

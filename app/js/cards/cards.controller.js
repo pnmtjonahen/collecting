@@ -1,13 +1,14 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
     angular
-            .module( 'cards' )
-            .controller( 'CardsController', CardsController );
+            .module( "cards" )
+            .controller( "CardsController", CardsController );
 
-    CardsController.$inject = [ 'cardsService', '$mdSidenav', '$mdMedia', 'menu', '$scope', '$stateParams', '$rootScope' ];
+    CardsController.$inject = [ "cardsService", "$mdSidenav", "$mdMedia",
+                                "menu", "$scope", "$stateParams", "$rootScope" ];
 
     /**
      * Main Controller for the Cards Collection App
@@ -20,7 +21,8 @@
      * @param $rootScope
      * @constructor
      */
-    function CardsController( cardService, $mdSidenav, $mdMedia, menu, $scope, $stateParams, $rootScope ) {
+    function CardsController( cardService, $mdSidenav, $mdMedia,
+                                menu, $scope, $stateParams, $rootScope ) {
         var self = this;
 
         self.breadcrum = breadcrum;
@@ -45,10 +47,11 @@
         activate();
 
         $scope.$watch( function() {
-            return $mdMedia( 'gt-md' );
+            return $mdMedia( "gt-md" );
         }, function( big ) {
-            if ( big )
+            if ( big ) {
                 self.selectedObject = null;
+            }
         } );
 
         function activate() {
@@ -107,9 +110,9 @@
 
         function determineMenuIcon() {
             if ( self.showObjectList() ) {
-                return 'menu';
+                return "menu";
             }
-            return 'arrow_back';
+            return "arrow_back";
         }
         ;
         function onMenuClick() {
@@ -165,7 +168,7 @@
         ;
 
         function openMenu() {
-            $mdSidenav( 'left' ).open();
+            $mdSidenav( "left" ).open();
         }
         ;
 
@@ -174,12 +177,12 @@
             cards.forEach( function( card ) {
                 var section = {
                     name: card.name,
-                    type: 'toggle'
+                    type: "toggle"
                 };
                 menu.sections.push( section );
 
                 if ( card.cards === undefined ) {
-                    section.type = 'link';
+                    section.type = "link";
                     section.card = card;
                     section.url = card.url;
                     section.avatar = card.avatar;
@@ -195,7 +198,7 @@
                             name: c.name,
                             card: c,
                             avatar: c.avatar,
-                            type: 'link',
+                            type: "link",
                             id: c.id
                         };
                         section.pages.push( page );

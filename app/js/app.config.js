@@ -1,26 +1,26 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
     angular
-            .module( 'collectingApp' )
+            .module( "collectingApp" )
             .config( configTheming )
             .config( configIvoMarktdown )
             ;
 
-    configTheming.$inject = [ '$mdThemingProvider' ];
+    configTheming.$inject = [ "$mdThemingProvider" ];
     function configTheming( $mdThemingProvider ) {
 
-        $mdThemingProvider.theme( 'default' )
-                .primaryPalette( 'brown' )
-                .accentPalette( 'red' );
+        $mdThemingProvider.theme( "default" )
+                .primaryPalette( "brown" )
+                .accentPalette( "red" );
 
     }
-    
-    configIvoMarktdown.$inject = [ 'ivoMarkdownConfigProvider' ];
+
+    configIvoMarktdown.$inject = [ "ivoMarkdownConfigProvider" ];
     function configIvoMarktdown( ivoMarkdownConfigProvider ) {
-        ivoMarkdownConfigProvider.config( { extensions: [ 'table', 'targetblank' ] } );
+        ivoMarkdownConfigProvider.config( { extensions: [ "table", "targetblank" ] } );
     }
 
 } )();

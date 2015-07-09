@@ -1,14 +1,14 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
     angular
-            .module( 'collectingApp' )
+            .module( "collectingApp" )
             .config( configRouting )
             ;
 
-    configRouting.$inject = [ '$stateProvider', '$urlRouterProvider' ];
+    configRouting.$inject = [ "$stateProvider", "$urlRouterProvider" ];
     function configRouting( $stateProvider, $urlRouterProvider ) {
 
         //
@@ -18,7 +18,7 @@
         //
         // Now set up the states
         $stateProvider
-                .state( 'main', {
+                .state( "main", {
                     url: "/:id",
                     templateUrl: "partials/cards.html",
                     controller:"CardsController",

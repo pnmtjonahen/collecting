@@ -1,10 +1,10 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
     angular
-            .module( 'collectingApp', [ 'components', 'ptjMenuModule', 'cards' ] )
+            .module( "collectingApp", [ "components", "ptjMenuModule", "cards" ] )
             ;
 
 } )();

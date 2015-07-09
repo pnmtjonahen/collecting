@@ -1,10 +1,10 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
-    angular.module( 'ptjMenuModule' )
-            .factory( 'menu', menu );
+    angular.module( "ptjMenuModule" )
+            .factory( "menu", menu );
 
     function menu() {
 
@@ -28,10 +28,12 @@
         function toggleSelectSection( section ) {
             self.openedSection = ( self.openedSection === section ? null : section );
         }
+        ;
 
         function isOpen( section ) {
             return self.openedSection === section;
         }
+        ;
 
         function selectPage( section, page ) {
             self.currentSection = section;

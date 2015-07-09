@@ -1,14 +1,14 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
     angular
-            .module( 'collectingApp' )
-            .filter( 'safeHtml', safeHtmlFilter )
+            .module( "collectingApp" )
+            .filter( "safeHtml", safeHtmlFilter )
             ;
 
-    safeHtmlFilter.$inject = [ '$sce' ];
+    safeHtmlFilter.$inject = [ "$sce" ];
     function safeHtmlFilter( $sce ) {
         return function( text ) {
             return $sce.trustAsHtml( text );

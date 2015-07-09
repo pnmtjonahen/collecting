@@ -1,17 +1,17 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
-    angular.module( 'ptjMenuModule' )
-            .directive( 'ptjMenuLink', ptjMenuLink )
+    angular.module( "ptjMenuModule" )
+            .directive( "ptjMenuLink", ptjMenuLink )
             ;
     function ptjMenuLink() {
         return {
             scope: {
-                section: '='
+                section: "="
             },
-            templateUrl: 'partials/menu-link.tmpl.html',
+            templateUrl: "partials/menu-link.tmpl.html",
             link: function( $scope, $element ) {
                 var controller = $element.parent().controller();
 

@@ -1,15 +1,15 @@
 /* global angular */
 
 ( function() {
-    'use strict';
+    "use strict";
 
-    angular.module( 'ptjMenuModule' )
-            .filter( 'nospace', nospace )
+    angular.module( "ptjMenuModule" )
+            .filter( "nospace", nospace )
             ;
 
     function nospace() {
         return function( value ) {
-            return ( !value ) ? '' : value.replace( / /g, '' );
+            return ( !value ) ? "" : value.replace( / /g, "" );
         };
     }
     ;
