@@ -98,7 +98,7 @@
             };
         } ) );
 
-        var mdMediaMock = function( media ) {
+        function mdMediaMock( media ) {
             return mdMediaSize === media;
         };
 
