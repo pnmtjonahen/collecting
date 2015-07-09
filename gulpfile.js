@@ -1,14 +1,19 @@
-var gulp = require("gulp");
-var karma = require("karma").server;
-var replace = require("gulp-replace");
+/* global require, __dirname */
 
-var postprocessLCOV = function() {
-    return gulp.src("reports/coverage/lcov.info")
-        .pipe(replace("SF:.", "SF:app"))
-        .pipe(gulp.dest("reports/coverage"));
-};
+var gulp = require("gulp"),
+        karma = require("karma").server,
+        replace = require("gulp-replace");
+
+
 gulp.task("test", function () {
     karma.start({
-        configFile: __dirname + "/karma.conf.js"
-    }, postprocessLCOV);
+        configFile: __dirname + "/karma.conf.js",
+        singleRun: true
+    });
 });
+
+gulp.task("process-lcov", function () {
+    return  gulp.src("reports/coverage/lcov.info")
+            .pipe(replace("SF:.", "SF:app"))
+            .pipe(gulp.dest("reports/coverage"));
+    });
