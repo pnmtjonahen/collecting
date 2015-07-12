@@ -177,8 +177,10 @@
         it( "should have a selectImage", function() {
             createController();
             expect( cardsCtrl.selectedImage ).toBe( null );
-            expect( cardsCtrl.showImage( object1 ) ).toBeUndefined();
+            expect( cardsCtrl.showImage( object1, object1 ) ).toBeUndefined();
             expect( cardsCtrl.selectedImage ).not.toBeUndefined();
+            expect( cardsCtrl.selectedImage.image).toBe(object1);
+            expect( cardsCtrl.selectedImage.object).toBe(object1);
         } );
 
     } );
