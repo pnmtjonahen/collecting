@@ -15,7 +15,7 @@
             {
                 regex: "<a(.*)a>",
                 replace: function( match, content ) {
-                    if ( content.indexOf( "www" ) !== -1 ) {
+                    if ( content.indexOf( "http" ) !== -1 ) {
                         return "<a target=\"_blank\"" + content + "a>";
                     }
                     return "<a" + content + "a>";
