@@ -95,7 +95,9 @@
 
         function breadcrum() {
             var crums = [];
-            crums.push(self.selected.name);
+            if (self.selected !== null) {
+                crums.push(self.selected.name);
+            }
             if (!$mdMedia("gt-md") && self.selectedObject) {
                 crums.push(self.selectedObject.name);
             }
