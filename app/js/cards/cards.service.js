@@ -18,7 +18,7 @@
      */
     function CardsService( $resource ) {
         return $resource( "data/cards.json", {}, {
-            loadAllCards: { method: "GET", params: {}, isArray: false }
+            loadAllCards: { method: "GET", params: {}, isArray: false, cache:false }
         } );
     }
     ;
