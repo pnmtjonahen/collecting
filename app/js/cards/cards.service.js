@@ -17,7 +17,7 @@
      * @constructor
      */
     function CardsService( $resource ) {
-        return $resource( "data/cardsv2.json", {}, {
+        return $resource( "data/cardsv3.json", {}, {
             loadAllCards: { method: "GET", params: {}, isArray: false, cache:false }
         } );
     }
