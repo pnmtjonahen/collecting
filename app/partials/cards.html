@@ -97,7 +97,7 @@
             <md-card class="card-grid-list">
                 <md-grid-list md-cols-sm="1" md-cols="2" md-row-height="1:1">
                     <md-grid-tile ng-repeat="image in cl.selectedObject.images track by $index">
-                        <img ng-src="./data/images/{{(cl.selectedObject.folder === undefined) ? '' : cl.selectedObject.folder}}l/{{image.name === undefined ? image : image.name}}"
+                        <img ng-src="./data/images/{{(cl.selectedObject.folder === undefined) ? '' : cl.selectedObject.folder}}m/{{image.name === undefined ? image : image.name}}"
                              alt="{{image.name === undefined ? image : image.name}}">
                     </md-grid-tile>
                 </md-grid-list>    
