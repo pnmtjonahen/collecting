@@ -1,5 +1,4 @@
-/* global expect */
-
+( function() {
 "use strict";
 describe( "Filter: menu.nospaceFilter", function() {
 
@@ -24,3 +23,4 @@ describe( "Filter: menu.nospaceFilter", function() {
     } ) );
 
 } );
+})();

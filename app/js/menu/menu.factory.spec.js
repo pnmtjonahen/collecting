@@ -1,5 +1,4 @@
-/* global expect */
-
+( function() {
 "use strict";
 describe( "Component: menu", function() {
     var section1 = { id: 1 };
@@ -43,3 +42,4 @@ describe( "Component: menu", function() {
     } ) );
 
 } );
+})();

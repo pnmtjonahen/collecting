@@ -1,5 +1,4 @@
-/* global expect */
-
+( function() {
 "use strict";
 describe( "Filter: menu.humanizeFilter", function() {
 
@@ -35,3 +34,4 @@ describe( "Filter: menu.humanizeFilter", function() {
     } ) );
 
 } );
+})();

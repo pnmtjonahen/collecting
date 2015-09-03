@@ -1,5 +1,4 @@
-/* global angular, expect */
-
+( function() {
 "use strict";
 
 describe( "Directive: ptj-menu-link", function() {
@@ -49,3 +48,4 @@ describe( "Directive: ptj-menu-link", function() {
     } );
 
 } );
+})();

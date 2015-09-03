@@ -1,5 +1,3 @@
-/* global expect */
-
 ( function() {
     "use strict";
 

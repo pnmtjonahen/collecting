@@ -1,5 +1,4 @@
-/* global expect */
-
+( function() {
 "use strict";
 describe( "Filter: safeHtmlFilter", function() {
 
@@ -16,3 +15,4 @@ describe( "Filter: safeHtmlFilter", function() {
     } ) );
 
 } );
+})();

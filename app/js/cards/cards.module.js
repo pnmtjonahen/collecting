@@ -1,9 +1,6 @@
-/* global angular */
+(function () {
+    "use strict";
 
-( function() {
-  "use strict";
+    angular.module("cards", ["ngMaterial", "ngResource"]);
 
-  // Prepare the "cards" module for subsequent registration of controllers and delegates
-  angular.module( "cards", [ "ngMaterial", "ngResource" ] );
-
-} )();
+})();

@@ -1,7 +1,5 @@
-/* global angular, expect */
-
+( function() {
 "use strict";
-
 describe( "Directive: ptj-menu-toggle", function() {
     beforeEach( module( "ptjMenuModule" ) );
 
@@ -57,3 +55,4 @@ describe( "Directive: ptj-menu-toggle", function() {
     } );
 
 } );
+})();
