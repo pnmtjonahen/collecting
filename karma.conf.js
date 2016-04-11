@@ -90,7 +90,7 @@ module.exports = function (config) {
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
             "js/**/*.js": ["coverage"],
-            "partials/**/*.html": "html2js"
+            "partials/**/*.html": "ng-html2js"
         },
         junitReporter: {
             outputFile: "TESTS-xunit.xml",
