@@ -21,26 +21,42 @@ gulp.task("test", function () {
 
 
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['.tmp', './docker/dist']));
 
+gulp.task('flexSlider', function () {
+  return gulp.src('./app/bower_components/flexslider/**/*.{eot,ttf,woff,woff2}')
+    .pipe($.flatten())
+    .pipe(gulp.dest('./docker/dist/css/fonts'));
+});
+gulp.task('flexSliderSvg', function () {
+  return gulp.src('./app/bower_components/flexslider/**/*.svg')
+    .pipe($.flatten())
+    .pipe(gulp.dest('./docker/dist/svg'));
+});
+gulp.task('svg', function () {
+  return gulp.src('./app/svg/**/*.svg')
+    .pipe($.print())
+    .pipe($.flatten())
+    .pipe(gulp.dest('./docker/dist/svg'));
+});
 
 gulp.task("partials", function() {
    return gulp.src('app/partials/*.html')
            .pipe($.htmlmin({collapseWhitespace:true}))
-            .pipe(gulp.dest('dist/partials'));
+            .pipe(gulp.dest('./docker/dist/partials'));
 });
 
-gulp.task('html', ['partials'], function() {
+gulp.task('html', ['partials', 'svg', 'flexSlider', 'flexSliderSvg'], function() {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('./docker/dist'));
 });
 
 gulp.task('build', ['html'], function() {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('./docker/dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], function() {
