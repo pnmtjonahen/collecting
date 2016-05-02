@@ -1,5 +1,5 @@
 {
-  "name": "Collecting",
+  "name": "Collecting-Stuff",
   "private": true,
   "version": "0.0.1",
   "description": "A Project for Collectors",
@@ -31,6 +31,8 @@
     "gulp-useref": "^3.0.8",
     "gulp-wiredep": "0.0.0",
     "http-server": "^0.9.0",
+    "gulp-sonar": "2.1.0",
+    "gulp-util": "3.0.7",
     "istanbul": "^0.4.2",
     "jasmine-core": "^2.4.1",
     "jshint": "latest",
