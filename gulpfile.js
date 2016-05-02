@@ -5,6 +5,7 @@ var $ = require("gulp-load-plugins")();
 var reload = require('browser-sync').reload;
 var del = require('del');
 var wiredep = require('wiredep').stream;
+var Server = require('karma').Server;
 
 var postprocessLCOV = function () {
     return  gulp.src("reports/coverage/lcov.info")
@@ -13,10 +14,16 @@ var postprocessLCOV = function () {
     };
 
 gulp.task("test", function () {
-    $.karma.start({
+    new Server({
         configFile: __dirname + "/karma.conf.js",
         singleRun: true
-    }, postprocessLCOV);
+    }, postprocessLCOV).start();
+});
+
+gulp.task("jshint", function () {
+    return gulp.src("./app/js/**/*.js")
+            .pipe($.jshint())
+            .pipe($.jshint.reporter("default"));
 });
 
 
@@ -35,7 +42,6 @@ gulp.task('flexSliderSvg', function () {
 });
 gulp.task('svg', function () {
   return gulp.src('./app/svg/**/*.svg')
-    .pipe($.print())
     .pipe($.flatten())
     .pipe(gulp.dest('./docker/dist/svg'));
 });
@@ -55,7 +61,7 @@ gulp.task('html', ['partials', 'svg', 'flexSlider', 'flexSliderSvg'], function()
     .pipe(gulp.dest('./docker/dist'));
 });
 
-gulp.task('build', ['html'], function() {
+gulp.task('build', ['jshint', 'html'], function() {
   return gulp.src('./docker/dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

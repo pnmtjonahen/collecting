@@ -19,6 +19,6 @@
             loadAllCards: { method: "GET", params: {}, isArray: false, cache:false }
         } );
     }
-    ;
+    
 
 } )();

@@ -10,6 +10,6 @@
             return ( !value ) ? "" : value.replace( / /g, "" );
         };
     }
-    ;
+    
 } )();
 

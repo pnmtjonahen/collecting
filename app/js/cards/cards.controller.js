@@ -74,22 +74,22 @@
 
                     });
         }
-        ;
+
 
         function showObjectCard() {
             return self.selectedObject !== null;
         }
-        ;
+
 
         function showObjectList() {
             return !$mdMedia("gt-md") && self.selectedObject === null;
         }
-        ;
+
 
         function selectObject(o) {
             self.selectedObject = o;
         }
-        ;
+
 
         function breadcrum() {
             var crums = [];
@@ -101,7 +101,7 @@
             }
             return crums;
         }
-        ;
+
 
         function showImage(object, image) {
             self.selectedImage =
@@ -110,7 +110,7 @@
                         object: object
                     };
         }
-        ;
+
 
         function determineMenuIcon() {
             if (self.showObjectList()) {
@@ -118,7 +118,7 @@
             }
             return "arrow_back";
         }
-        ;
+
         function onMenuClick() {
             if (self.showObjectList()) {
                 self.openMenu();
@@ -126,7 +126,7 @@
                 self.selectObject(null);
             }
         }
-        ;
+
 
         // *********************************
         // Internal methods
@@ -169,12 +169,12 @@
                 });
             }
         }
-        ;
+
 
         function openMenu() {
             $mdSidenav("left").open();
         }
-        ;
+
 
         function buildMenuSections(menu, cards, current) {
             menu.sections = [];
@@ -216,7 +216,7 @@
             });
             return menu;
         }
-        ;
+
 
         function findCardByName(id) {
             if (id === undefined) {
@@ -237,6 +237,6 @@
             });
             return card;
         }
-        ;
+        
     }
 })();

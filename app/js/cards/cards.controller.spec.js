@@ -98,7 +98,7 @@
 
         function mdMediaMock( media ) {
             return mdMediaSize === media;
-        };
+        }
 
         afterEach( function() {
             $httpBackend.verifyNoOutstandingExpectation();
