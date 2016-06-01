@@ -2,7 +2,7 @@ logs/*
 !.gitkeep
 node_modules/
 bower_components/
-app/data
+data
 /home/ordina/collecting/mamiya
 nbproject/
 coverage/
@@ -10,3 +10,4 @@ reports/
 .tmp/
 docker/dist/
 .sonar/
+*.log

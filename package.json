@@ -5,6 +5,11 @@
   "description": "A Project for Collectors",
   "repository": "http://www.tjonahen.nl",
   "license": "GPL",
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run",
+    "postinstall": "bower install && gulp",
+    "start": "node server.js"
+  },
   "devDependencies": {
     "bower": "1.7.7",
     "browser-sync": "2.11.2",
@@ -50,7 +55,7 @@
     "shelljs": "0.6.0",
     "uglify-js": "2.6.2"
   },
-  "scripts": {
-    "test": "karma start test/karma.conf.js"
+  "dependencies": {
+    "express": "4.13.4"
   }
 }
