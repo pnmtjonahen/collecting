@@ -6,7 +6,7 @@ FROM node
 MAINTAINER Philippe Tjon-A-Hen <philippe.tjonahen.nl>
 RUN git clone --single-branch https://github.com/pnmtjonahen/collecting.git
 WORKDIR /collecting
-RUN npm install && bower install && ln -s /collecting/dist/data /data
+RUN npm install --production && ./node_modules/bower/bin/bower install && ln -s /collecting/dist/data /data
 EXPOSE 3000
 VOLUME /data
 WORKDIR /collecting
