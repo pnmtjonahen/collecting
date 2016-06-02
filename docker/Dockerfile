@@ -19,7 +19,13 @@ USER ${user}
 RUN git clone --single-branch https://github.com/pnmtjonahen/collecting.git ${COLLECTING_HOME}/dist
 
 WORKDIR ${COLLECTING_HOME}/dist
-RUN npm install --production && ./node_modules/bower/bin/bower install && ln -s /collecting/dist/data /data
+RUN npm install --production && ./node_modules/bower/bin/bower install
+
+USER root
+
+RUN ln -s ${COLLECTING_HOME}/dist/data /data
+
+USER ${user}
 
 EXPOSE 3000
 VOLUME /data
