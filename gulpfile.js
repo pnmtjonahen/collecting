@@ -6,7 +6,6 @@ var reload = require('browser-sync').reload;
 var del = require('del');
 var wiredep = require('wiredep').stream;
 var Server = require('karma').Server;
-var zip = require('gulp-zip');
 
 var postprocessLCOV = function () {
     return  gulp.src("reports/coverage/lcov.info")
@@ -65,28 +64,28 @@ gulp.task('sonar', function () {
 });
 
 
-gulp.task('clean', del.bind(null, ['.tmp', './dist']));
+gulp.task('clean', del.bind(null, ['.tmp', './docker/dist']));
 
 gulp.task('flexSlider', function () {
   return gulp.src('./app/bower_components/flexslider/**/*.{eot,ttf,woff,woff2}')
     .pipe($.flatten())
-    .pipe(gulp.dest('./dist/css/fonts'));
+    .pipe(gulp.dest('./docker/dist/app/css/fonts'));
 });
 gulp.task('flexSliderSvg', function () {
   return gulp.src('./app/bower_components/flexslider/**/*.svg')
     .pipe($.flatten())
-    .pipe(gulp.dest('./dist/svg'));
+    .pipe(gulp.dest('./docker/dist/app/svg'));
 });
 gulp.task('svg', function () {
   return gulp.src('./app/svg/**/*.svg')
     .pipe($.flatten())
-    .pipe(gulp.dest('./dist/svg'));
+    .pipe(gulp.dest('./docker/dist/app/svg'));
 });
 
 gulp.task("partials", function() {
    return gulp.src('app/partials/*.html')
            .pipe($.htmlmin({collapseWhitespace:true}))
-            .pipe(gulp.dest('./dist/partials'));
+            .pipe(gulp.dest('./docker/dist/app/partials'));
 });
 
 gulp.task('html', ['partials', 'svg', 'flexSlider', 'flexSliderSvg'], function() {
@@ -95,17 +94,16 @@ gulp.task('html', ['partials', 'svg', 'flexSlider', 'flexSliderSvg'], function()
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./docker/dist/app'));
 });
 
-gulp.task('zip', function() {
-	return gulp.src('dist/*')
-		.pipe(zip('dist.zip'))
-		.pipe(gulp.dest('./'));
+gulp.task('copy_server', function(){
+	return gulp.src(['./*package.json','./*server.js']).pipe(gulp.dest('./docker/dist/'));
+
 });
 
-gulp.task('build', ['jshint', 'html'], function() {
-  return gulp.src('./dist/**/*').pipe($.size({title: 'build', gzip: true}));
+gulp.task('build', ['jshint', 'html', 'copy_server'], function() {
+	return gulp.src('./docker/dist/**/**').pipe($.zip('dist.zip')).pipe(gulp.dest('./'));
 });
 
 gulp.task('default', ['clean'], function() {

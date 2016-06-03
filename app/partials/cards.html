@@ -7,7 +7,7 @@
             <div class="md-toolbar-tools">
                 <img ng-src="./data/images/{{cl.collection.logo}}" alt="Site logo"/>
             </div>
-        </md-toolbar>       
+        </md-toolbar>
         <md-content flex role="navigation">
             <ul class="ptj-menu">
                 <li ng-repeat="section in cl.menu.sections" class="parent-list-item" ng-class="{'ptj-menu-parentActive' : cl.menu.isSectionSelected(section)}">
@@ -60,19 +60,19 @@
         <!--
             card content for devices with screen size other than small (sm) and medium (md)
         -->
-        <md-content layout-margin layout-padding hide-md hide-sm flex ng-if="cl.selectedImage === null">
+        <md-content layout-margin layout-padding hide-md hide-sm hide-xs flex ng-if="cl.selectedImage === null">
             <div ng-repeat="object in cl.selected.objects" class="collecting-card-image">
                 <center>
                     <flex-slider slide="image in object.images track by $index">
                         <li>
                             <figure>
-                                <img ng-click="cl.showImage(object, image)" 
+                                <img ng-click="cl.showImage(object, image)"
                                      ng-src="./data/images/{{(object.folder === undefined) ? '' : object.folder}}l/{{(image.name === undefined) ? image : image.name}}"
                                      alt="{{(image.name === undefined) ? image : image.name}}">
                                 <figcaption>{{image.caption}}</figcaption>
                             </figure>
                         </li>
-                    </flex-slider>            
+                    </flex-slider>
                     <h4>{{object.name}}</h4>
                 </center>
                 <div ng-if="object.content" class="collecting-markdown-content" ivo-markdown="object.content"></div>
@@ -81,7 +81,7 @@
             <div ng-if="cl.selected.htmlContent" class="collecting-markdown-content" ng-bind-html="cl.selected.htmlContent | safeHtml"></div>
         </md-content>
 
-        <md-content hide-md hide-sm flex ng-if="cl.selectedImage !== null">
+        <md-content hide-md hide-sm flex hide-xs ng-if="cl.selectedImage !== null">
             <div class="collecting-big">
                 <img ng-src="./data/images/{{(cl.selectedImage.object.folder === undefined) ? '' : cl.selectedImage.object.folder}}{{(cl.selectedImage.image.name === undefined) ? cl.selectedImage.image : cl.selectedImage.image.name}}"
                      alt="{{(cl.selectedImage.image.name === undefined) ? cl.selectedImage.image : cl.selectedImage.image.name}}">
@@ -100,7 +100,7 @@
                         <img ng-src="./data/images/{{(cl.selectedObject.folder === undefined) ? '' : cl.selectedObject.folder}}m/{{image.name === undefined ? image : image.name}}"
                              alt="{{image.name === undefined ? image : image.name}}">
                     </md-grid-tile>
-                </md-grid-list>    
+                </md-grid-list>
                 <div class="collecting-markdown-content" ng-show="cl.selectedObject.content" ivo-markdown="cl.selectedObject.content"></div>
             </md-card>
         </md-content>
@@ -108,8 +108,8 @@
         <md-content layout-margin layout-padding hide-lg hide-gt-lg flex ng-if="cl.showObjectList()">
             <md-list>
                 <md-list-item  class="md-1-line" ng-repeat="object in cl.selected.objects" ng-click="cl.selectObject(object)">
-                    <img ng-src="./data/images/{{(object.folder === undefined) ? '' : object.folder}}xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}" 
-                         class="md-avatar" 
+                    <img ng-src="./data/images/{{(object.folder === undefined) ? '' : object.folder}}xs/{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}"
+                         class="md-avatar"
                          alt="{{object.images[0].name === undefined ? object.images[0] : object.images[0].name }}"/>
                     <div class="md-list-item-text">
                         <p>{{object.name}}</p>
