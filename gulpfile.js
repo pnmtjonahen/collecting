@@ -6,6 +6,7 @@ var reload = require('browser-sync').reload;
 var del = require('del');
 var wiredep = require('wiredep').stream;
 var Server = require('karma').Server;
+var zip = require('gulp-zip');
 
 var postprocessLCOV = function () {
     return  gulp.src("reports/coverage/lcov.info")
@@ -95,6 +96,12 @@ gulp.task('html', ['partials', 'svg', 'flexSlider', 'flexSliderSvg'], function()
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('zip', function() {
+	return gulp.src('dist/*')
+		.pipe(zip('dist.zip'))
+		.pipe(gulp.dest('./'));
 });
 
 gulp.task('build', ['jshint', 'html'], function() {
