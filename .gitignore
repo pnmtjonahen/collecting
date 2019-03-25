@@ -3,7 +3,7 @@ logs/*
 node_modules/
 bower_components/
 data
-/home/ordina/collecting/mamiya
+src/assets/data
 nbproject/
 coverage/
 reports/
@@ -11,3 +11,6 @@ reports/
 docker/dist/
 .sonar/
 *.log
+platforms/
+www/
+plugins/

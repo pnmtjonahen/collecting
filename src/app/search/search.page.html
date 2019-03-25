@@ -1,0 +1,24 @@
+<ion-header>
+    
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-searchbar
+        [(ngModel)]="myInput"
+        (search)="search()">
+    </ion-searchbar>
+</ion-toolbar>    
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let card of cardList" (click)="gotoCard(card)">
+            <ion-thumbnail item-start *ngIf="card.objects">
+                <card-image [card]="card"></card-image>
+            </ion-thumbnail>
+            <h2> {{ card.name }} </h2>
+        </ion-item>
+    </ion-list>    
+</ion-content>
