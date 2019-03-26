@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {Platform, Events, NavController, MenuController} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Card, Collection, CollectionService} from './collection.service'
+import {Card, Collection, CollectionService} from 'app/services/collection.service'
 
 var that: AppComponent;
 

@@ -6,14 +6,7 @@ import {RouteReuseStrategy} from '@angular/router';
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
-import {CardPageModule} from './card/card.module';
-import {SearchPageModule} from './search/search.module';
-import {ComponentsModule} from './components/components.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import {
     MatInputModule,
     MatPaginatorModule,
@@ -27,6 +20,13 @@ import {
 } from "@angular/material";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {CardPageModule} from './card/card.module';
+import {SearchPageModule} from './search/search.module';
+import {ComponentsModule} from './components/components.module';
+
 
 @NgModule({
     declarations: [

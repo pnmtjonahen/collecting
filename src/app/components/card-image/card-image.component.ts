@@ -1,10 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Card, CardObject} from '../../collection.service';
+import {Card, CardObject} from 'app/services/collection.service';
 
 @Component({
     selector: 'card-image',
-    template: '<img *ngIf="image !== undefined" src="{{image}}" alt="{{alt}}"/>',
-    styleUrls: ['./card-image.component.scss'],
+    template: '<img *ngIf="image !== undefined" src="{{image}}" alt="{{alt}}"/>'
 })
 export class CardImageComponent implements OnInit {
 

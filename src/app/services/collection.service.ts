@@ -34,7 +34,7 @@ export interface Card {
 export class CollectionService {
     data: Collection;
     contentCards: Card[] = [];
-    constructor(public http: HttpClient) {
+    constructor(private http: HttpClient) {
 
     }
 

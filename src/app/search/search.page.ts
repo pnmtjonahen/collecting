@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from '@ionic/angular';
-import {Card, CollectionService} from '../collection.service';
+import {Card, CollectionService} from 'app/services/collection.service';
+
 @Component({
     selector: 'page-search',
     templateUrl: './search.page.html',

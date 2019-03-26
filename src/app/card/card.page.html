@@ -21,13 +21,13 @@
                 <card-image [object]="object" [image]="image"></card-image>
             </ion-slide>
         </ion-slides>
-        <ion-card-content (swipe)="swipe($event)">
+        <ion-card-content (swipeleft)="nextCard()" (swiperight)="prevCard()">
             <ion-card-title>{{object.name}}</ion-card-title>
             <p *ngIf="object.content" [innerHtml]="convert(object.content) | keepHtml"></p>
         </ion-card-content>
     </ion-card>
 
-    <ion-card (swipe)="swipe($event)">
+    <ion-card  (swipeleft)="nextCard()" (swiperight)="prevCard()">
         <ion-card-content>
             <ion-card-title>{{current.name}}</ion-card-title>
             <p *ngIf="current.content" [innerHtml]="convert(current.content) | keepHtml"></p>
