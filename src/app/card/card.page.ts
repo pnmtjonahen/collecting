@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {IonContent, Events, NavController, MenuController} from '@ionic/angular';
+import {Component} from '@angular/core';
+import {Events, NavController, MenuController} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router'
 
 import {Card, CollectionService} from 'app/services/collection.service';
@@ -11,9 +11,8 @@ import {ShowdownService} from 'app/services/showdown.service';
     templateUrl: './card.page.html',
     styleUrls: ['./card.page.scss'],
 })
-export class CardPage implements OnInit {
+export class CardPage {
 
-    @ViewChild(IonContent) content: IonContent;
     current: Card = {
         id: 'loading',
         name: 'loading...',
@@ -60,7 +59,4 @@ export class CardPage implements OnInit {
     menuToggle() {
         this.menuCtrl.toggle();
     }
-    ngOnInit() {
-    }
-
 }
