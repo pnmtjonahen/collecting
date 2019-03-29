@@ -1,0 +1,6 @@
+{
+  "appId": "nl.tjonahen",
+  "appName": "CollectingStuff",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
