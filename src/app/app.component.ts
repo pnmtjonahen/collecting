@@ -23,7 +23,7 @@ export class AppComponent {
         public statusBar: StatusBar,
         public events: Events,
         private navCtrl: NavController,
-        public collectionService: CollectionService,
+        private collectionService: CollectionService,
         public menu: MenuController
 
     ) {
