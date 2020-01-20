@@ -11,10 +11,10 @@
                     <ion-icon name="search"></ion-icon>
             </ion-button>
         </ion-buttons>
-    </ion-toolbar>    
+    </ion-toolbar>
 
 </ion-header>
-<ion-content padding>
+<ion-content class="ion-padding">
     <ion-card *ngFor="let object of current.objects">
         <ion-slides pager loop autoplay="3000">
             <ion-slide *ngFor="let image of object.images">

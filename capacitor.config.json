@@ -3,5 +3,5 @@
   "appName": "CollectingStuff",
   "bundledWebRuntime": false,
   "webDir": "www",
-  "linuxAndroidStudioPath":"~/android-studio/bin/studio.sh"
+  "linuxAndroidStudioPath":"/snap/android-studio/81/android-studio/bin/studio.sh"
 }
