@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import {BrowserModule} from '@angular/platform-browser';
+import {HammerGestureConfig, HAMMER_GESTURE_CONFIG, BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
@@ -27,6 +27,12 @@ import {CardPageModule} from './card/card.module';
 import {SearchPageModule} from './search/search.module';
 import {ComponentsModule} from './components/components.module';
 
+export class HammerConfig extends HammerGestureConfig {
+  overrides: any = <any>{
+    'pinch': {enable: false},
+    'rotate': {enable: false}
+  };
+}
 
 @NgModule({
     declarations: [
@@ -57,7 +63,8 @@ import {ComponentsModule} from './components/components.module';
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        {provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig}
     ],
     bootstrap: [AppComponent]
 })
