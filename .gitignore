@@ -14,3 +14,5 @@ docker/dist/
 platforms/
 www/
 plugins/
+electron/
+android/

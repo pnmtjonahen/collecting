@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">CollectingStuff</string>
-    <string name="title_activity_main">CollectingStuff</string>
-    <string name="package_name">nl.tjonahen.collecting</string>
-    <string name="custom_url_scheme">nl.tjonahen.collecting</string>
-</resources>
