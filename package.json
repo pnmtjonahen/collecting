@@ -10,6 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "electron:add": "npx cap add @capacitor-community/electron",
+    "electron": "npx cap open @capacitor-community/electron",
     "ionic:build:before": "cp ~/stack/collecting/mamiya/cards.json www/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  www/assets/data",
     "ionic:serve:before": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
     "build:electron": "ng build --base-href ./ && npx cap copy"
