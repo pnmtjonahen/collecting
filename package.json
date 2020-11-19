@@ -14,7 +14,9 @@
     "electron": "npx cap open @capacitor-community/electron",
     "ionic:build:before": "cp ~/stack/collecting/mamiya/cards.json www/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  www/assets/data",
     "ionic:serve:before": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
-    "build:electron": "ng build --base-href ./ && npx cap copy"
+    "build:electron": "ng build --base-href ./ && npx cap copy",
+    "build:package": "electron-packager ./electron --out=out",
+    "build:snap": "electron-installer-snap --src=out/collecting-linux-x64"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +69,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "electron-installer-snap": "^5.1.0",
     "electron-packager": "^15.1.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",

@@ -35,5 +35,4 @@ export class SearchPage {
             this.navCtrl.navigateForward(`/card/${card.id}`);
         }
     }
-
 }
