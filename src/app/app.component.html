@@ -1,0 +1,28 @@
+<ion-app>
+    <ion-menu contentId="content1" side="start">
+        <ion-header color="primary">
+            <ion-toolbar>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-item *ngFor="let card of cards" class="ion-text-wrap" (click)="openPage(card)" [ngClass]="{active: isLevelShown(card.id)}">
+                    <ion-label>{{card.name}}
+                        <ion-list *ngIf="isLevelShown(card.id)">
+                            <ion-item *ngFor="let sub of card.cards" class="ion-text-wrap" (click)="openPage(sub)">
+                                <ion-avatar slot="start" *ngIf="sub.objects">
+                                    <card-image [card]="sub"></card-image>
+                                </ion-avatar>
+                                <ion-label>{{sub.name}}</ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+    <ion-nav #content [root]="rootPage"></ion-nav>
+    <ion-router-outlet id="content1"></ion-router-outlet>
+</ion-app>

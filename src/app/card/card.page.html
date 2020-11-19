@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button autoHide="false">
+                <ion-icon name="menu"></ion-icon>
+            </ion-menu-button>
+        </ion-buttons>
+        <collection-header></collection-header>
+        <ion-buttons slot="end">
+            <ion-button (click)="searchToggle()">
+                    <ion-icon name="search"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-card *ngFor="let object of current.objects">
+        <ion-slides pager loop autoplay="3000">
+            <ion-slide *ngFor="let image of object.images">
+                <card-image [object]="object" [image]="image"></card-image>
+            </ion-slide>
+        </ion-slides>
+        <ion-card-content (swipeleft)="nextCard()" (swiperight)="prevCard()">
+                <ion-card-title>{{object.name}}</ion-card-title>
+                <p *ngIf="object.content" [innerHtml]="convert(object.content) | keepHtml"></p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card  (swipeleft)="nextCard()" (swiperight)="prevCard()">
+        <ion-card-content>
+                <ion-card-title>{{current.name}}</ion-card-title>
+                <p *ngIf="current.content" [innerHtml]="convert(current.content) | keepHtml"></p>
+                <div *ngFor="let pdf of current.pdf">
+                    {{pdf.name}} - {{pdf.file}}
+                </div>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

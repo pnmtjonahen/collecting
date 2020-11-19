@@ -1,0 +1,7 @@
+{
+  "appId": "nl.tjonahen.collecting",
+  "appName": "CollectingStuff",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "linuxAndroidStudioPath":"/snap/android-studio/81/android-studio/bin/studio.sh"
+}
