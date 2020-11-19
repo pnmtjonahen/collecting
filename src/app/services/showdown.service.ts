@@ -10,12 +10,12 @@ export class ShowdownService {
     extension('internalLink', () => {
       return {
         type: 'output',
-        regex: "href=\"(.*)\"",
+        regex: 'href="(.*)"',
         replace: (match: string, content: string) => {
-          if (content.indexOf("#/") !== -1) {
-            return "href=\"javascript:gotoCard('" + content.substring(2) + "')\"";
+          if (content.indexOf('#/') !== -1) {
+            return 'href="javascript:gotoCard(\'' + content.substring(2) + '\')"';
           } else {
-              return "href=\"javascript:window.open('" + content + "', '_system', 'location=yes')\"";
+            return 'href="javascript:window.open(\'' + content + '\', \'_system\', \'location=yes\')"';
           }
           return match;
         }

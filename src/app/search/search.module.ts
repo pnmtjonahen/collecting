@@ -1,13 +1,13 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import {IonicModule} from '@ionic/angular';
-import {ComponentsModule} from 'app/components/components.module';
+import { IonicModule } from '@ionic/angular';
+import { ComponentsModule } from 'app/components/components.module';
 
 
-import {SearchPage} from './search.page';
+import { SearchPage } from './search.page';
 
 
 
@@ -26,4 +26,4 @@ import {SearchPage} from './search.page';
     ],
     declarations: [SearchPage]
 })
-export class SearchPageModule {}
+export class SearchPageModule { }

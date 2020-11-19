@@ -9,6 +9,7 @@ export interface Collection {
 }
 
 export interface CardObject {
+    name: string;
     folder: string;
     content: string;
     images: any[];
@@ -30,7 +31,7 @@ export interface Card {
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CollectionService {
     data: Collection;

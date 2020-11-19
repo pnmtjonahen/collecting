@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NavController} from '@ionic/angular';
-import {Card, CollectionService} from 'app/services/collection.service';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Card, CollectionService } from 'app/services/collection.service';
 
 @Component({
     selector: 'page-search',
@@ -8,7 +8,7 @@ import {Card, CollectionService} from 'app/services/collection.service';
     styleUrls: ['./search.page.scss'],
 })
 export class SearchPage {
-    myInput: string = '';
+    myInput = '';
     cardList: Card[] = [];
 
     constructor(private navCtrl: NavController, private collectionService: CollectionService) {
@@ -18,7 +18,15 @@ export class SearchPage {
     search() {
         this.cardList = this.collectionService.search(this.myInput);
         if (this.cardList.length === 0) {
-            this.cardList.push({id: undefined, name: "no search result.", content: undefined, normalizedContent: undefined, cards: undefined, objects: undefined, pdf: undefined});
+            this.cardList.push({
+                id: undefined,
+                name: 'no search result.',
+                content: undefined,
+                normalizedContent: undefined,
+                cards: undefined,
+                objects: undefined,
+                pdf: undefined
+            });
         }
     }
 

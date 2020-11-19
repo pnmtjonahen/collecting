@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {Platform, NavController, MenuController} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
+import { Platform, NavController, MenuController } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Card, Collection, CollectionService } from 'app/services/collection.service';
 
 // handle to this if no instance is available, like directly from outside the app

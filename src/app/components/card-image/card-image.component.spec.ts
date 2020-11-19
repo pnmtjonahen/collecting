@@ -9,10 +9,10 @@ describe('CardImageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardImageComponent ],
+      declarations: [CardImageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

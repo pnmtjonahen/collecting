@@ -1,10 +1,18 @@
-import {Component} from '@angular/core';
-import {CollectionService} from 'app/services/collection.service';
+import { Component } from '@angular/core';
+import { CollectionService } from 'app/services/collection.service';
 
 @Component({
-  selector: 'collection-header',    
-  template: '<img alt="logo" height="40"  *ngIf="getLogo() !== undefined" src="./assets/data/images/{{getLogo()}}" width="40px" style="display:inline-block" height="40px" >\n\
-<ion-title class="titleicon" style="display:inline-block" >{{getName()}}</ion-title>'
+    selector: 'collection-header',
+    template: `
+    <img
+        alt="logo"
+        height="40"
+        *ngIf="getLogo() !== undefined"
+        src="./assets/data/images/{{getLogo()}}"
+        width="40px"
+        style="display:inline-block"
+        height="40px" >
+    <ion-title class="titleicon" style="display:inline-block" >{{getName()}}</ion-title>`
 })
 export class CollectionHeaderComponent {
 

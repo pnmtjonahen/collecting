@@ -9,10 +9,10 @@ describe('CollectionHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CollectionHeaderComponent ],
+      declarations: [CollectionHeaderComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

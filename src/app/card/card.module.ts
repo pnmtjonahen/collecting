@@ -1,14 +1,14 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import {IonicModule} from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 
-import {CardPage} from './card.page';
+import { CardPage } from './card.page';
 
-import {KeepHtmlPipe} from 'app/pipes/keep-html.pipe';
-import {ComponentsModule} from 'app/components/components.module';
+import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
+import { ComponentsModule } from 'app/components/components.module';
 
 
 
@@ -30,5 +30,5 @@ import {ComponentsModule} from 'app/components/components.module';
         KeepHtmlPipe
     ]
 })
-export class CardPageModule {}
+export class CardPageModule { }
 

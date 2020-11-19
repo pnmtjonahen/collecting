@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {NavController, MenuController} from '@ionic/angular';
-import {ActivatedRoute} from '@angular/router'
+import { Component } from '@angular/core';
+import { NavController, MenuController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
-import {Card, CollectionService} from 'app/services/collection.service';
-import {ShowdownService} from 'app/services/showdown.service';
+import { Card, CollectionService } from 'app/services/collection.service';
+import { ShowdownService } from 'app/services/showdown.service';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class CardPage {
     }
 
     ionViewWillEnter() {
-        let cardId = this.route.snapshot.paramMap.get('id');
+        const cardId = this.route.snapshot.paramMap.get('id');
         this.current = this.collectionService.findCardById(cardId);
     }
     convert(text: string) {
