@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 
-import {Platform, Events, NavController, MenuController} from '@ionic/angular';
+import {Platform, NavController, MenuController} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Card, Collection, CollectionService} from 'app/services/collection.service'
+import { Card, Collection, CollectionService } from 'app/services/collection.service';
 
-var that: AppComponent;
+// handle to this if no instance is available, like directly from outside the app
+let that: AppComponent;
 
 @Component({
     selector: 'app-root',
@@ -15,28 +16,26 @@ export class AppComponent {
     cards: Card[];
     data: Collection;
     showLevel1: string = null;
-    
 
     constructor(
         public platform: Platform,
         public splashScreen: SplashScreen,
         public statusBar: StatusBar,
-        public events: Events,
         private navCtrl: NavController,
         private collectionService: CollectionService,
         public menu: MenuController
 
     ) {
         document.addEventListener('openCardEvent', this.onOpenCard, false);
-        events.subscribe('nextCard', (current: Card) => {
-            let card: Card = this.collectionService.findNextCardById(current.id);
+        this.collectionService.onNextCard().subscribe((current: Card) => {
+            const card: Card = this.collectionService.findNextCardById(current.id);
             if (card.id !== current.id) {
                 this.navCtrl.navigateRoot(`/card/${card.id}`);
             }
         });
 
-        events.subscribe('prevCard', (current: Card) => {
-            let card: Card = this.collectionService.findPrevCardById(current.id);
+        this.collectionService.onPrevCard().subscribe((current: Card) => {
+            const card: Card = this.collectionService.findPrevCardById(current.id);
             if (card.id !== current.id) {
                 this.navCtrl.navigateRoot(`/card/${card.id}`);
             }
@@ -48,8 +47,7 @@ export class AppComponent {
             collectionService.load().then((data: Collection) => {
                 this.data = data;
                 this.cards = data.cards;
-                let card: Card = data.cards[0];
-                
+                const card: Card = data.cards[0];
                 this.navCtrl.navigateRoot(`/card/${card.id}`);
                 // data is loaded, root page is set, lets hide splash
                 splashScreen.hide();
@@ -58,11 +56,12 @@ export class AppComponent {
             that = this;
         });
     }
+
     // open card from reference on page
     onOpenCard(e: CustomEvent) {
         that.navCtrl.navigateForward(`/card/${e.detail.id}`);
     }
-    
+
     // open page from menu
     openPage(card: Card): void {
         this.toggleLevel(card.id);
@@ -78,14 +77,13 @@ export class AppComponent {
         } else {
             this.showLevel1 = id;
         }
-    };
+    }
 
     isLevelShown(id: string) {
         return this.showLevel1 === id;
-    };
+    }
 
     hasSubLevel(card: Card) {
         return card.cards === undefined;
     }
-    
 }

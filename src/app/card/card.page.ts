@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Events, NavController, MenuController} from '@ionic/angular';
+import {NavController, MenuController} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router'
 
 import {Card, CollectionService} from 'app/services/collection.service';
@@ -26,7 +26,6 @@ export class CardPage {
     logo: string;
 
     constructor(
-        private events: Events,
         private nav: NavController,
         private collectionService: CollectionService,
         private showdownService: ShowdownService,
@@ -46,10 +45,10 @@ export class CardPage {
     }
 
     nextCard() {
-        this.events.publish('nextCard', this.current);
+        this.collectionService.nextCard(this.current);
     }
     prevCard() {
-        this.events.publish('prevCard', this.current);
+        this.collectionService.prevCard(this.current);
     }
 
     searchToggle() {

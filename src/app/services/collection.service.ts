@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 
 export interface Collection {
     name: string;
@@ -34,6 +35,10 @@ export interface Card {
 export class CollectionService {
     data: Collection;
     contentCards: Card[] = [];
+
+    nextCardSubject: Subject<Card> = new Subject<Card>();
+    prevCardSubject: Subject<Card> = new Subject<Card>();
+
     constructor(private http: HttpClient) {
 
     }
@@ -58,8 +63,8 @@ export class CollectionService {
 
     private makeContent(card: Card) {
         if (Array.isArray(card.content)) {
-            var content = "";
-            card.content.forEach(c => { content = content + c + "\n"; });
+            let content = '';
+            card.content.forEach(c => { content = content + c + '\n'; });
             card.content = content;
             card.normalizedContent = card.content.toLowerCase();
         }
@@ -71,31 +76,31 @@ export class CollectionService {
         if (card.objects) {
             card.objects.forEach(o => {
                 if (Array.isArray(o.content)) {
-                    var content = "";
-                    o.content.forEach(c => { content = content + c + "\n"; });
+                    let content = '';
+                    o.content.forEach(c => { content = content + c + '\n'; });
                     o.content = content;
-                    card.normalizedContent += " " + content.toLowerCase();
+                    card.normalizedContent += ' ' + content.toLowerCase();
                 }
             });
         } else {
             card.objects = [];
         }
 
-        card.normalizedContent = this.normalizeContent(card) + " " + card.name.toLowerCase();
+        card.normalizedContent = this.normalizeContent(card) + ' ' + card.name.toLowerCase();
     }
 
     private normalizeContent(card: Card) {
         if (card.normalizedContent !== undefined) {
             return card.normalizedContent.replace(/(\b(\w{1,3})\b(\W|$))/g, '');
         }
-        return "";
+        return '';
     }
 
     private findIndexById(id: string) {
         if (id === undefined) {
             return 0;
         }
-        var index: number = 0;
+        let index = 0;
         this.contentCards.forEach((c, i) => {
             if (c.id === id) {
                 index = i;
@@ -108,7 +113,7 @@ export class CollectionService {
         if (id === undefined) {
             return this.data.cards[0];
         }
-        var card: Card = this.data.cards[0];
+        let card: Card = this.data.cards[0];
         this.data.cards.forEach(c => {
             if (c.id === id) {
                 card = c;
@@ -125,7 +130,7 @@ export class CollectionService {
     }
 
     findNextCardById(id: string) {
-        let nextIndex: number = this.findIndexById(id) + 1;
+        const nextIndex: number = this.findIndexById(id) + 1;
         if (nextIndex > this.contentCards.length - 1) {
             return this.contentCards[0];
         }
@@ -134,7 +139,7 @@ export class CollectionService {
     }
 
     findPrevCardById(id: string) {
-        let prevIndex: number = this.findIndexById(id) - 1;
+        const prevIndex: number = this.findIndexById(id) - 1;
         if (prevIndex < 0) {
             return this.contentCards[this.contentCards.length - 1];
         }
@@ -142,7 +147,7 @@ export class CollectionService {
     }
 
     search(argument: string) {
-        let result: Card[] = [];
+        const result: Card[] = [];
         if (argument.length >= 1) {
             this.contentCards.forEach(c => {
                 if (c.normalizedContent.includes(argument.toLowerCase())) {
@@ -153,19 +158,35 @@ export class CollectionService {
 
         return result;
     }
-    
-    getLogo() {
+
+    getLogo(): string {
         if (this.data === undefined) {
             return undefined;
         }
         return this.data.logo;
     }
-    
-    getName() {
+
+    getName(): string {
         if (this.data === undefined) {
-            return "loading...";
+            return 'loading...';
         }
         return this.data.name;
     }
-    
+
+
+    nextCard(card: Card) {
+        this.nextCardSubject.next(card);
+    }
+
+    onNextCard(): Subject<Card> {
+        return this.nextCardSubject;
+    }
+
+    prevCard(card: Card) {
+        this.prevCardSubject.next(card);
+    }
+
+    onPrevCard(): Subject<Card> {
+        return this.prevCardSubject;
+    }
 }
