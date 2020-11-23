@@ -30,14 +30,14 @@ export class AppComponent {
         this.collectionService.onNextCard().subscribe((current: Card) => {
             const card: Card = this.collectionService.findNextCardById(current.id);
             if (card.id !== current.id) {
-                this.navCtrl.navigateRoot(`/card/${card.id}`);
+                this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
             }
         });
 
         this.collectionService.onPrevCard().subscribe((current: Card) => {
             const card: Card = this.collectionService.findPrevCardById(current.id);
             if (card.id !== current.id) {
-                this.navCtrl.navigateRoot(`/card/${card.id}`);
+                this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
             }
         });
 
@@ -48,7 +48,7 @@ export class AppComponent {
                 this.data = data;
                 this.cards = data.cards;
                 const card: Card = data.cards[0];
-                this.navCtrl.navigateRoot(`/card/${card.id}`);
+                this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
                 // data is loaded, root page is set, lets hide splash
                 splashScreen.hide();
             });
@@ -59,7 +59,7 @@ export class AppComponent {
 
     // open card from reference on page
     onOpenCard(e: CustomEvent) {
-        that.navCtrl.navigateForward(`/card/${e.detail.id}`);
+        that.navCtrl.navigateForward(`/card/${e.detail.id}`, {skipLocationChange: true});
     }
 
     // open page from menu
@@ -67,7 +67,7 @@ export class AppComponent {
         this.toggleLevel(card.id);
         if (this.hasSubLevel(card)) {
             this.menu.close();
-            this.navCtrl.navigateRoot(`/card/${card.id}`);
+            this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
         }
     }
 

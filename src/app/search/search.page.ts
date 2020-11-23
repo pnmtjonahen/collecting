@@ -32,7 +32,7 @@ export class SearchPage {
 
     gotoCard(card: Card) {
         if (card.id !== undefined) {
-            this.navCtrl.navigateForward(`/card/${card.id}`);
+            this.navCtrl.navigateForward(`/card/${card.id}`, {skipLocationChange: true});
         }
     }
 }

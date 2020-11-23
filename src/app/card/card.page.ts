@@ -52,7 +52,7 @@ export class CardPage {
     }
 
     searchToggle() {
-        this.nav.navigateForward('/search');
+        this.nav.navigateForward('/search', {skipLocationChange: true});
     }
 
     menuToggle() {
