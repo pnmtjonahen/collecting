@@ -12,5 +12,11 @@ see https://capacitor-community.github.io/electron/#/./getting-started/index
 npm run build
 npx cap add @capacitor-community/electron
 npx cap open @capacitor-community/electron
+```
 
+## Docker
+
+```bash
+docker build -t tjonahen/collecting:latest -t registry.tjonahen.home:5000/tjonahen/collecting .
+docker push registry.tjonahen.home:5000/tjonahen/collecting
 ```
