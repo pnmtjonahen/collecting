@@ -4,20 +4,11 @@
   "author": "Philippe Tjon-A-Hen",
   "homepage": "http://www.tjonahen.nl/",
   "scripts": {
-    "ng": "ng",
     "update-assets": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
     "start": "ng serve",
     "build:before": "cp src/assets/data/cards.json www/assets/data/; rsync -a src/assets/data  www/assets/data",
     "build": "ng build",
-    "build:prod": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "electron:add": "npx cap add @capacitor-community/electron",
-    "electron": "npx cap open @capacitor-community/electron",
-    "build:electron": "ng build --base-href ./ && npx cap copy",
-    "build:package": "electron-packager ./electron --out=out",
-    "build:snap": "electron-installer-snap --src=out/collecting-linux-x64"
+    "test": "ng test --no-watch"
   },
   "private": true,
   "dependencies": {
@@ -62,9 +53,7 @@
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "protractor": "7.0.0",
     "ts-node": "10.9.1",
-    "tslint": "6.1.3",
     "typescript": "4.9.3"
   },
   "description": "A Collecting Stuff management application"
