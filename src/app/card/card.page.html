@@ -5,7 +5,7 @@
                 <ion-icon name="menu"></ion-icon>
             </ion-menu-button>
         </ion-buttons>
-        <collection-header></collection-header>
+        <app-collection-header></app-collection-header>
         <ion-buttons slot="end">
             <ion-button (click)="searchToggle()">
                 <ion-icon name="search"></ion-icon>
@@ -18,7 +18,7 @@
     <ion-card *ngFor="let object of current.objects">
         <swiper-container pager loop autoplay="3000" navigation>
             <swiper-slide *ngFor="let image of object.images">
-                <card-image [object]="object" [image]="image"></card-image>
+                <app-card-image [object]="object" [image]="image"></app-card-image>
             </swiper-slide>
         </swiper-container>
         <ion-card-content (swipeleft)="nextCard()" (swiperight)="prevCard()">

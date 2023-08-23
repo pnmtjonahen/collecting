@@ -4,8 +4,6 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG, BrowserModule, HammerModule
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-// import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -18,8 +16,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CardPageModule } from './card/card.module';
-import { SearchPageModule } from './search/search.module';
+import { CardPageModule } from './card/card.page.module';
+import { SearchPageModule } from './search/search.page.module';
 import { ComponentsModule } from './components/components.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 export class HammerConfig extends HammerGestureConfig {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   overrides: any = <any>{
     'pinch': { enable: false },
     'rotate': { enable: false }
@@ -37,7 +36,6 @@ export class HammerConfig extends HammerGestureConfig {
   declarations: [
     AppComponent
   ],
-//   entryComponents: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -61,8 +59,6 @@ export class HammerConfig extends HammerGestureConfig {
     HammerModule
   ],
   providers: [
-    // StatusBar,
-    // SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig }
   ],

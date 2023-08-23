@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CardPage } from './card.page';
+import { CardPageComponent } from './card.page';
 
 import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
 import { ComponentsModule } from 'app/components/components.module';
@@ -20,13 +20,13 @@ import { ComponentsModule } from 'app/components/components.module';
         RouterModule.forChild([
             {
                 path: '',
-                component: CardPage
+                component: CardPageComponent
             }
         ]),
         ComponentsModule
     ],
     declarations: [
-        CardPage,
+        CardPageComponent,
         KeepHtmlPipe
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

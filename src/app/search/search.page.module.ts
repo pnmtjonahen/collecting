@@ -7,9 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from 'app/components/components.module';
 
 
-import { SearchPage } from './search.page';
-
-
+import { SearchPageComponent } from './search.page';
 
 @NgModule({
     imports: [
@@ -19,11 +17,11 @@ import { SearchPage } from './search.page';
         RouterModule.forChild([
             {
                 path: '',
-                component: SearchPage
+                component: SearchPageComponent
             }
         ]),
         ComponentsModule
     ],
-    declarations: [SearchPage]
+    declarations: [SearchPageComponent]
 })
 export class SearchPageModule { }

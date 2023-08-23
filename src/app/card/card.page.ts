@@ -9,11 +9,11 @@ import { register } from 'swiper/element/bundle';
 register();
 
 @Component({
-    selector: 'app-card',
+    // selector: 'app-card',
     templateUrl: './card.page.html',
     styleUrls: ['./card.page.scss'],
 })
-export class CardPage {
+export class CardPageComponent {
 
     current: Card = {
         id: 'loading',

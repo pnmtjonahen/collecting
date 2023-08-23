@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -5,12 +7,12 @@ import { NavController, Platform } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { CollectionService } from './services/collection.service';
-import { Subject, of } from 'rxjs';
+import { Subject, } from 'rxjs';
 
 export class NavMock {
-    public navigateBack: Function = (url: string | any[], options: any) => { };
-    public navigateForward: Function = (url: string | any[], options: any) => { };
-    public navigateRoot: Function = (url: string | any[], options: any) => { };
+    public navigateBack: (url: string | any[], options: any) => { };
+    public navigateForward: (url: string | any[], options: any) => { };
+    public navigateRoot: (url: string | any[], options: any) => { };
 }
 
 describe('AppComponent', () => {

@@ -14,7 +14,7 @@ export class AppComponent {
     cards: Card[];
     data: Collection;
     showLevel1: string = null;
-    @ViewChild('appmenu') appmenu: any;
+    @ViewChild('appmenu') appmenu: unknown;
 
     constructor(
         public platform: Platform,
@@ -48,6 +48,7 @@ export class AppComponent {
                 const card: Card = data.cards[0];
                 this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
             });
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             that = this;
         });
     }

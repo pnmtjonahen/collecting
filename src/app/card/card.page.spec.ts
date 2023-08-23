@@ -1,21 +1,21 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CardPage } from './card.page';
+import { CardPageComponent } from './card.page';
 import { CollectionService } from 'app/services/collection.service';
 import { BehaviorSubject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
 
 describe('CardPage', () => {
-    let component: CardPage;
-    let fixture: ComponentFixture<CardPage>;
+    let component: CardPageComponent;
+    let fixture: ComponentFixture<CardPageComponent>;
     const collectionServiceMock = jasmine.createSpyObj(CollectionService, ['findCardById', 'getName', 'getLogo'])
-    const activatedRouteStub = { queryParams: new BehaviorSubject<any>({}) };
+    const activatedRouteStub = { queryParams: new BehaviorSubject<Params>({}) };
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CardPage, KeepHtmlPipe],
+            declarations: [CardPageComponent, KeepHtmlPipe],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             providers: [
                 { provide: CollectionService, useValue: collectionServiceMock },
@@ -27,7 +27,7 @@ describe('CardPage', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CardPage);
+        fixture = TestBed.createComponent(CardPageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

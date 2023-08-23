@@ -13,7 +13,7 @@
                         <ion-list *ngIf="isLevelShown(card.id)">
                             <ion-item *ngFor="let sub of card.cards" class="ion-text-wrap" (click)="openPage(sub)">
                                 <ion-avatar slot="start" *ngIf="sub.objects">
-                                    <card-image [card]="sub"></card-image>
+                                    <app-card-image [card]="sub"></app-card-image>
                                 </ion-avatar>
                                 <ion-label>{{sub.name}}</ion-label>
                             </ion-item>

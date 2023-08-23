@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CollectionService } from 'app/services/collection.service';
 
 @Component({
-    selector: 'collection-header',
+    selector: 'app-collection-header',
     template: `
     <img
         alt="logo"

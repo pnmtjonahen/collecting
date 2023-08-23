@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export interface Collection {
     name: string;
@@ -12,7 +12,7 @@ export interface CardObject {
     name: string;
     folder: string;
     content: string;
-    images: any[];
+    images: string[];
 }
 
 export interface Pdf {
@@ -44,7 +44,7 @@ export class CollectionService {
 
     }
 
-    load(): any {
+    load(): Promise<Collection> {
         if (this.data) {
             // already loaded data
             return Promise.resolve(this.data);
@@ -53,7 +53,7 @@ export class CollectionService {
             this.http.get('assets/data/cards.json').subscribe(data => {
                 this.data = <Collection>data;
                 this.process(this.data);
-                resolve(data);
+                resolve(this.data);
             });
         });
     }

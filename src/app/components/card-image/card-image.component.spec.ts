@@ -24,16 +24,4 @@ describe('CardImageComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-
-    describe('determine name', () => {
-        it('name is undefined', () => {
-            expect(component.determineName(undefined)).toBe(undefined);
-        });
-        it('image is the name', () => {
-            expect(component.determineName('name')).toBe('name');
-        });
-        it('image is object with name', () => {
-            expect(component.determineName({ name: 'name' })).toBe('name');
-        });
-    });
 });

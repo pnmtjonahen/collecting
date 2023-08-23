@@ -3,11 +3,10 @@ import { NavController } from '@ionic/angular';
 import { Card, CollectionService } from 'app/services/collection.service';
 
 @Component({
-    selector: 'page-search',
     templateUrl: './search.page.html',
     styleUrls: ['./search.page.scss'],
 })
-export class SearchPage {
+export class SearchPageComponent {
     myInput = '';
     cardList: Card[] = [];
 
