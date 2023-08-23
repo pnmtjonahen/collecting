@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Card, CollectionService } from 'app/services/collection.service';
 import { ShowdownService } from 'app/services/showdown.service';
+import { register } from 'swiper/element/bundle';
 
+register();
 
 @Component({
     selector: 'app-card',
@@ -29,7 +31,7 @@ export class CardPage {
         private nav: NavController,
         private collectionService: CollectionService,
         private showdownService: ShowdownService,
-        private route: ActivatedRoute,
+        private activatedRoute: ActivatedRoute,
         private menuCtrl: MenuController) {
 
         this.name = this.collectionService.getName();
@@ -37,7 +39,7 @@ export class CardPage {
     }
 
     ionViewWillEnter() {
-        const cardId = this.route.snapshot.paramMap.get('id');
+        const cardId = this.activatedRoute.snapshot.paramMap.get('id');
         this.current = this.collectionService.findCardById(cardId);
     }
     convert(text: string) {

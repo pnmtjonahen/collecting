@@ -4,8 +4,8 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG, BrowserModule, HammerModule
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+// import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -37,7 +37,7 @@ export class HammerConfig extends HammerGestureConfig {
   declarations: [
     AppComponent
   ],
-  entryComponents: [AppComponent],
+//   entryComponents: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -61,8 +61,8 @@ export class HammerConfig extends HammerGestureConfig {
     HammerModule
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
+    // StatusBar,
+    // SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig }
   ],

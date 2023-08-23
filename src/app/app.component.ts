@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 
 import { Platform, NavController, MenuController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Card, Collection, CollectionService } from 'app/services/collection.service';
 
 // handle to this if no instance is available, like directly from outside the app
@@ -16,14 +14,14 @@ export class AppComponent {
     cards: Card[];
     data: Collection;
     showLevel1: string = null;
+    @ViewChild('appmenu') appmenu: any;
 
     constructor(
         public platform: Platform,
-        public splashScreen: SplashScreen,
-        public statusBar: StatusBar,
         private navCtrl: NavController,
         private collectionService: CollectionService,
-        public menu: MenuController
+        public menu: MenuController,
+        private renderer: Renderer2
 
     ) {
         document.addEventListener('openCardEvent', this.onOpenCard, false);
@@ -49,10 +47,7 @@ export class AppComponent {
                 this.cards = data.cards;
                 const card: Card = data.cards[0];
                 this.navCtrl.navigateRoot(`/card/${card.id}`, {skipLocationChange: true});
-                // data is loaded, root page is set, lets hide splash
-                splashScreen.hide();
             });
-            statusBar.styleDefault();
             that = this;
         });
     }

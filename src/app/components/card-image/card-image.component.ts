@@ -3,7 +3,7 @@ import { Card, CardObject } from 'app/services/collection.service';
 
 @Component({
     selector: 'card-image',
-    template: '<img *ngIf="imageSrc !== undefined" src="{{imageSrc}}" alt="{{alt}}"/>'
+    template: '<img *ngIf="imageSrc !== undefined" src="{{imageSrc}}" alt="{{alt}}" style="margin-left: auto; margin-right: auto; display: block;"/>'
 })
 export class CardImageComponent implements OnInit {
 
@@ -17,28 +17,17 @@ export class CardImageComponent implements OnInit {
     imageSrc: string;
     alt: string;
 
-    constructor() {
-    }
-
-    ngOnInit() {
+    ngOnInit(): void {
         let folder: string;
         let name: string;
 
         if (this.object) {
-            folder = (this.object.folder === undefined) ? '' : this.object.folder;
-            name = this.object.images[0] === undefined
-                ? undefined
-                : this.object.images[0].name === undefined
-                    ? this.object.images[0]
-                    : this.object.images[0].name;
+            folder = this.object.folder ?? '';
+            name = this.determineName(this.object.images[0]);
         }
-        if (this.card && this.card.objects[0] !== undefined) {
-            folder = this.card.objects[0].folder === undefined ? '' : this.card.objects[0].folder;
-            name = this.card.objects[0].images[0] === undefined
-                ? undefined
-                : this.card.objects[0].images[0].name === undefined
-                    ? this.card.objects[0].images[0]
-                    : this.card.objects[0].images[0].name;
+        if (this.card?.objects[0]) {
+            folder = this.card.objects[0].folder ?? '';
+            name = this.determineName(this.card.objects[0].images[0]);
         }
         if (this.image) {
             name = this.image.name === undefined ? this.image : this.image.name;
@@ -49,4 +38,7 @@ export class CardImageComponent implements OnInit {
         }
     }
 
+    determineName(firstImage: any): string {
+        return firstImage?.name ?? firstImage;
+    }
 }
