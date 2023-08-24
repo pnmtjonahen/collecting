@@ -13,12 +13,12 @@ describe('SearchPage', () => {
     beforeEach(waitForAsync(() => {
         collectionServiceMock.search.and.returnValue(of());
         TestBed.configureTestingModule({
-            declarations: [SearchPageComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [
-                { provide: CollectionService, useValue: collectionServiceMock }
-            ],
-        })
+    imports: [SearchPageComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [
+        { provide: CollectionService, useValue: collectionServiceMock }
+    ],
+})
             .compileComponents();
     }));
 

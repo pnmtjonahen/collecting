@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card, CardObject } from 'app/services/collection.service';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-card-image',
-    template: '<img *ngIf="imageSrc !== undefined" src="{{imageSrc}}" alt="{{alt}}" style="margin-left: auto; margin-right: auto; display: block;"/>'
+    template: '<img *ngIf="imageSrc !== undefined" src="{{imageSrc}}" alt="{{alt}}" style="margin-left: auto; margin-right: auto; display: block;"/>',
+    standalone: true,
+    imports: [NgIf]
 })
 export class CardImageComponent implements OnInit {
 

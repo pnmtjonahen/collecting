@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CardPageModule } from './card/card.page.module';
 import { SearchPageModule } from './search/search.page.module';
-import { ComponentsModule } from './components/components.module';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,36 +32,4 @@ export class HammerConfig extends HammerGestureConfig {
   };
 }
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    DragDropModule,
-    ScrollingModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSortModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    CardPageModule,
-    SearchPageModule,
-    ComponentsModule,
-    BrowserAnimationsModule,
-    HammerModule
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+

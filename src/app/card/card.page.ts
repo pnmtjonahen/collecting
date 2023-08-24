@@ -1,17 +1,30 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController } from '@ionic/angular';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { NavController, MenuController, IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 import { Card, CollectionService } from 'app/services/collection.service';
 import { ShowdownService } from 'app/services/showdown.service';
 import { register } from 'swiper/element/bundle';
+import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
+import { CardImageComponent } from '../components/card-image/card-image.component';
+import { NgFor, NgIf } from '@angular/common';
+import { CollectionHeaderComponent } from '../components/collection-header/collection-header.component';
 
 register();
 
 @Component({
     // selector: 'app-card',
     templateUrl: './card.page.html',
-    styleUrls: ['./card.page.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        CollectionHeaderComponent,
+        NgFor,
+        CardImageComponent,
+        NgIf,
+        KeepHtmlPipe,
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class CardPageComponent {
 

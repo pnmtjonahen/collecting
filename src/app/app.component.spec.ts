@@ -7,7 +7,8 @@ import { NavController, Platform } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { CollectionService } from './services/collection.service';
-import { Subject, } from 'rxjs';
+import { BehaviorSubject, Subject, } from 'rxjs';
+import { ActivatedRoute, Params } from '@angular/router';
 
 export class NavMock {
     public navigateBack: (url: string | any[], options: any) => { };
@@ -25,16 +26,18 @@ describe('AppComponent', () => {
         const collectionServiceMock = jasmine.createSpyObj(CollectionService, ['onNextCard', 'findNextCardById', 'onPrevCard', 'findPrevCardById', 'load'])
         collectionServiceMock.onNextCard.and.returnValue(new Subject());
         collectionServiceMock.onPrevCard.and.returnValue(new Subject());
+        const activatedRouteStub = { queryParams: new BehaviorSubject<Params>({}) };
 
         TestBed.configureTestingModule({
-            declarations: [AppComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [
-                { provide: CollectionService, useValue: collectionServiceMock },
-                { provide: Platform, useValue: platformSpy },
-                { provide: NavController, useClass: NavMock }
-            ],
-        }).compileComponents();
+    imports: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [
+        { provide: CollectionService, useValue: collectionServiceMock },
+        { provide: Platform, useValue: platformSpy },
+        { provide: NavController, useClass: NavMock },
+        { provide: ActivatedRoute, useValue: activatedRouteStub }
+    ],
+}).compileComponents();
     }));
 
     it('should create the app', () => {

@@ -9,9 +9,9 @@ describe('CardImageComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CardImageComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        })
+    imports: [CardImageComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
             .compileComponents();
     }));
 

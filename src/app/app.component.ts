@@ -1,14 +1,18 @@
 import { Component, ViewChild, Renderer2 } from '@angular/core';
 
-import { Platform, NavController, MenuController } from '@ionic/angular';
+import { Platform, NavController, MenuController, IonicModule } from '@ionic/angular';
 import { Card, Collection, CollectionService } from 'app/services/collection.service';
+import { NgFor, NgClass, NgIf } from '@angular/common';
+import { CardImageComponent } from './components/card-image/card-image.component';
 
 // handle to this if no instance is available, like directly from outside the app
 let that: AppComponent;
 
 @Component({
     selector: 'app-root',
-    templateUrl: 'app.component.html'
+    templateUrl: 'app.component.html',
+    standalone: true,
+    imports: [IonicModule, NgFor, NgClass, NgIf, CardImageComponent]
 })
 export class AppComponent {
     cards: Card[];

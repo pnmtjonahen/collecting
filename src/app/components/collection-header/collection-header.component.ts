@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CollectionService } from 'app/services/collection.service';
+import { IonicModule } from '@ionic/angular';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-collection-header',
@@ -12,7 +14,9 @@ import { CollectionService } from 'app/services/collection.service';
         width="40px"
         style="display:inline-block"
         height="40px" >
-    <ion-title class="titleicon" style="display:inline-block" >{{getName()}}</ion-title>`
+    <ion-title class="titleicon" style="display:inline-block" >{{getName()}}</ion-title>`,
+    standalone: true,
+    imports: [NgIf, IonicModule]
 })
 export class CollectionHeaderComponent {
 

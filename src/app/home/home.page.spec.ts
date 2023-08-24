@@ -9,9 +9,9 @@ describe('HomePage', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [HomePageComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        })
+    imports: [HomePageComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
             .compileComponents();
     }));
 

@@ -8,27 +8,24 @@ import { IonicModule } from '@ionic/angular';
 import { CardPageComponent } from './card.page';
 
 import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
-import { ComponentsModule } from 'app/components/components.module';
+
 
 
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: CardPageComponent
-            }
-        ]),
-        ComponentsModule
-    ],
-    declarations: [
-        CardPageComponent,
-        KeepHtmlPipe
-    ],
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild([
+        {
+            path: '',
+            component: CardPageComponent
+        }
+    ]),
+    CardPageComponent,
+    KeepHtmlPipe
+],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CardPageModule { }

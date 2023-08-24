@@ -15,14 +15,13 @@ describe('CardPage', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [CardPageComponent, KeepHtmlPipe],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [
-                { provide: CollectionService, useValue: collectionServiceMock },
-                { provide: ActivatedRoute, useValue: activatedRouteStub }
-            ],
-
-        })
+    imports: [CardPageComponent, KeepHtmlPipe],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [
+        { provide: CollectionService, useValue: collectionServiceMock },
+        { provide: ActivatedRoute, useValue: activatedRouteStub }
+    ],
+})
             .compileComponents();
     }));
 

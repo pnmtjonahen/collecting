@@ -12,12 +12,12 @@ describe('CollectionHeaderComponent', () => {
         collectionServiceMock.getName.and.returnValue('name');
         collectionServiceMock.getLogo.and.returnValue('logo');
         TestBed.configureTestingModule({
-            declarations: [CollectionHeaderComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [
-                { provide: CollectionService, useValue: collectionServiceMock }
-            ],
-        })
+    imports: [CollectionHeaderComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [
+        { provide: CollectionService, useValue: collectionServiceMock }
+    ],
+})
             .compileComponents();
     }));
 

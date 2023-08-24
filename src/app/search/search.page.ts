@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, IonicModule } from '@ionic/angular';
 import { Card, CollectionService } from 'app/services/collection.service';
+import { CardImageComponent } from '../components/card-image/card-image.component';
+import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     templateUrl: './search.page.html',
-    styleUrls: ['./search.page.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        FormsModule,
+        NgFor,
+        NgIf,
+        CardImageComponent,
+    ],
 })
 export class SearchPageComponent {
     myInput = '';
