@@ -1,9 +1,7 @@
 import 'hammerjs';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { importProvidersFrom } from '@angular/core';
 
 import { HammerConfig } from './app/app.module';
-import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SearchPageModule } from './app/search/search.page.module';
@@ -21,13 +19,10 @@ import { MatInputModule } from '@angular/material/input';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app/app-routing.module';
-import { HAMMER_GESTURE_CONFIG, HammerGestureConfig, BrowserModule, HammerModule, bootstrapApplication } from '@angular/platform-browser';
+import { HAMMER_GESTURE_CONFIG, BrowserModule, HammerModule, bootstrapApplication } from '@angular/platform-browser';
 import { IonicRouteStrategy, IonicModule } from '@ionic/angular';
 import { RouteReuseStrategy } from '@angular/router';
 
-if (environment.production) {
-  enableProdMode();
-}
 
 bootstrapApplication(AppComponent, {
     providers: [

@@ -18,3 +18,4 @@ electron/
 android/
 out/
 .angular/
+.vscode/

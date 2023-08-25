@@ -5,13 +5,12 @@
   "homepage": "http://www.tjonahen.nl/",
   "scripts": {
     "update-assets": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
-    "start": "ng serve",
+    "start": "nx serve",
     "build:post": "cp src/assets/data/cards.json www/assets/data/; rsync -a src/assets/data  www/assets/data",
-    "build": "ng build",
-    "test": "ng test --no-watch",
-    "lint": "ng lint",
+    "build": "nx build",
+    "test": "nx test --no-watch",
+    "lint": "nx lint",
     "deploy": "rsync -a www  ~/temp/cameras"
-
   },
   "private": true,
   "dependencies": {
@@ -50,6 +49,9 @@
     "@angular/language-service": "16.2.1",
     "@ionic/angular-toolkit": "^10.0.0",
     "@ionic/lab": "3.2.15",
+    "@nx/angular": "16.5.1",
+    "@nx/workspace": "16.5.1",
+    "@schematics/angular": "16.2.0",
     "@types/jasmine": "4.3.5",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "20.5.2",
@@ -64,6 +66,8 @@
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
+    "nx": "16.5.1",
+    "nx-cloud": "latest",
     "ts-node": "10.9.1",
     "typescript": "4.9.3"
   },
