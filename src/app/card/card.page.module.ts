@@ -9,9 +9,6 @@ import { CardPageComponent } from './card.page';
 
 import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
 
-
-
-
 @NgModule({
     imports: [
     CommonModule,

@@ -7,8 +7,12 @@ describe('KeepHtmlPipe', () => {
     beforeEach(() => {
         sanitizerSpy = jasmine.createSpyObj(DomSanitizer, ['bypassSecurityTrustHtml']);
     });
-    it('create an instance', () => {
+
+    it('calls the sanitizer on transform', () => {
+        sanitizerSpy.bypassSecurityTrustHtml.and.returnValue('sanitized');
         const pipe = new KeepHtmlPipe(sanitizerSpy);
-        expect(pipe).toBeTruthy();
+        expect(pipe.transform('sample')).toEqual('sanitized');
+        expect(sanitizerSpy.bypassSecurityTrustHtml).toHaveBeenCalledWith('sample');
     });
+
 });

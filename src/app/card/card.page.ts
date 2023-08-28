@@ -9,6 +9,7 @@ import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
 import { CardImageComponent } from '../components/card-image/card-image.component';
 import { NgFor, NgIf } from '@angular/common';
 import { CollectionHeaderComponent } from '../components/collection-header/collection-header.component';
+import { PdfLinkComponent } from 'app/components/pdf-link/pdf-link.component';
 
 register();
 
@@ -23,6 +24,7 @@ register();
         CardImageComponent,
         NgIf,
         KeepHtmlPipe,
+        PdfLinkComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
@@ -55,8 +57,8 @@ export class CardPageComponent {
         const cardId = this.activatedRoute.snapshot.paramMap.get('id');
         this.current = this.collectionService.findCardById(cardId);
     }
-    convert(text: string) {
-        return this.showdownService.makeHtml(text);
+    convert(text: string| string[]) {
+        return this.showdownService.makeHtml(text as string);
     }
 
     nextCard() {

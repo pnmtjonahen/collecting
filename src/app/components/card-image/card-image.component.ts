@@ -21,9 +21,8 @@ export class CardImageComponent implements OnInit {
     alt: string;
 
     ngOnInit(): void {
-        let folder: string;
+        let folder = '';
         let name: string;
-
         if (this.object) {
             folder = this.object.folder ?? '';
             name = this.object.images[0];

@@ -32,7 +32,7 @@
             <ion-card-title>{{current.name}}</ion-card-title>
             <p *ngIf="current.content" [innerHtml]="convert(current.content) | keepHtml"></p>
             <div *ngFor="let pdf of current.pdf">
-                {{pdf.name}} - {{pdf.file}}
+                <app-pdf-link [pdf]="pdf"></app-pdf-link><br/>
             </div>
         </ion-card-content>
     </ion-card>

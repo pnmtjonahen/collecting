@@ -4,11 +4,12 @@
   "author": "Philippe Tjon-A-Hen",
   "homepage": "http://www.tjonahen.nl/",
   "scripts": {
-    "update-assets": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
+    "update-assets": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; cp ~/stack/collecting/mamiya/*.pdf src/assets/data/; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
     "start": "nx serve",
     "build:post": "cp src/assets/data/cards.json www/assets/data/; rsync -a src/assets/data  www/assets/data",
     "build": "nx build",
-    "test": "nx test --no-watch",
+    "test": "nx test --no-watch --code-coverage",
+    "test:watch": "nx test --code-coverage",
     "lint": "nx lint",
     "deploy": "rsync -a www  ~/temp/cameras"
   },
@@ -62,6 +63,7 @@
     "jasmine-core": "4.0.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.2",
+    "karma-coverage": "2.2.1",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",

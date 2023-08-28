@@ -15,9 +15,8 @@ export class ShowdownService {
                     if (content.indexOf('#/') !== -1) {
                         return 'href="javascript:gotoCard(\'' + content.substring(2) + '\')"';
                     } else {
-                        return 'href="javascript:window.open(\'' + content + '\', \'_system\', \'location=yes\')"';
+                        return 'href="javascript:window.open(\'' + content + '\', \'_blank\')"';
                     }
-                    return match;
                 }
             };
         });

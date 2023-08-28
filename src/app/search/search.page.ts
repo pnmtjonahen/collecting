@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     ],
 })
 export class SearchPageComponent {
-    myInput = '';
+    searchInput = '';
     cardList: Card[] = [];
 
     constructor(private navCtrl: NavController, private collectionService: CollectionService) {
@@ -25,7 +25,7 @@ export class SearchPageComponent {
     }
 
     search() {
-        this.cardList = this.collectionService.search(this.myInput);
+        this.cardList = this.collectionService.search(this.searchInput);
         if (this.cardList.length === 0) {
             this.cardList.push({
                 id: undefined,
