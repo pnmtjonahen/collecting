@@ -1,27 +1,25 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CollectionHeaderComponent } from './collection-header.component';
+import { CollectionService } from 'app/services/collection.service';
 
 describe('CollectionHeaderComponent', () => {
-  let component: CollectionHeaderComponent;
-  let fixture: ComponentFixture<CollectionHeaderComponent>;
+    let component: CollectionHeaderComponent;
+    const collectionServiceMock = jasmine.createSpyObj(CollectionService, ['getName', 'getLogo'])
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [CollectionHeaderComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    beforeEach(() => {
+        collectionServiceMock.getName.and.returnValue('name');
+        collectionServiceMock.getLogo.and.returnValue('logo');
+        component = new CollectionHeaderComponent(collectionServiceMock);
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('should contain the logo', () => {
+        expect(component.logo).toEqual('logo');
     })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CollectionHeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should contain the name', () => {
+        expect(component.name).toEqual('name');
+    })
 });

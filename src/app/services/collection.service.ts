@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export interface Collection {
     name: string;
@@ -11,8 +11,8 @@ export interface Collection {
 export interface CardObject {
     name: string;
     folder: string;
-    content: string;
-    images: any[];
+    content?: string | string[];
+    images: string[];
 }
 
 export interface Pdf {
@@ -23,11 +23,11 @@ export interface Pdf {
 export interface Card {
     id: string;
     name: string;
-    content: string;
-    normalizedContent: string;
-    cards: Card[];
-    objects: CardObject[];
-    pdf: Pdf[];
+    content: string | string[];
+    normalizedContent?: string;
+    cards?: Card[];
+    objects?: CardObject[];
+    pdf?: Pdf[];
 }
 
 @Injectable({
@@ -37,23 +37,23 @@ export class CollectionService {
     data: Collection;
     contentCards: Card[] = [];
 
-    nextCardSubject: Subject<Card> = new Subject<Card>();
-    prevCardSubject: Subject<Card> = new Subject<Card>();
+    private nextCardSubject: Subject<Card> = new Subject<Card>();
+    private prevCardSubject: Subject<Card> = new Subject<Card>();
 
     constructor(private http: HttpClient) {
 
     }
 
-    load(): any {
+    load(): Promise<Collection> {
         if (this.data) {
-            // already loaded data
+            // already loaded and processed data
             return Promise.resolve(this.data);
         }
         return new Promise(resolve => {
             this.http.get('assets/data/cards.json').subscribe(data => {
                 this.data = <Collection>data;
                 this.process(this.data);
-                resolve(data);
+                resolve(this.data);
             });
         });
     }
@@ -67,7 +67,7 @@ export class CollectionService {
             let content = '';
             card.content.forEach(c => { content = content + c + '\n'; });
             card.content = content;
-            card.normalizedContent = card.content.toLowerCase();
+            card.normalizedContent = card.content?.toLowerCase();
         }
         if (card.cards) {
             card.cards.forEach(c => this.makeContent(c));
@@ -80,24 +80,28 @@ export class CollectionService {
                     let content = '';
                     o.content.forEach(c => { content = content + c + '\n'; });
                     o.content = content;
-                    card.normalizedContent += ' ' + content.toLowerCase();
+                    if (card.normalizedContent) {
+                        card.normalizedContent += ' ' + content?.toLowerCase();
+                    } else {
+                        card.normalizedContent = content?.toLowerCase();
+                    }
                 }
             });
         } else {
             card.objects = [];
         }
 
-        card.normalizedContent = this.normalizeContent(card) + ' ' + card.name.toLowerCase();
+        card.normalizedContent = this.normalizeContent(card) + ' ' + card.name?.toLowerCase();
     }
 
-    private normalizeContent(card: Card) {
+    private normalizeContent(card: Card) : string{
         if (card.normalizedContent !== undefined) {
-            return card.normalizedContent.replace(/(\b(\w{1,3})\b(\W|$))/g, '');
+            return card.normalizedContent.replace(/(\b(\w{1,3})\b(\W|$))|(\n)/g, ' ');
         }
         return '';
     }
 
-    private findIndexById(id: string) {
+    private findIndexById(id: string) : number{
         if (id === undefined) {
             return 0;
         }
@@ -110,7 +114,7 @@ export class CollectionService {
         return index;
     }
 
-    findCardById(id: string) {
+    findCardById(id: string) : Card {
         if (id === undefined) {
             return this.data.cards[0];
         }
@@ -130,7 +134,7 @@ export class CollectionService {
         return card;
     }
 
-    findNextCardById(id: string) {
+    findNextCardById(id: string) : Card  {
         const nextIndex: number = this.findIndexById(id) + 1;
         if (nextIndex > this.contentCards.length - 1) {
             return this.contentCards[0];
@@ -139,7 +143,7 @@ export class CollectionService {
 
     }
 
-    findPrevCardById(id: string) {
+    findPrevCardById(id: string) : Card {
         const prevIndex: number = this.findIndexById(id) - 1;
         if (prevIndex < 0) {
             return this.contentCards[this.contentCards.length - 1];
@@ -147,7 +151,7 @@ export class CollectionService {
         return this.contentCards[prevIndex];
     }
 
-    search(argument: string) {
+    search(argument: string): Card[] {
         const result: Card[] = [];
         if (argument.length >= 1) {
             this.contentCards.forEach(c => {

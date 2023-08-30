@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController } from '@ionic/angular';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { NavController, MenuController, IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 import { Card, CollectionService } from 'app/services/collection.service';
 import { ShowdownService } from 'app/services/showdown.service';
+import { register } from 'swiper/element/bundle';
+import { KeepHtmlPipe } from 'app/pipes/keep-html.pipe';
+import { CardImageComponent } from '../components/card-image/card-image.component';
+import { NgFor, NgIf } from '@angular/common';
+import { CollectionHeaderComponent } from '../components/collection-header/collection-header.component';
+import { PdfLinkComponent } from 'app/components/pdf-link/pdf-link.component';
 
+register();
 
 @Component({
-    selector: 'app-card',
+    // selector: 'app-card',
     templateUrl: './card.page.html',
-    styleUrls: ['./card.page.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        CollectionHeaderComponent,
+        NgFor,
+        CardImageComponent,
+        NgIf,
+        KeepHtmlPipe,
+        PdfLinkComponent
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class CardPage {
+export class CardPageComponent {
 
     current: Card = {
         id: 'loading',
@@ -29,7 +46,7 @@ export class CardPage {
         private nav: NavController,
         private collectionService: CollectionService,
         private showdownService: ShowdownService,
-        private route: ActivatedRoute,
+        private activatedRoute: ActivatedRoute,
         private menuCtrl: MenuController) {
 
         this.name = this.collectionService.getName();
@@ -37,11 +54,11 @@ export class CardPage {
     }
 
     ionViewWillEnter() {
-        const cardId = this.route.snapshot.paramMap.get('id');
+        const cardId = this.activatedRoute.snapshot.paramMap.get('id');
         this.current = this.collectionService.findCardById(cardId);
     }
-    convert(text: string) {
-        return this.showdownService.makeHtml(text);
+    convert(text: string| string[]) {
+        return this.showdownService.makeHtml(text as string);
     }
 
     nextCard() {

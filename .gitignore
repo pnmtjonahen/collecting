@@ -17,3 +17,5 @@ plugins/
 electron/
 android/
 out/
+.angular/
+.vscode/
