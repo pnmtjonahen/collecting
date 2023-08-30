@@ -1,0 +1,7 @@
+{
+  "name": "CollectingStuff",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
