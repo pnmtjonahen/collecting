@@ -19,3 +19,4 @@ android/
 out/
 .angular/
 .vscode/
+dist/
