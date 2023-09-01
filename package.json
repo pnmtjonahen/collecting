@@ -9,7 +9,7 @@
     "build:post": "cp src/assets/data/cards.json www/assets/data/; rsync -a src/assets/data  www/assets/data",
     "build": "nx build",
     "build:prod": "nx build --configuration=production",
-    "test": "nx test --no-watch --code-coverage",
+    "test": "nx test --no-watch --code-coverage --browsers=ChromeHeadless",
     "test:watch": "nx test --code-coverage",
     "lint": "nx lint",
     "deploy": "rsync -a www/  ~/temp/cameras",
