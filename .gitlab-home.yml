@@ -37,7 +37,7 @@ test:
   allow_failure: false
   stage: test
   script:
-    - npm run whitebox
+    - npm run test
   coverage: '/Lines \W+: (\d+\.\d+)%.*/'
   artifacts:
     paths:
