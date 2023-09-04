@@ -1,26 +1,116 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+default:
+  image: trion/ng-cli-karma:16.0.4
+  services:
+    - docker:dind
+  cache:
+    key: "${CI_PROJECT_NAME}"
+    paths:
+      - .sonar/cache
+      - .npm/
+      - node_modules/
+
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+
 stages:
-- build
-- test
-- deploy
-- review
-- dast
-- staging
-- canary
-- production
-- incremental rollout 10%
-- incremental rollout 25%
-- incremental rollout 50%
-- incremental rollout 100%
-- performance
-- cleanup
-sast:
+  - build
+  - test
+  - qa
+  - release
+
+build:
+  stage: build
+  before_script:
+    - npm ci -q --cache .npm --prefer-offline
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  except:
+    refs:
+      - master
+      - tags
+
+test:
+  allow_failure: false
   stage: test
-include:
-- template: Auto-DevOps.gitlab-ci.yml
+  script:
+    - npm run whitebox
+  coverage: '/Lines \W+: (\d+\.\d+)%.*/'
+  artifacts:
+    paths:
+      - dist/
+      - coverage/
+  except:
+    refs:
+      - master
+      - tags
+
+lint:
+  allow_failure: false
+  stage: qa
+  script:
+    - npm run lint
+  except:
+    refs:
+      - master
+      - tags
+  artifacts:
+    paths:
+      - dist/
+      - coverage/
+
+sonar:
+  stage: qa
+  script:
+    - npm run sonar-scanner -- -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=pnmtjonahen_collecting -Dsonar.typescript.lcov.reportPaths=coverage/collecting/lcov.info -Dsonar.sourceEncoding=UTF-8 -Dsonar.sources=src/app -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts -Dsonar.tests=src/app -Dsonar.test.inclusions=**/*.spec.ts
+  except:
+    refs:
+      - master
+      - tags
+  artifacts:
+    paths:
+      - dist/
+      - coverage/
+
+Release:
+  stage: release
+  image: node:20-alpine3.17
+  only:
+    refs:
+      - master
+    variables:
+      # Run only on master and commit message doesn't start with "Release v"
+      - $CI_COMMIT_MESSAGE !~ /^Release v.*/
+  before_script:
+    - apk add --update openssh-client git
+    # Using Deploy keys and ssh for pushing to git
+    # Run ssh-agent (inside the build environment)
+    - eval $(ssh-agent -s)
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    # Create the SSH directory and give it the right permissions
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    # Don't verify Host key
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - git config user.email "gitlab-runner@gitlab.tjonahen.home"
+    - git config user.name "Gitlab Runner"
+  script:
+    # See https://gist.github.com/serdroid/7bd7e171681aa17109e3f350abe97817
+    # Set remote push URL
+    # We need to extract the ssh/git URL as the runner uses a tokenized URL
+    # Replace start of the string up to '@'  with git@' and append a ':' before first '/'
+    - git remote --verbose
+    - export CI_PUSH_REPO=$(echo "$CI_REPOSITORY_URL" | sed -e "s|.*@\(.*\)|git@\1|" -e "s|/|:/|" )
+    - git remote set-url --push origin "ssh://git@gitlab.tjonahen.home/philippe/collecting.git"
+    # runner runs on a detached HEAD, checkout current branch for editing
+    - git reset --hard
+    - git clean -fd
+    - git checkout $CI_COMMIT_REF_NAME
+    - git pull origin $CI_COMMIT_REF_NAME
+    # Run release-it to bump version and tag
+    - npm ci -q --cache .npm --prefer-offline
+    - npm run release -- patch --ci --verbose
