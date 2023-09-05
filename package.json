@@ -12,7 +12,8 @@
     "test": "nx test --no-watch --code-coverage --browsers=ChromeHeadless",
     "test:watch": "nx test --code-coverage",
     "lint": "nx lint",
-    "deploy:remote": "rsync -a dist/  philippe@ptj-ixtreme-M3720.tjonahen.home:/ssdextra/k8s_storage/cameras"
+    "deploy:remote": "rsync -a dist/  philippe@ptj-ixtreme-M3720.tjonahen.home:/ssdextra/k8s_storage/cameras",
+    "sonar-scanner": "sonar-scanner"
   },
   "private": true,
   "dependencies": {
