@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Philippe Tjon-A-Hen",
   "homepage": "http://www.tjonahen.nl/",
+  "description": "A Collecting Stuff management application",
   "scripts": {
     "update-assets": "cp ~/stack/collecting/mamiya/cards.json src/assets/data/cards.json; cp ~/stack/collecting/mamiya/*.pdf src/assets/data/; rsync -a  --include='m' --include='m/*.JPG' --exclude='*.JPG' --exclude='l' --exclude='xs' --exclude='s' ~/stack/collecting/mamiya/images  src/assets/data",
     "start": "nx serve",
@@ -12,6 +13,7 @@
     "test": "nx test --no-watch --code-coverage --browsers=ChromeHeadless",
     "test:watch": "nx test --code-coverage",
     "lint": "nx lint",
+    "release": "release-it",
     "deploy:remote": "rsync -a dist/  philippe@ptj-ixtreme-M3720.tjonahen.home:/ssdextra/k8s_storage/cameras",
     "sonar-scanner": "sonar-scanner"
   },
@@ -73,7 +75,19 @@
     "karma-jasmine-html-reporter": "2.1.0",
     "nx": "16.7.4",
     "ts-node": "10.9.1",
-    "typescript": "4.9.3"
+    "typescript": "4.9.3",
+    "release-it": "16.1.5",
+    "sonarqube-scanner": "3.1.0"
   },
-  "description": "A Collecting Stuff management application"
+  "release-it": {
+    "git": {
+      "tagName": "v${version}",
+      "requireCleanWorkingDir": false,
+      "requireUpstream": false,
+      "commitMessage": "Release v${version}"
+    },
+    "npm": {
+      "publish": false
+    }
+  }
 }
